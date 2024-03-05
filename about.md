@@ -7,12 +7,15 @@ permalink: /about
 ## Hi, it's nice to meet you.
 
 ### About Me
-###### I'm a freshman undergrad at the University of Michigan College of Engineering with a deep interest in **making things**, from electronics to Nerf blasters to my own website.
+###### I'm a freshman at the University of Michigan College of Engineering with a deep interest in **making things**, from electronics to Nerf blasters to my own website.
 
 Outside of being a nerd, I like lifting weights, watching shows (*Community*, *Modern Family*, various animes), and drinking boba and coffee.
 
+I'm also involved in Policy Debate, where I occasionally coach and judge debate rounds for national and local high school tournaments. In high school, I reached 5th place at the 2023 [NSDA Nationals] (https://www.speechanddebate.org/nationals-/?wtime=%7Bseek_to_second_number%7D), 7th at the 2022 NSDA Nationals, was a finalist at the 2022 National CFL Championship, and was a 2x NSDA Academic All-American.
+
 ### About this Site
 
-insert description of what this site is supposed to be for lol
+On this site I intend to post updates on my projects! 
+(There are many in progress...)
 
 You can find my GitHub and LinkedIn by clicking the icons at the bottom of this page!
