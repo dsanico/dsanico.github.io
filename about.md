@@ -11,7 +11,7 @@ permalink: /about
 
 Outside of being a nerd, I like lifting weights, watching shows (*Community*, *Modern Family*, various animes), and drinking boba and coffee.
 
-I'm also involved in Policy Debate, where I occasionally coach and judge debate rounds for national and local high school tournaments. In high school, I reached 5th place at the 2023 [NSDA Nationals] (https://www.speechanddebate.org/nationals-/?wtime=%7Bseek_to_second_number%7D), 7th at the 2022 NSDA Nationals, was a finalist at the 2022 National CFL Championship, and was a 2x NSDA Academic All-American.
+I'm also involved in Policy Debate, where I occasionally coach and judge debate rounds for national and local high school tournaments. In high school, I reached 5th place at the 2023 [NSDA Nationals](https://www.speechanddebate.org/nationals-/?wtime=%7Bseek_to_second_number%7D), 7th at the 2022 NSDA Nationals, was a finalist at the 2022 National CFL Championship, and was a 2x NSDA Academic All-American.
 
 ### About this Site
 
