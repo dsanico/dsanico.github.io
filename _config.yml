@@ -32,7 +32,7 @@ navbar-links:
   About Me: "aboutme"
   Site-Building Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Fast and simple Markdown Tutorial: "https://www.markdowntutorial.com/"
+    - Markdown Tutorial: "https://www.markdowntutorial.com/"
   
 ################
 # --- Logo --- #
@@ -47,7 +47,7 @@ round-avatar: true
 
 # If you want to have an image logo in the top-left corner instead of having the title of the website,
 # then specify the following parameter
-title-img: /Users/dmsan/Documents/GitHub/headshot-of-me
+title-img: /Users/dmsan/Documents/GitHub/dsanico/headshot-of-me
 
 
 #####################################
@@ -140,17 +140,17 @@ navbar-var-length: false
 
 # Personalize the colours in your website. Colour values can be any valid CSS colour
 
-navbar-col: "#EAEAEA"
+navbar-col: "#feb300"
 navbar-text-col: "#404040"
 navbar-border-col: "#DDDDDD"
-page-col: "#FFFFFF"
+page-col: "#fff5d7"
 text-col: "#404040"
-link-col: "#008AFF"
-hover-col: "#0085A1"
+link-col: "#ff5e6c"
+hover-col: "#ffaaab"
 footer-col: "#EAEAEA"
 footer-text-col: "#777777"
-footer-link-col: "#404040"
-footer-hover-col: "#0085A1"
+footer-link-col: "#ff5e6c"
+footer-hover-col: "#ffaaab"
 
 # Alternatively, the navbar, footer, and page background can be set to an image
 # instead of colour
