@@ -15,7 +15,7 @@ I'm also involved in Policy Debate, where I occasionally coach and judge debate 
 
 ### About this Site
 
-On this site I intend to post updates on my projects! 
-(There are many in progress...)
+This site is a **work-in-progress** project that I'm making for fun. 
+Here I intent to post updates on other projects I'm working on...
 
-You can find my GitHub and LinkedIn by clicking the icons at the bottom of this page!
+In the meantime, you can find my GitHub and LinkedIn by clicking the icons at the bottom of this page!
