@@ -11,8 +11,8 @@ permalink: /about
 While my interest in learning, making, and using electronic and programming technologies has grown in my time at Michigan, my passion for working with and learning from others started in high school when I joined my debate team and progressed from a novice to a team leader.**
 
 
-{: .box-warning} Here's some of the projects I'm working on:
-{: .box-warning} <ul>
+Here's some of the projects I'm working on:
+<ul>
   <li><b>ML-based Stock Market Analysis (Michigan Data Science Team)</b>: grabbing and cleaning stock market data from Yahoo Finance, performing EDA to pick the best stock market indicators for a machine-learning model, and designing and optimizing a long short-term memory model to predict future stock price trends. </li>
   <li><b>Flight Recorder PCB (Michigan Aeronautical Science Association)</b>: working within MASA's Avionics team to produce a PCB schematic on Altium for a flight data recorder, in case our rocket reaches a mid-flight failure and loses comms.</li>
   <li><b>Wearable Capacitive Pressure Sensor (ENGR 100 Lab)</b>: a fun project designing, fabricating, testing, and optimizing a capacitive pressure sensor.</li>
