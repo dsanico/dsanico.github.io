@@ -10,6 +10,7 @@ permalink: /about
 **I'm a freshman at the University of Michigan College of Engineering with a deep interest in _making things_, from electronics to Nerf blasters to my own website. 
 While my interest in learning, making, and using electronic and programming technologies has grown in my time at Michigan, my passion for working with and learning from others started in high school when I joined my debate team and progressed from a novice to a team leader.**
 
+{: .box-note}
 Here's some of the projects I'm working on:
 <ul>
   <li><b>ML-based Stock Market Analysis (Michigan Data Science Team)</b>: grabbing and cleaning stock market data from Yahoo Finance, performing EDA to pick the best stock market indicators for a machine-learning model, and designing and optimizing a long short-term memory model to predict future stock price trends. </li>
