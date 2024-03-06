@@ -7,8 +7,8 @@ permalink: /about
 ## Hi, it's nice to meet you.
 
 ### About Me
-###### I'm a freshman at the University of Michigan College of Engineering with a deep interest in <b>making things</b>, from electronics to Nerf blasters to my own website. 
-###### While my interest in learning, making, and using electronic and programming technologies has grown in my time at Michigan, my passion for working with and learning from others started in high school when I joined my debate team and progressed from a novice to a team leader.
+#### I'm a freshman at the University of Michigan College of Engineering with a deep interest in <b>making things</b>, from electronics to Nerf blasters to my own website. 
+#### While my interest in learning, making, and using electronic and programming technologies has grown in my time at Michigan, my passion for working with and learning from others started in high school when I joined my debate team and progressed from a novice to a team leader.
 
 Here's some of the projects I'm working on:
 <ul>
