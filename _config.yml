@@ -48,7 +48,7 @@ round-avatar: true
 
 # If you want to have an image logo in the top-left corner instead of having the title of the website,
 # then specify the following parameter
-title-img: /Users/dmsan/Documents/GitHub/dsanico/headshot-of-me.jpg
+title-img: /assets/img/headshot-of-me.jpg
 
 
 #####################################
@@ -141,7 +141,7 @@ navbar-var-length: false
 
 # Personalize the colours in your website. Colour values can be any valid CSS colour
 
-navbar-col: "#6f6e7b"
+navbar-col: "#800000"
 navbar-text-col: "#404040"
 navbar-border-col: "#DDDDDD"
 page-col: "#FFF5D7"
