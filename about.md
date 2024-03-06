@@ -10,9 +10,9 @@ permalink: /about
 ###### I'm a freshman at the University of Michigan College of Engineering with a deep interest in **making things**, from electronics to Nerf blasters to my own website.
 Here's some of the projects I'm working on:
 <ul>
-  <li>ML-based stock market analysis (Michigan Data Science Team): grabbing and cleaning stock market data from Yahoo Finance, performing EDA to pick the best stock market indicators for a machine-learning model, and producing and optimizing a long short-term memory model to predict future stock price trends. </li>
-  <li>Flight Recorder PCB (Michigan Aeronautical Science Association): working within MASA's Avionics team to produce a PCB schematic for a flight recorder, in case our rocket reaches a mid-flight failure and loses comms.</li>
-  <li>Wearable capacitive pressure sensor (ENGR 100 Lab): a fun project designing, fabrication, testing, and optimizing a capacitive pressure sensor.</li>
+  <li><b>ML-based Stock Market Analysis (Michigan Data Science Team)</b>: grabbing and cleaning stock market data from Yahoo Finance, performing EDA to pick the best stock market indicators for a machine-learning model, and designing and optimizing a long short-term memory model to predict future stock price trends. </li>
+  <li><b>Flight Recorder PCB (Michigan Aeronautical Science Association)</b>: working within MASA's Avionics team to produce a PCB schematic on Altium for a flight data recorder, in case our rocket reaches a mid-flight failure and loses comms.</li>
+  <li><b>Wearable Capacitive Pressure Sensor (ENGR 100 Lab)</b>: a fun project designing, fabricating, testing, and optimizing a capacitive pressure sensor.</li>
 </ul>
 
 Outside of being a nerd, I like lifting weights, watching shows (*Community*, *Modern Family*, *various animes*), skateboarding, and boba.
