@@ -18,9 +18,11 @@ author: David Sanico
 ###############################################
 
 navbar-links:
+  About Me: "https://dsanico.github.io/about"
   Projects:
-    - Coming Soon!:
+    - Coming Soon!: 
   Contact Me:
+    - Contact Form: "https://dsanico.github.io/contactform"
     - Linkedin: "https://www.linkedin.com/in/david-sanico-11557828b"
   
 ################
