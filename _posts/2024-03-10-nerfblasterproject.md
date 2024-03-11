@@ -8,8 +8,24 @@ thumbnail-img: /assets/img/projects/nerfblaster-internals.jpg
 gh-repo: dsanico/dsanico.github.io
 tags: [Electrical Engineering, Personal Project]
 ---
+# Table of Contents
+[Project Overview](#project-overview)
 
-# Project Overview
+- [Background](#background)
+- [Plan](#plan)
+
+  
+[Materials and Methods](#materials-and-methods)
+
+- [Initial Planning](#initial-planning)
+- [Internal Retrofitting](internal-retrofitting)
+- [External Retrofitting](external-retrofitting)
+- [Final Reassembly](#final-reassembly)
+  
+
+
+# Project Overview 
+
 ### Background
 The niche hobby of [Nerf modding](https://www.themanual.com/culture/how-to-mod-a-nerf-gun-hammershot-modification-luke-goodman/) involves taking Nerf blasters apart and tinkering with their internal or external parts to achieve enhanced performance or aesthetics. Performance upgrades include shooting harder, at a higher rate of fire, or shooting an entirely different type of ammo. Aesthetic upgrades include painting new color designs, installing third-party external parts, or even cutting apart and integrating two or more different blasters. 
 
@@ -22,26 +38,23 @@ The goal for this project was to enhance both the peformance and aesthetics of a
 **Performance upgrades included:** 
 
 
-| Parameter | Stock | Upgrade | 
+| _Parameter_ | _Stock_ | _Upgrade_ | 
 | :---| :--- | :--- | 
-| Firing mechanic | semi-automatic | fully-automatic |
-| Ammo compatibility | full-length darts | half-length darts + embedded tracer ammo charging |
-| Battery | four AA's | 7.4V 750mA LiPo |
-| Battery life indicator | none | internal digital voltmeter |
-| Flywheel system | stock | high-performance motors, flywheels, and flywheel cage |
+| **Firing mechanic:** | semi-automatic | fully-automatic |
+| **Ammo compatibility:** | full-length darts | half-length darts + embedded tracer ammo charging |
+| **Battery:** | four AA's | 7.4V 750mA LiPo |
+| **Battery life indicator:** | none | internal digital voltmeter |
+| **Flywheel system:** | stock | high-performance motors, flywheels, and flywheel cage |
 
 **Aesthetic upgrades included:**
 
 
-| Parameter | Stock | Upgrade | 
+| _Parameter_ | _Stock_ | _Upgrade_ | 
 | :---| :--- | :--- | 
-| Kit: | none | third-party Scorpion-Evo replica kit |
-| Lights: | none | white LEDs |
-| Visibe Internals: | none | flywheel system |
-| Paint: | stock | black ice color theme |
-
-### Impact
-Localized geostrategic dominance.
+| **Kit:** | none | third-party Scorpion-Evo replica kit |
+| **Lights:** | none | white LEDs |
+| **Visibe Internals:** | none | flywheel system |
+| **Paint:** | stock | black ice color theme |
 
 
 # Materials and Methods
