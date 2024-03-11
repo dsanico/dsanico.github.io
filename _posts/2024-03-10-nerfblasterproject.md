@@ -10,13 +10,10 @@ tags: [Electrical Engineering, Personal Project]
 ---
 # Table of Contents
 [Project Overview](#project-overview)
-
 - [Background](#background)
 - [Plan](#plan)
 
-  
 [Materials and Methods](#materials-and-methods)
-
 - [Initial Planning](#initial-planning)
 - [Internal Retrofitting](#internal-retrofitting)
 - [External Retrofitting](#external-retrofitting)
@@ -102,6 +99,6 @@ This is the painted base of the blaster. The flywheels and flywheel cage are vis
 ![Closed Base](https://dsanico.github.io/assets/img/projects/nerfblaster-base.jpg)
 
 ### Final Reassembly
-The final reassembly simply involved reinstalling the internals after painting. This is the final result:
+The final reassembly simply involved reinstalling the internals then reinstalling the Scorpion-Evo kit after closing the blaster. This is the final result:
 ![Completed Full](https://dsanico.github.io/assets/img/projects/nerfblaster-completed-full.jpg)
 ![Closed Close](https://dsanico.github.io/assets/img/projects/nerfblaster-completed-close.jpg)
