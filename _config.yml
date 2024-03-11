@@ -20,7 +20,7 @@ author: David Sanico
 navbar-links:
   About Me: "https://dsanico.github.io/about"
   Projects:
-    - Nerf Blaster: "https://dsanico.github.io/2024-03-10-nerfblasterproject.md"
+    - Nerf Blaster: "https://dsanico.github.io/_posts/2024-03-10-nerfblasterproject.md"
     - Coming Soon!: 
   Contact Me:
     - Contact Form: "https://dsanico.github.io/contactform"
