@@ -2,7 +2,7 @@
 layout: post
 title: Upgrading an Electric Nerf Blaster
 subtitle: A High-School DIY Journey through Electronics
-cover-img: /assets/img/projects/nerfblaster-completed-close.jpg
+cover-img: /assets/img/projects/nerfblaster-cover.jpg
 thumbnail-img: /assets/img/projects/nerfblaster-internals.jpg
 # share-img: 
 gh-repo: dsanico/dsanico.github.io
@@ -10,15 +10,13 @@ tags: [Electrical Engineering, Personal Project]
 ---
 
 # Project Overview
-## Background
-[Nerf modding](https://www.themanual.com/culture/how-to-mod-a-nerf-gun-hammershot-modification-luke-goodman/) is a niche hobby that involves taking Nerf blasters apart and tinkering with their internal or external parts to achieve enhanced performance or aesthetics. Performance upgrades include shooting harder, at a higher rate of fire, or shooting an entirely different type of ammo. Aesthetic upgrades include painting new color designs, installing third-party external parts, or even cutting apart and integrating two or more different blasters. 
+### Background
+The niche hobby of [Nerf modding](https://www.themanual.com/culture/how-to-mod-a-nerf-gun-hammershot-modification-luke-goodman/) involves taking Nerf blasters apart and tinkering with their internal or external parts to achieve enhanced performance or aesthetics. Performance upgrades include shooting harder, at a higher rate of fire, or shooting an entirely different type of ammo. Aesthetic upgrades include painting new color designs, installing third-party external parts, or even cutting apart and integrating two or more different blasters. 
 
-I got into this hobby at a very young age, so the most I was capable of at that time was taking apart the blasters, spray-painting cool themes onto them (I had an affinity for designs from the Halo and Destiny videogame franchises), and putting them back together from the inside out.
-
-However, in high school I thought I'd revisit the hobby to make an even cooler **_and_** more powerful blaster... and that's what ended up becoming this project.
+I got into this hobby at a very young age, but the mods I did remained at the simple level of taking apart, spray-painting, and reassembling the blasters. However, in high school, I decided to revisit the hobby and dive into the world of electronics, culminating in this **three-year project**.
 
 
-## Plan
+### Plan
 The goal for this project was to enhance both the peformance and aesthetics of a stock, electric, semi-automatic Nerf blaster.
 
 **Performance upgrades included:** 
@@ -42,11 +40,11 @@ The goal for this project was to enhance both the peformance and aesthetics of a
 | Visibe Internals: | none | flywheel system |
 | Paint: | stock | black ice color theme |
 
-## Impact
+### Impact
 Localized geostrategic dominance.
 
 
-# Materials and Methods Details
+# Materials and Methods
 _The project had four stages: initial planning, internal retrofitting, external retrofitting, and final reassembly._
 
 ### Initial Planning
