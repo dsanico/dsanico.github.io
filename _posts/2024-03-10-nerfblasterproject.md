@@ -70,7 +70,7 @@ This stage involved removing all of the unnecessary internals from the blaster a
 - Hybrid pusher
 
 Here's a look at the complete internals (note that this picture was taken during final reassemnbly, so the paint colors are different). The flywheels are the black discs with fireballs printed on them, the flywheel cage is the clear plastic part housing them, and the pusher system is in the top right corner of the blaster. 
-![Internals](assets/img/projects/nerfblaster-internals.jpg)
+![Internals](https://dsanico.github.io/assets/img/projects/nerfblaster-internals.jpg)
 _Apologies for the janky workspace - I did everything at home._
 
 ### External Retrofitting
@@ -86,9 +86,9 @@ This stage involved installing external, primarily aesthetic upgrades. I started
 - Half-dart magazine adapter
 
 This is the painted base of the blaster. The flywheels and flywheel cage are visible from the outside thanks to the flywheel windows kit.
-![Closed Base](assets/img/projects/nerfblaster-base.jpg)
+![Closed Base](https://dsanico.github.io/assets/img/projects/nerfblaster-base.jpg)
 
 ### Final Reassembly
 The final reassembly simply involved reinstalling the internals after painting. This is the final result:
-![Completed Full](assets/img/projects/nerfblaster-completed-full.jpg)
-![Closed Close](assets/img/projects/nerfblaster-completed-close.jpg)
+![Completed Full](https://dsanico.github.io/assets/img/projects/nerfblaster-completed-full.jpg)
+![Closed Close](https://dsanico.github.io/assets/img/projects/nerfblaster-completed-close.jpg)
