@@ -5,6 +5,7 @@ subtitle: A High-School DIY Journey through Electronics
 cover-img: /assets/img/projects/nerfblaster-completed-close.jpg
 thumbnail-img: /assets/img/projects/nerfblaster-internals.jpg
 # share-img: 
+gh-repo: dsanico/dsanico.github.io
 tags: [Electrical Engineering, Personal Project]
 ---
 
