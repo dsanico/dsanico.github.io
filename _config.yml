@@ -20,6 +20,7 @@ author: David Sanico
 navbar-links:
   About Me: "https://dsanico.github.io/about"
   Projects:
+    - Nerf Blaster: "https://dsanico.github.io/2024-03-10-nerfblasterproject.md"
     - Coming Soon!: 
   Contact Me:
     - Contact Form: "https://dsanico.github.io/contactform"
@@ -120,7 +121,7 @@ feed_show_tags: true
 # Allow sub-menu items (second-level navigation menu items) to be longer than the top-level menu
 # If this setting is off, then long sub-menu words might get cut off
 # See https://github.com/daattali/beautiful-jekyll/issues/765 to understand the issue this setting can solve
-navbar-var-length: false
+navbar-var-length: true
 
 # The keywords to associate with your website, for SEO purposes
 #keywords: "my,list,of,keywords"
