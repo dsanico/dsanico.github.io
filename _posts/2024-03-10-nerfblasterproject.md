@@ -22,6 +22,8 @@ However, in high school I thought I'd revisit the hobby to make an even cooler *
 The goal for this project was to enhance both the peformance and aesthetics of a stock, electric, semi-automatic Nerf blaster.
 
 **Performance upgrades included:** 
+
+
 | Parameter | Stock | Upgrade | 
 | :---| :--- | :--- | 
 | Firing mechanic | semi-automatic | fully-automatic |
@@ -31,6 +33,8 @@ The goal for this project was to enhance both the peformance and aesthetics of a
 | Flywheel system | stock | high-performance motors, flywheels, and flywheel cage |
 
 **Aesthetic upgrades included:**
+
+
 | Parameter | Stock | Upgrade | 
 | :---| :--- | :--- | 
 | Kit: | none | third-party Scorpion-Evo replica kit |
