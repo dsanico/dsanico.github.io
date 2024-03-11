@@ -18,8 +18,8 @@ tags: [Electrical Engineering, Personal Project]
 [Materials and Methods](#materials-and-methods)
 
 - [Initial Planning](#initial-planning)
-- [Internal Retrofitting](internal-retrofitting)
-- [External Retrofitting](external-retrofitting)
+- [Internal Retrofitting](#internal-retrofitting)
+- [External Retrofitting](#external-retrofitting)
 - [Final Reassembly](#final-reassembly)
   
 
@@ -64,7 +64,7 @@ _The project had four stages: initial planning, internal retrofitting, external 
 In this stage, I determined how I would implement all of my desired upgrades. I first had to choose materials that were compatible and would help achieve the goals of improved performance and aesthetics. Detailed materials lists are shown in the internal and external retrofitting sections. I then determined a high-level plan for completing the project, which consists of the following three stages detailed below.
 
 ### Internal Retrofitting
-This stage involved removing all of the unnecessary internals from the blaster and installing the new internals. This stage was done first because plastic cuttig was necessary, which could damage any paint coating previously applied. I first snipped some plastic supports inside the blaster to make space for larger switches and the new gearbox and drilled holes in the battery compartment to feed new wires through via an XT60 connector to the LiPo battery. I then installed the full-auto conversion kit, which utilized a motor and gearbox to automatically push the "pusher" (_intuitively named, the rod that pushes the dart into the flywheels_) instead of relying on a trigger pull to mechanically push the pusher. I also soldered lower-awg wires and switches, installed a high-performance flywheel cage, flywheels, and motors ([Fang ReVAMPeds](https://outofdarts.com/products/fang-revamped-130-2s-neo-motor-for-nerf-blasters?_pos=1&_sid=d8854fb34&_ss=r) for the flywheel system and a [Meishel 2.0](https://outofdarts.com/products/meishel-2-0-130-2s-motor-for-nerf-blasters?_pos=1&_sid=a0bccc9a0&_ss=r) for the pusher system), installed a hybrid pusher compatible with both full-length and half-length darts, and soldered a separate circuit with a toggle switch, LEDs, and a mini digital voltmeter.
+This stage involved removing all of the unnecessary internals from the blaster and installing the new internals. This stage was done first because plastic cutting was necessary, which could damage any paint coating previously applied. I first snipped some plastic supports inside the blaster to make space for larger switches and the new gearbox and drilled holes in the battery compartment to feed new wires through via an XT60 connector to the LiPo battery. I then installed the full-auto conversion kit, which utilized a motor and gearbox to automatically push the "pusher" (_intuitively named, the rod that pushes the dart into the flywheels_) instead of relying on a trigger pull to mechanically push the pusher. I also soldered lower-awg wires and switches, installed a high-performance flywheel cage, flywheels, and motors ([Fang ReVAMPeds](https://outofdarts.com/products/fang-revamped-130-2s-neo-motor-for-nerf-blasters?_pos=1&_sid=d8854fb34&_ss=r) for the flywheel system and a [Meishel 2.0](https://outofdarts.com/products/meishel-2-0-130-2s-motor-for-nerf-blasters?_pos=1&_sid=a0bccc9a0&_ss=r) for the pusher system), installed a hybrid pusher compatible with both full-length and half-length darts, and soldered a separate circuit with a toggle switch, LEDs, and a mini digital voltmeter.
 
 **Materials List:**
 
@@ -82,7 +82,7 @@ This stage involved removing all of the unnecessary internals from the blaster a
 - White and UV LEDs
 - Hybrid pusher
 
-Here's a look at the complete internals (note that this picture was taken during final reassemnbly, so the paint colors are different). The flywheels are the black discs with fireballs printed on them, the flywheel cage is the clear plastic part housing them, and the pusher system is in the top right corner of the blaster. 
+Here's a look at the complete internals (note that this picture was taken during final reassembly, so the paint colors are different). The flywheels are the black discs with fireballs printed on them, the flywheel cage is the clear plastic part housing them, and the pusher system is in the top right corner of the blaster. 
 ![Internals](https://dsanico.github.io/assets/img/projects/nerfblaster-internals.jpg)
 _Apologies for the janky workspace - I did everything at home._
 
