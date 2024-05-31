@@ -27,12 +27,12 @@
 }
 
 /* spacing on all sections */
- #about, #services, #portfolio, #contact {
+ #about, #skills, #projects, #additional {
     margin-top: 4rem;
     padding-top: 4rem;
 } 
 
-#contact {
+#additional {
     padding-bottom: 4rem;
 }
 
