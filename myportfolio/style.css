@@ -42,7 +42,7 @@
     max-width: 100%;
     height: auto;
     display: block;
-    width: 250px;
+    width: 210px;
 }
 
 /* skills section css */
@@ -73,8 +73,8 @@
 
 /* additional info section styling */
 .custom-padding {
-    padding-left: 5px;   /* You can adjust the value to your preference */
-    padding-right: 5px;  /* You can adjust the value to your preference */
+    padding-left: 2px;
+    padding-right: 1px; 
 }
 
 /* social media icons styling */
