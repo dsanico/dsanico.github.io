@@ -40,24 +40,29 @@
     width: 100%;
 }
 
-/* services section css */
+/* skills section css */
 .skillsText.card {
-    height: 280px;
+    height: 140px;
     cursor: pointer;
+    background-color: #00274C;
+    color: white;
   }
 .skillsIcon {
     font-size: 36px;
     text-align: center;
     width: 100%;
+    color: inherit;
 }
 .card-title {
     text-align: center;
+    color: inherit;
 }
 .card:hover .skillsIcon {
-    color: #008000;
+    color: #00274C;
+    border: 1px solid #00274C;
 }
 .skillsText:hover {
-    border: 1px solid #008000;
+    border: 1px solid #00274C;
 }
 
 /* social media icons styling */
