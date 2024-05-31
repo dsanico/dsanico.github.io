@@ -42,7 +42,8 @@
 
 /* skills section css */
 .skillsText.card {
-    height: 140px;
+    height: 110px;
+    border-radius: 20%;
     cursor: pointer;
     background-color: #00274C;
     color: white;
