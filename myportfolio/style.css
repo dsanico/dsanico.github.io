@@ -35,12 +35,13 @@
 #contact {
     padding-bottom: 4rem;
 }
-/* about section image css */
-.imageAboutPage {
+
+/* headshot image css */
+.imageHeadshot {
     max-width: 100%;
     height: auto;
     display: block;
-    width: 180px;
+    width: 250px;
 }
 
 /* skills section css */
