@@ -43,7 +43,7 @@
 /* skills section css */
 .skillsText.card {
     height: 110px;
-    border-radius: 20%;
+    border-radius: 25px;
     cursor: pointer;
     background-color: #00274C;
     color: white;
@@ -60,7 +60,7 @@
 }
 .card:hover .skillsIcon {
     color: #00274C;
-    border: 1px solid #00274C;
+    border: 1px solid #FFCB05;
 }
 .skillsText:hover {
     border: 1px solid #00274C;
