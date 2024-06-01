@@ -3,6 +3,14 @@
     background-color: black;
 }
 
+/* link styling */
+.link { 
+    color: #FFCB05; /* Maize */
+}
+.link:hover {
+    color: #00274C; /* Blue */
+}
+
 /* hero background image */
 .bgimage {
     height:100vh;
