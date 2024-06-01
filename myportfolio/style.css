@@ -115,8 +115,8 @@
 
 /* contact form styling */
 .form-header {
-  padding-top: 100px; /* Adjust this value as needed to account for the navbar height */
-  margin-bottom: 20px; /* Adds some space below the header */
+  padding-top: 200px;
+  margin-bottom: 20px; 
 }
 
 input[type="text"],
