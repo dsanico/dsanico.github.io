@@ -11,7 +11,7 @@
     position:relative;
 }
 
-/* text css above hero image*/
+/* text css above hero image */
 .hero_title {
     font-size: 4.5rem;
 }
@@ -25,24 +25,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
-}
-
-/* spacing on all sections */
- #about, #skills, #projects, #additional {
-    margin-top: 2rem;
-    padding-top: 2rem;
-} 
-
-#additional {
-    padding-bottom: 4rem;
-}
-
-/* headshot image css */
-.imageHeadshot {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    width: 210px;
 }
 
 /* skills section css */
@@ -77,6 +59,24 @@
     padding-right: 1px; 
 }
 
+/* headshot image css */
+.imageHeadshot {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    width: 210px;
+}
+
+/* spacing on all sections */
+ #about, #skills, #projects, #additional {
+    margin-top: 2rem;
+    padding-top: 2rem;
+} 
+
+#additional {
+    padding-bottom: 4rem;
+}
+
 /* social media icons styling */
 .social-icons {
     font-size: 36px;
@@ -94,3 +94,28 @@
     background-color: #FFCB05;
     text-align: center;
 }
+
+/* contact form styling */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; 
+    padding: 10px; /
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #FFCB05;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #00274C;
+}
+
