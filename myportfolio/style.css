@@ -35,7 +35,7 @@
     color: black;
 }
 
-/* skills section css */
+/* skills section styling */
 .skillsText.card {
     height: 110px;
     border-radius: 25px;
@@ -57,9 +57,19 @@
     color: #FFCB05; /* Maize */
     border: 1px solid #00274C;
 }
-.skillsText:hover {
-    border: 1px solid #00274C;
+.skillsText.card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* projects section styling */
+.projectsText.card {
+    height: 600px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white; /* Blue */
+    color: black;
+  }
+
 
 /* additional info section styling */
 .custom-padding {
