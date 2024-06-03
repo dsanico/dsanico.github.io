@@ -15,8 +15,9 @@
 .bgimage {
     height:100vh;
     background: url('images/hero_standing.jpg');
-    background-size:cover;
-    position:relative;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
 }
 
 /* text css above hero image */
