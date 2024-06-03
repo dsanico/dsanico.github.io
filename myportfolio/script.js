@@ -13,7 +13,7 @@ window.onscroll = function() {
 
 // typewriter effect
 let textBase = "I am ";
-let descriptions = ["an engineering student at U-M", "a creator", "a learner", "passionate about innovating solutions", "a breakfast lover"];
+let descriptions = ["an engineering student at the University of Michigan.", "a creator.", "passionate about innovating solutions.", "a designer and learner.", "a breakfast lover."];
 let descIdx = 0;
 let i = 0;
 let reverse = false;
@@ -25,17 +25,17 @@ function typeWriter() {
   // Check if we want to remove text ('reverse'), or add it.
   if (reverse) {
     if (document.getElementById("text").innerHTML.length > textBase.length) {
-      // We're still in the process of removing the job
+      // We're still in the process of removing the description
       document.getElementById("text").innerHTML = document
         .getElementById("text")
         .innerHTML.slice(0, -1);
       setTimeout(typeWriter, textJitter);
     } else {
-      // deleting done. Set next job, and repeat with typing by
+      // deleting done. Set next description, and repeat with typing by
       // setting reverse to false
-      descIdx = (descIdx+1) % 2;
+      descIdx = (descIdx+1) % descriptions.length;
       reverse = false;
-      setTimeout(typeWriter, 1000);
+      setTimeout(typeWriter, 500);
     }
   } else {
     // We're adding text
@@ -44,8 +44,8 @@ function typeWriter() {
       i = textBase.length;
       reverse = true;
 
-      // Wait a second, then start deleting
-      setTimeout(typeWriter, 3000);
+      // Wait a bit, then start deleting
+      setTimeout(typeWriter, 1500);
     } else {
       // Write text like a typewriter
       if (i < (textBase + descriptions[descIdx]).length) {
