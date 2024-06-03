@@ -11,6 +11,48 @@
     color: #00274C; /* Blue */
 }
 
+/* card styling */
+.card-title {
+    text-align: center;
+    color: inherit;
+}
+.card:hover .skillsIcon {
+    color: #FFCB05; /* Maize */
+    border: 1px solid #00274C;
+}
+.card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* button styles */
+.project-btn {
+    background-color: #FFCB05; 
+    color: white; 
+    border: none; 
+
+}
+
+.project-btn:hover {
+    background-color:  #00274C; 
+    color: white;
+}
+
+.text-center.mt-auto {
+    margin-top: auto; 
+}
+
+/* spacing on all sections */
+ #about, #skills, #projects, #projectDescription #gallery {
+    margin-top: 2rem;
+    padding-top: 2rem;
+} 
+
+#additional {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
 /* hero background image */
 .bgimage {
     height:100vh;
@@ -60,7 +102,7 @@
   50% { background-color: #FFCB05; }
 }
 
-/* skills section styling */
+/* skills section card styling */
 .skillsText.card {
     height: 110px;
     border-radius: 25px;
@@ -74,16 +116,103 @@
     width: 100%;
     color: inherit;
 }
-.card-title {
-    text-align: center;
-    color: inherit;
-}
-.card:hover .skillsIcon {
-    color: #FFCB05; /* Maize */
-    border: 1px solid #00274C;
-}
-.card:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+/* carousel */
+.wrapper { 
+    max-width: 1100px; 
+    width: 100%; 
+    position: relative; 
+  
+} 
+  
+.wrapper i { 
+    height: 50px; 
+    width: 50px; 
+    background: white; 
+    text-align: center; 
+    line-height: 50px; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    position: absolute; 
+    top: 50%; 
+    font-size: 1.25 rem; 
+    transform: translateY(-50%); 
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23); 
+  
+} 
+  
+.wrapper i:first-child { 
+    left: -22px; 
+  
+} 
+  
+.wrapper i:last-child { 
+    right: -22px; 
+  
+} 
+  
+.wrapper .carousel { 
+    display: grid; 
+    grid-auto-flow: column; 
+    grid-auto-columns: calc((100% / 3) - 12px); 
+    gap: 16px; 
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    scroll-behavior: smooth; 
+    scrollbar-width: 0; 
+} 
+  
+.carousel::-webkit-scrollbar { 
+    display: none; 
+} 
+  
+.carousel :where(.card, .img) { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+} 
+  
+.carousel.dragging { 
+    scroll-snap-type: none; 
+    scroll-behavior: auto; 
+} 
+  
+.carousel.no-transition { 
+    scroll-behavior: auto; 
+} 
+  
+.carousel.dragging .card { 
+    cursor: grab; 
+    user-select: none; 
+} 
+  
+.carousel .card { 
+    scroll-snap-align: start; 
+    height: 340px; 
+    list-style: none; 
+    background: #fff; 
+    border-radius: 8px; 
+    display: flex; 
+    cursor: pointer; 
+    width: 98%; 
+    padding-bottom: 15px; 
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column; 
+} 
+
+@media screen and (max-width: 900px) { 
+    .wrapper .carousel { 
+        grid-auto-columns: calc((100% / 2) - 9px); 
+  
+    } 
+} 
+  
+@media screen and (max-width: 600px) { 
+    .wrapper .carousel { 
+        grid-auto-columns: 100%; 
+  
+    } 
 }
 
 /* projects section styling */
@@ -99,23 +228,6 @@
     display: flex;
     flex-direction: column; 
     height: 100%; 
-}
-
-/* button styles */
-.project-btn {
-    background-color: #FFCB05; 
-    color: white; 
-    border: none; 
-
-}
-
-.project-btn:hover {
-    background-color:  #00274C; 
-    color: white;
-}
-
-.text-center.mt-auto {
-    margin-top: auto; 
 }
 
 /* gallery section styling */
@@ -140,18 +252,6 @@
     height: auto;
     display: block;
     width: 250px;
-}
-
-/* spacing on all sections */
- #about, #skills, #projects, #projectDescription #gallery {
-    margin-top: 2rem;
-    padding-top: 2rem;
-} 
-
-#additional {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    padding-bottom: 4rem;
 }
 
 /* social media icons styling */
