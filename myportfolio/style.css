@@ -39,16 +39,18 @@
 }
 
 .typewriter-text {
-  display: inline-block; 
-  position: relative;
+    white-space: nowrap;
+    display: inline-block; 
 }
 
 .caret {
-  width: 2px;
-  height: 32px;
-  background-color: black;
-  position: absolute;
-  animation: blink-caret .7s step-end infinite; /* Add blinking animation */
+    display: inline-block; 
+    width: 2px;
+    height: 1em; 
+    background-color: black;
+    vertical-align: bottom;
+    margin-left: 2px;
+    animation: blink-caret .7s step-end infinite; /* Blinking animation */
 }
 
 /* add keyframes for blinking animation */
