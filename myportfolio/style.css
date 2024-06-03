@@ -95,14 +95,27 @@
     color: black;
   }
 
-.btn {
-    background-color: #00274C;
-    vertical-align: bottom;
- }
+.card-body {
+    display: flex;
+    flex-direction: column; 
+    height: 100%; 
+}
 
-.btn:hover {
-    background-color: #FFCB05;
- }
+/* button styles */
+.project-btn {
+    background-color: #00274C; 
+    color: #ffffff; 
+    border: none; 
+
+}
+
+.project-btn:hover {
+    background-color: #FFCB05; 
+}
+
+.text-center.mt-auto {
+    margin-top: auto; 
+}
 
 /* gallery section styling */
 .imageGallery.card {
