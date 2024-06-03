@@ -86,7 +86,7 @@
 }
 
 /* spacing on all sections */
- #about, #skills, #projects, #additional {
+ #about, #skills, #projects, #additional #projectDescription #gallery {
     margin-top: 2rem;
     padding-top: 2rem;
 } 
@@ -100,7 +100,7 @@
     font-size: 36px;
     cursor: pointer;
 }
-.fa-linkedin:hover, .fa-github:hover {
+.fa-linkedin:hover, .fa-github:hover .fa-house:hover{
     color: #00274C;
 }
 .fab {
