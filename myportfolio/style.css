@@ -49,15 +49,15 @@
     width: 2px;
     height: 1em; 
     background-color: #FFCB05;
-    vertical-align: bottom;
+    vertical-align: center;
     margin-left: 2px;
     animation: blink-caret .7s step-end infinite; /* Blinking animation */
 }
 
 /* add keyframes for blinking animation */
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: black; }
+  from, to { background-color: transparent; }
+  50% { background-color: #FFCB05; }
 }
 
 /* skills section styling */
