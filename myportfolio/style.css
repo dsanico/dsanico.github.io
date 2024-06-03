@@ -12,6 +12,12 @@
 }
 
 /* card styling */
+.card {
+    background-color: #00274C; 
+    color: white;
+
+}
+
 .card-title {
     text-align: center;
     color: inherit;
