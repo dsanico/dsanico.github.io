@@ -25,12 +25,16 @@
 
 /* hero text with typewriter effect */
 .hero-text {
-  width: 100%; 
-  text-align: center; 
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+  height: calc(100vh - [navbar-height]px); 
+  padding-top: [navbar-height]px;
 }
 
 #typewriter {
-  font-size: 20px;
+  font-size: 30px;
   color: black;
 }
 
@@ -41,7 +45,7 @@
 
 .caret {
   width: 2px;
-  height: 20px;
+  height: 32px;
   background-color: black;
   position: absolute;
   animation: blink-caret .7s step-end infinite; /* Add blinking animation */
