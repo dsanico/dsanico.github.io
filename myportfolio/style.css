@@ -103,14 +103,14 @@
 
 /* button styles */
 .project-btn {
-    background-color: #00274C; 
-    color: #ffffff; 
+    background-color: #FFCB05; 
+    color: black; 
     border: none; 
 
 }
 
 .project-btn:hover {
-    background-color: #FFCB05; 
+    background-color:  #00274C; 
 }
 
 .text-center.mt-auto {
