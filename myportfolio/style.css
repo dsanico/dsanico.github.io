@@ -91,16 +91,25 @@
     height: 500px;
     border-radius: 10px;
     cursor: pointer;
-    background-color: white; /* Blue */
+    background-color: white; 
     color: black;
   }
+
+.btn {
+    background-color: #00274C;
+    vertical-align: bottom;
+ }
+
+.btn:hover {
+    background-color: #FFCB05;
+ }
 
 /* gallery section styling */
 .imageGallery.card {
     height: 400px;
     border-radius: 10px;
     cursor: pointer;
-    background-color: white; /* Blue */
+    background-color: white; 
     color: black;
   }
 
