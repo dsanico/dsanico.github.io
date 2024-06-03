@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>David Sanico's Portfolio</title>
+  <title>Electric Nerf Blaster Project</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="David Sanico's portfolio showcasing projects, skills, and experience in Electrical Engineering and Computer Science.">
+  <meta name="description" content="David Sanico's project upgrading an electric Nerf blaster.">
   <!-- linking css file -->
   <link rel="stylesheet" href="../style.css">
   <!-- bootstrap CDN -->
@@ -17,43 +17,74 @@
 <body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark navbarScroll navbarDark">
-          <div class="container">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ms-auto">
-                      <li class="nav-item active">
-                          <a class="nav-link" href="https://dsanico.github.io/myportfolio/#home">Return to Portfolio</a>
-                      </li>
-                </ul>
+        <div class="container">
+            <a class="navbar-brand" href="https://dsanico.github.io/myportfolio">Return to Homepage</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#projectDescription">Project Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                </ul>         
             </div>
         </div>
     </nav>
 
     <!-- main header -->
-
+    <div class="container mt-4 pt-4">
+      <div class="row mt-4">
+        <div class="col-lg-9">
+          <h1 class="text-left">Electric Nerf Blaster Modification Project</h1>
+        </div>
+        <div class="col-lg-3">
+          <h4 class="text-right">Nov. 2019 - Jan. 2022</h3>
+        </div>
+      </div>
+    </div>
+    
   
     <!-- project description -->
     <section id="projectDescription">
         <div class="container mt-4 pt-4">
             <div class="row mt-4">
-
                 <div class="col-lg-8">
                     <h3 class="text-left">Project Description</h3>
-                    <p> I'm currently a rising sophomore at the University of Michigan College of Engineering, pursuing a bachelor's degree in Electrical Engineering with a minor in Computer Science Engineering. I seek to be at the forefront of cutting-edge technological innovation, and I am inspired by the ability to create a positive impact on the world and gain knowledge and experience while doing so.
-                        
-                    </p>  
                 </div>
-
                 <div class="col-lg-4">
-                    <h3 class="text-left">List of Upgrades</h3>
+                    <h3 class="text-left">Full Upgrade List</h3>
+                </div>
+            </div>
+          
+            <div class="row mt-4">
+                <div class="col-lg-8">
+                    <p> This high school project was my final contribution to the Nerf modification hobby, which I joined at a very young age. It is a culmination of every upgrade from a stock blaster I could dream of, from performance upgrades with hobby-grade parts to fully-automatic firing to a black-ice-inspired paint job.</p>
+                    <p>The modification started with a stock Nerf Stryfe, which is an electric semi-automatic pistol that fires darts by manually feeding them through two flywheels like a tennis ball launcher. I opened up the stock blaster and scrapped all of the internals, keeping only the plasic shell to house the new parts. Inside, I installed new motors, flywheels, flywheel housing, and a gearbox kit that automatically pushes darts into the flywheels with a third motor. I upgraded the power from four AA's to an 8.4 V 750 mA lithium polymer battery, which also required lower-gauge wires and switches. I also installed a secondary circuit with a UV LED to charge tracer darts inside the magazine well and a voltmeter to track the battery level. All circuitry was soldered and routed through the blaster's small internal channels.
+                    </p>  
+                    <p>I also configured a 3D-printed aesthetic kit that converted the pistol into a rifle and spray-painted all parts before final reassembly.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-left">Performance Upgrades</h5>
                     <ul>
-                        <li>[LIST ITEM]</li>
-                        <li>[LIST ITEM]</li>
-                        <li>[LIST ITEM]</li>
-                        <li>[LIST ITEM]</li>
-                        <li>[LIST ITEM]g</li>
+                        <li>Semi-automatic to fully automatic conversion</li>
+                        <li>Compatibility with full-length and half-length darts</li>
+                        <li>Internal digital voltmeter</li>
+                        <li>Embedded tracer ammo UV charging</li>
+                        <li>Significantly higher muzzle velocity</li>
+                    </ul>
+                    <h5 class="text-left">Aesthetic Upgrades</h5>
+                    <ul>
+                        <li>Third-party Scorpion-Evo replica kit</li>
+                        <li>Viewing windows into flywheel system</li>
+                        <li>White LEDs in flywheel system</li>
+                        <li>Black ice color theme</li>
                     </ul>
                 </div>
             </div>
@@ -63,35 +94,31 @@
     <!-- image gallery -->
     <section id="gallery">
         <div class="container mt-3 projectContent">
-            <h1 class="text-center">Projects</h1>
+            <h3 class="text-left">Gallery</h3>
             <div class="row">
                 <div class="col-lg-4 mt-4">
                     <div class="card projectsText">
-                        <img class="card-img-top" src="images/project_limelight.png" alt="Limelight" style="width:100%">
+                        <img class="card-img-top" src="galleries/nerf-internals.jpg" alt="Nerf Blaster Internal Parts" style="width:100%">
                         <div class="card-body">
-                            <p class="card-text">Designing, fabricating, and testing a PCB tasked with recording and safeguarding Limelight's flight data. Designed with industry-standard Altium software.</p>
-
-                          
+                            <p class="card-text">A view of the blaster's internals with the LEDs and voltmeter powered on.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 mt-4">
                     <div class="card projectsText">
-                        <img class="card-img-top" src="images/project_MLstocks.png" alt="Stock Market Analysis Streamlit" style="width:100%">
+                        <img class="card-img-top" src="galleries/nerf-rightside.jpg" alt="Fully Assembled Blaster Close-Up" style="width:100%">
                         <div class="card-body">
-                            <p class="card-text">Interact with the project via its <a class="link" href="https://mdst-stocks.streamlit.app/">Streamlit app</a>.</p>
-
+                            <p class="card-text">The fully-assembled blaster with the half-length magazine adapter. Its motors are visible from the right-side window.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 mt-4">
                     <div class="card projectsText">
-                        <img class="card-img-top" src="images/project_nerf.png" alt="Nerf Blaster Modification" style="width:100%">
+                        <img class="card-img-top" src="galleries/nerf-leftside.jpg" alt="Fully Assembled Blaster with Attachments" style="width:100%">
                         <div class="card-body">
-                            <p class="card-text">Blog post coming soon.</p>
-
+                            <p class="card-text">The blaster with extra accessories. Its flywheels and voltmeter are visible on the left side.</p>
                         </div>
                     </div>
                 </div>
@@ -102,41 +129,21 @@
     <!-- skills section -->
     <section id="skills">
         <div class="container">
-            <h1 class="text-center">Skills</h1>
+            <h3 class="text-left">Skills</h3>
             <div class="row">
                 <div class="col-lg-4 mt-4">
                     <div class="card skillsText">
                         <div class="card-body">
-                            <i class="fas skillsIcon fa-microchip"></i>
-                            <h4 class="card-title mt-3">PCB Design</h4>
+                            <i class="fas skillsIcon fa-car-battery"></i>
+                            <h4 class="card-title mt-3">Electronics</h4>
                         </div>
                     </div>  
                 </div>
                 <div class="col-lg-4 mt-4">
                     <div class="card skillsText">
                         <div class="card-body">
-                            <i class='fas skillsIcon fa-database'></i>
-                            <h4 class="card-title mt-3">Data Analysis</h4>
-                        </div>
-                    </div>  
-                </div>
-
-                <div class="col-lg-4 mt-4">
-                    <div class="card skillsText">
-                        <div class="card-body">
-                            <i class='fas skillsIcon fa-lightbulb'></i>
-                            <h4 class="card-title mt-3">Machine Learning</h4>
-                        </div>
-                    </div>  
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 mt-4">
-                    <div class="card skillsText">
-                        <div class="card-body">
-                            <i class='fas skillsIcon fa-plug'></i>
-                            <h4 class="card-title mt-3">Hardware</h4>
+                            <i class='fas skillsIcon fa-eye-dropper'></i>
+                            <h4 class="card-title mt-3">Soldering</h4>
                         </div>
                     </div>  
                 </div>
@@ -144,17 +151,8 @@
                 <div class="col-lg-4 mt-4">
                     <div class="card skillsText">
                         <div class="card-body">
-                            <i class='fas skillsIcon fa-shield-alt'></i>
-                            <h4 class="card-title mt-3">DevOps</h4>
-                        </div>
-                    </div>  
-                </div>
-
-                <div class="col-lg-4 mt-4">
-                    <div class="card skillsText">
-                        <div class="card-body">
-                            <i class='fas skillsIcon fa-user-check'></i>
-                            <h4 class="card-title mt-3">Leadership</h4>
+                            <i class='fas skillsIcon fa-gears'></i>
+                            <h4 class="card-title mt-3">Design Process</h4>
                         </div>
                     </div>  
                 </div>
@@ -167,7 +165,7 @@
         <div class="container-fluid">
             <!-- social media icons -->
             <div class="social-icons mt-4">
-                <a href="https://dsanico.github.io/myportfolio/" target="_blank"><i class="fab fa-home"></i></a>
+                <a href="https://dsanico.github.io/myportfolio/" target="_blank"><i class="fab fa-house"></i></a>
                 <a href="https://linkedin.com/in/david-sanico" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/dsanico" target="_blank"><i class="fab fa-github"></i></a>
             </div>
