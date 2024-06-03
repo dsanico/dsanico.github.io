@@ -16,7 +16,7 @@
     height:100vh;
     background: url('images/hero_standing.jpg');
     background-size: cover;
-    background-position: center bottom;
+    background-position: center top;
     position: relative;
     display: flex; 
     align-items: center; 
@@ -29,13 +29,14 @@
   flex-direction: column; 
   justify-content: center;
   align-items: center; 
+  color: #FFCB05;
   height: calc(100vh - [navbar-height]px); 
   padding-top: [navbar-height]px;
 }
 
 #typewriter {
   font-size: 30px;
-  color: black;
+  color: #FFCB05;
 }
 
 .typewriter-text {
@@ -47,7 +48,7 @@
     display: inline-block; 
     width: 2px;
     height: 1em; 
-    background-color: black;
+    background-color: #FFCB05;
     vertical-align: bottom;
     margin-left: 2px;
     animation: blink-caret .7s step-end infinite; /* Blinking animation */
