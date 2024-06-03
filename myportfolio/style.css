@@ -24,8 +24,8 @@
 .hero_title {
     font-size: 4.5rem;
 }
-.hero_desc {
-    font-size: 2rem;
+/*.hero_desc {
+    font-size: 2rem; */
 }
 .hero-text {
     text-align: center;
@@ -34,6 +34,22 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
+}
+
+#typewriter {
+  font-size: 20px;
+  color: black;
+  display: block;
+}
+
+.caret {
+  width: 2px;
+  height: 20px;
+  margin-bottom: -4px;
+  
+  overflow: hidden;
+  background-color: black;
+  display: inline-block;
 }
 
 /* skills section styling */
