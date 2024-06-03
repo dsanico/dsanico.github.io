@@ -119,12 +119,14 @@
 }
 
 /* spacing on all sections */
- #about, #skills, #projects, #additional #projectDescription #gallery {
+ #about, #skills, #projects, #projectDescription #gallery {
     margin-top: 2rem;
     padding-top: 2rem;
 } 
 
 #additional {
+    margin-top: 2rem;
+    padding-top: 2rem;
     padding-bottom: 4rem;
 }
 
