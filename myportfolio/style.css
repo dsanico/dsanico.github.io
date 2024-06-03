@@ -104,7 +104,7 @@
 /* button styles */
 .project-btn {
     background-color: #FFCB05; 
-    color: black; 
+    color: white; 
     border: none; 
 
 }
@@ -132,7 +132,7 @@
     padding-right: 1px; 
 }
 
-/* headshot image css */
+/* headshot image */
 .imageHeadshot {
     max-width: 100%;
     height: auto;
