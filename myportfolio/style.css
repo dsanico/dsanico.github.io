@@ -118,7 +118,7 @@
 .wrapper { 
     max-width: 200; 
     width: 100%; 
-    position: center; 
+    position: relative; 
 } 
   
 .wrapper i { 
@@ -185,7 +185,7 @@
     background-color: #00274C;
     border-radius: 25px; 
     display: flex; 
-    width: 98%; 
+    width: 100%; 
     align-items: center; 
     justify-content: center; 
 } 
