@@ -30,7 +30,7 @@
 }
 
 .project-btn:hover {
-    background-color:  #00274C; 
+    background-color: #00274C; 
     color: white;
 }
 
@@ -118,14 +118,12 @@
 .wrapper { 
     max-width: 200; 
     width: 100%; 
-    background-color: #00274C;
     position: center; 
 } 
   
 .wrapper i { 
     height: 110px; 
     width: 100%; 
-    background-color: #00274C;
     text-align: center; 
     line-height: 50px; 
     border-radius: 25px; 
@@ -184,7 +182,7 @@
     scroll-snap-align: start; 
     height: 150px; 
     list-style: none; 
-    background-color: #00200C;
+    background-color: #00274C;
     border-radius: 25px; 
     display: flex; 
     width: 98%; 
