@@ -116,7 +116,7 @@
 
 /* carousel */
 .wrapper { 
-    max-width: 200; 
+    max-width: 100%; 
     width: 100%; 
     position: relative; 
 } 
@@ -146,7 +146,7 @@
 .wrapper .carousel { 
     display: grid; 
     grid-auto-flow: column; 
-    grid-auto-columns: calc((100% / 3) - 12px); 
+    grid-auto-columns: calc( (100% - (2 * 16px)) / 3 );
     gap: 16px; 
     overflow-x: auto; 
     scroll-snap-type: x mandatory; 
