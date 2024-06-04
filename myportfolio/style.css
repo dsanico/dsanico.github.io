@@ -185,7 +185,7 @@
     background-color: #00274C;
     border-radius: 25px; 
     display: flex; 
-    width: 110%; 
+    width: 100%; 
     align-items: center; 
     justify-content: center; 
 } 
