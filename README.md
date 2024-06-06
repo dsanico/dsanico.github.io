@@ -1,2 +1,3 @@
 # You are viewing the README file in the Github repository "dsanico.github.io".
-Please visit my digital portfolio at https://dsanico.github.io/myportfolio, or contact me via a contact form at https://dsanico.github.io/myportfolio/contactme.
+If you would like to visit my digital portfolio, please click [here](https://dsanico.github.io/myportfolio).
+To contact me, please fill out a [contact form](https://dsanico.github.io/myportfolio/contactme).
