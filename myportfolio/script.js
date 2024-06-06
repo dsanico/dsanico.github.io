@@ -63,6 +63,47 @@ typeWriter();
 
 // carousel
 document.addEventListener("DOMContentLoaded", function() { 
+    const carousel = document.querySelector(".carousel");
+    const cards = carousel.querySelectorAll(".card");
+  
+    // Clone all the cards and append them to the end of the carousel
+    cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        carousel.appendChild(clone);
+    });
+
+    function scrollToNextCard() {
+        // Width of a card, include the gap size if needed
+        const cardWidth = carousel.querySelector(".card").offsetWidth; // + gap if needed
+
+        const maxScrollLeft = carousel.scrollWidth / 2 - carousel.offsetWidth;
+
+        // Scroll to the next card
+        let newScrollPosition = carousel.scrollLeft + cardWidth;
+
+        // If at the end, reset to the beginning
+        if(newScrollPosition >= maxScrollLeft) {
+            newScrollPosition = 0; // Reset the position to 0
+        }
+
+        carousel.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+    }
+  
+    // Scroll to next card every 5 seconds
+    const intervalId = setInterval(scrollToNextCard, 5000);
+
+    // Optional: Stop the interval on hover and resume after
+    carousel.addEventListener('mouseover', function() {
+        clearInterval(intervalId);
+    });
+
+    carousel.addEventListener('mouseout', function() {
+        setInterval(scrollToNextCard, 5000);
+    });
+  
+});
+/*
+document.addEventListener("DOMContentLoaded", function() { 
     const carousel = document.querySelector(".carousel"); 
   
     let isDragging = false,
@@ -93,3 +134,4 @@ document.addEventListener("DOMContentLoaded", function() {
     carousel.addEventListener("mousemove", dragging);
     document.addEventListener("mouseup", dragStop);
 });
+*/
