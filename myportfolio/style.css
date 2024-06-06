@@ -117,7 +117,7 @@ html {
   50% { background-color: #FFCB05; }
 }
 
-/* skills section card styling */
+/* skills carousel card styling */
 .skillsText.card {
     height: 110px;
     border-radius: 25px;
@@ -231,6 +231,35 @@ html {
     } 
 }
 
+/* skills list styling */
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+  margin: 0 auto;
+}
+
+.skillsListIcon {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
+  padding: 4px;
+ 
+ .iconify {
+  width: 5em; 
+  height: 5em;
+  fill: currentColor; 
+}
+  
+.skillsListIcon span {
+  margin-top: 8px; 
+}
+  
 /* projects section styling */
 .projectsText.card {
     height: 550px;
