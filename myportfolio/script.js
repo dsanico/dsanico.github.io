@@ -29,7 +29,7 @@ function typeWriter() {
       document.getElementById("text").innerHTML = document
         .getElementById("text")
         .innerHTML.slice(0, -1);
-      setTimeout(typeWriter, textJitter);
+      setTimeout(typeWriter, 45);
     } else {
       // deleting done. Set next description, and repeat with typing by
       // setting reverse to false
