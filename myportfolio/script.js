@@ -13,7 +13,7 @@ window.onscroll = function() {
 
 // typewriter effect
 let textBase = "I am ";
-let descriptions = ["an engineering student at the University of Michigan.", "a creator.", "passionate about innovating solutions.", "a designer and learner.", "a breakfast lover."];
+let descriptions = ["a U-M engineering student", "a designer and creator.", "passionate about innovative problem-solving.", "an eager learner.", "a breakfast lover."];
 let descIdx = 0;
 let i = 0;
 let reverse = false;
@@ -29,7 +29,7 @@ function typeWriter() {
       document.getElementById("text").innerHTML = document
         .getElementById("text")
         .innerHTML.slice(0, -1);
-      setTimeout(typeWriter, 45);
+      setTimeout(typeWriter, 20);
     } else {
       // deleting done. Set next description, and repeat with typing by
       // setting reverse to false
