@@ -8,7 +8,7 @@
     color: #FFCB05; /* Maize */
 }
 .link:hover {
-    color: #00274C; /* Blue */
+    color: #006666; /* Dark Teal */
 }
 
 /* card styling */
@@ -30,7 +30,7 @@
 }
 
 .project-btn:hover {
-    background-color: #00274C; 
+    background-color: #006666; 
     color: white;
 }
 
@@ -104,7 +104,7 @@
     height: 110px;
     border-radius: 25px;
     cursor: pointer;
-    background-color: #00274C; /* Blue */
+    background-color: #006666; 
     color: white;
   }
 .skillsIcon {
@@ -190,7 +190,8 @@
     height: 150px; 
     width: calc(33.333% - 24px);
     list-style: none; 
-    background-color: #00274C;
+    user-select: none;
+    background-color: #006666;
     border-radius: 25px; 
     display: flex; 
     width: 100%; 
@@ -295,7 +296,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #00274C;
+    background-color: #006666;
 }
 
 .form-container {
