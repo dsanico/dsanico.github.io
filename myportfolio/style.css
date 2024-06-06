@@ -284,13 +284,44 @@ html {
     color: black;
   }
 
-/* additional info section styling */
+/* Headshot image styling */
+.imageHeadshot {
+    padding-top: 40px; /* Top padding */
+    max-width: 250px; /* Maximum width of the headshot */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Block-level element to center properly */
+    margin: 0 auto; /* Centering the headshot inside its container */
+}
+
+/* Footer styling */
+#footer {
+    background-color: #FFCB05; /* Footer background color */
+    text-align: center; /* Centers the text content */
+    padding: 20px 0; /* Add vertical padding */
+}
+
+/* Social media icons styling */
+.social-icons {
+    font-size: 36px; /* Icon size */
+    cursor: pointer; /* Cursor indication for clickable items */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center icons horizontally */
+    gap: 20px; /* Space between icons */
+    margin-top: 20px; /* Top margin */
+}
+.fa-linkedin:hover, .fa-github:hover {
+    color: #00274C; /* Hover color change */
+}
+.fab {
+    color: #000000; /* Default icon color */
+}
+/* additional info section styling 
 .custom-padding {
     padding-left: 2px;
     padding-right: 1px; 
 }
 
-/* headshot image */
+/* headshot image 
 .imageHeadshot {
     padding-top: 40px;
     max-width: 100%;
@@ -299,7 +330,7 @@ html {
     width: 250px;
 }
 
-/* social media icons styling */
+/* social media icons styling 
 .social-icons {
     font-size: 36px;
     cursor: pointer;
@@ -311,7 +342,7 @@ html {
     color: #000000;
 }
 
-/* footer styling */
+/* footer styling 
 #footer {
     background-color: #FFCB05;
     text-align: center;
