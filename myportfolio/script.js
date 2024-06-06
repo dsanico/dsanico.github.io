@@ -64,35 +64,28 @@ typeWriter();
 // carousel
 document.addEventListener("DOMContentLoaded", function() { 
     const carousel = document.querySelector(".carousel");
-    const cards = carousel.querySelectorAll(".card");
   
-    // Clone all the cards and append them to the end of the carousel
-    cards.forEach(card => {
-        const clone = card.cloneNode(true);
-        carousel.appendChild(clone);
-    });
-
     function scrollToNextCard() {
-        // Width of a card, include the gap size if needed
-        const cardWidth = carousel.querySelector(".card").offsetWidth; // + gap if needed
-
-        const maxScrollLeft = carousel.scrollWidth / 2 - carousel.offsetWidth;
+        // Width of one card could be hard-coded or dynamically calculated
+        // Optionally include the width of the gap if it's a fixed size
+        const cardWidth = carousel.querySelector(".card").offsetWidth // Include gap size if needed
+        
+        const maxScrollLeft = carousel.scrollWidth - carousel.offsetWidth;
 
         // Scroll to the next card
-        let newScrollPosition = carousel.scrollLeft + cardWidth;
-
-        // If at the end, reset to the beginning
-        if(newScrollPosition >= maxScrollLeft) {
-            newScrollPosition = 0; // Reset the position to 0
-        }
-
+        const newScrollPosition = Math.min(carousel.scrollLeft + cardWidth, maxScrollLeft);
         carousel.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+        
+        // If at the end, start from the beginning
+        if (newScrollPosition >= maxScrollLeft) {
+            carousel.scrollTo({ left: 0, behavior: 'smooth' });
+        }
     }
   
     // Scroll to next card every 5 seconds
     const intervalId = setInterval(scrollToNextCard, 5000);
 
-    // Optional: Stop the interval on hover and resume after
+    // Optional: Clear the interval if certain interactions are detected
     carousel.addEventListener('mouseover', function() {
         clearInterval(intervalId);
     });
@@ -100,7 +93,9 @@ document.addEventListener("DOMContentLoaded", function() {
     carousel.addEventListener('mouseout', function() {
         setInterval(scrollToNextCard, 5000);
     });
-  
+
+    // Attach more event listeners if more controls are needed
+    // ...
 });
 /*
 document.addEventListener("DOMContentLoaded", function() { 
