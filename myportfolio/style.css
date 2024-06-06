@@ -3,6 +3,17 @@
     background-color: black;
 }
 
+/* snappy scrolling for sections */
+html {
+  scroll-padding-top: 100px; 
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 100px; 
+  scroll-snap-align: start; 
+}
+
 /* link styling */
 .link { 
     color: #FFCB05; /* Maize */
@@ -108,7 +119,7 @@
     color: white;
   }
 .skillsIcon {
-    font-size: 36px;
+    font-size: 45px;
     text-align: center;
     width: 100%;
     color: #FFCB05;
