@@ -5,12 +5,20 @@
 
 /* snappy scrolling for sections */
 html {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
 }
 
-section {
-  scroll-snap-align: start; 
+#about {
+    scroll-snap-align: start;
+}
+#skills {
+    scroll-margin-top: 50px;
+    scroll-snap-align: start;
+}
+#projects {
+    scroll-margin-top: 35px;
+    scroll-snap-align: start;
 }
 
 /* link styling */
