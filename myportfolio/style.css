@@ -5,13 +5,11 @@
 
 /* snappy scrolling for sections */
 html {
-  scroll-padding-top: 70px; 
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
 section {
-  scroll-margin-top: 50px; 
   scroll-snap-align: start; 
 }
 
