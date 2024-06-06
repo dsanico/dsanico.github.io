@@ -146,8 +146,8 @@
 .wrapper .carousel { 
     display: grid; 
     grid-auto-flow: column; 
-    grid-auto-columns: calc(33.333% - 20px);
-    gap: 20px; 
+    grid-auto-columns: calc(33.333% - 21px);
+    gap: 21px; 
     overflow-x: scroll; 
     scroll-snap-type: x mandatory; 
     scroll-behavior: smooth; 
@@ -188,7 +188,7 @@
 .carousel .card { 
     scroll-snap-align: start; 
     height: 150px; 
-    width: calc(33.333% - 20px);
+    width: calc(33.333% - 21px);
     list-style: none; 
     background-color: #00274C;
     border-radius: 25px; 
