@@ -62,71 +62,70 @@ function typeWriter() {
 typeWriter();
 
 // carousel
-document.addEventListener("DOMContentLoaded", function() { 
+document.addEventListener("DOMContentLoaded", function() {
     const carousel = document.querySelector(".carousel");
-  
-    function scrollToNextCard() {
-        // Width of one card could be hard-coded or dynamically calculated
-        // Optionally include the width of the gap if it's a fixed size
-        const cardWidth = carousel.querySelector(".card").offsetWidth // Include gap size if needed
-        
-        const maxScrollLeft = carousel.scrollWidth - carousel.offsetWidth;
-
-        // Scroll to the next card
-        const newScrollPosition = Math.min(carousel.scrollLeft + cardWidth, maxScrollLeft);
-        carousel.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
-        
-        // If at the end, start from the beginning
-        if (newScrollPosition >= maxScrollLeft) {
-            carousel.scrollTo({ left: 0, behavior: 'smooth' });
-        }
-    }
-  
-    // Scroll to next card every 5 seconds
-    const intervalId = setInterval(scrollToNextCard, 5000);
-
-    // Optional: Clear the interval if certain interactions are detected
-    carousel.addEventListener('mouseover', function() {
-        clearInterval(intervalId);
-    });
-
-    carousel.addEventListener('mouseout', function() {
-        setInterval(scrollToNextCard, 5000);
-    });
-
-    // Attach more event listeners if more controls are needed
-    // ...
-});
-/*
-document.addEventListener("DOMContentLoaded", function() { 
-    const carousel = document.querySelector(".carousel"); 
-  
     let isDragging = false,
         startX,
         startScrollLeft;
   
-    const dragStart = (e) => {  
+    let scrollInterval; // Auto-scroll interval
+  
+    function startAutoScroll() {
+        const autoScroll = () => {
+            // Width of a card (assuming all cards are the same width)
+            const cardWidth = carousel.querySelector(".card").offsetWidth; 
+
+            // Scroll to the next card
+            carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+
+            // Calculate the maximum scroll position
+            const maxScrollLeft = carousel.scrollWidth - carousel.offsetWidth;
+
+            // If at the end, scroll back to the first card smoothly
+            if (carousel.scrollLeft >= maxScrollLeft - cardWidth) {
+                carousel.scrollTo({ left: 0, behavior: 'smooth' });
+            }
+        };
+
+        // Start the auto scroll, scrolling to the next card every 5 seconds
+        scrollInterval = setInterval(autoScroll, 5000);
+    }
+  
+    function stopAutoScroll() {
+        clearInterval(scrollInterval);
+    }
+
+    function dragStart(e) {
         isDragging = true;
-        carousel.classList.add("dragging");
-        startX = e.pageX;
+        startX = e.pageX - carousel.offsetLeft;
         startScrollLeft = carousel.scrollLeft;
-    };
+
+        stopAutoScroll();  // Optional: stop auto scroll on manual dragging
+    }
   
-    const dragging = (e) => { 
+    function dragging(e) {
         if (!isDragging) return;
-      
-        const newScrollLeft = startScrollLeft - (e.pageX - startX);
-        carousel.scrollLeft = newScrollLeft;
-    };
+        e.preventDefault();
+        
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 3; // Multiply for faster drag response
+        carousel.scrollLeft = startScrollLeft - walk;
+    }
   
-    const dragStop = () => { 
+    function dragStop() {
         isDragging = false;
-        carousel.classList.remove("dragging");
-    };
+        startAutoScroll(); 
+    }
   
-    // Add mouse event listeners for dragging behavior
     carousel.addEventListener("mousedown", dragStart);
-    carousel.addEventListener("mousemove", dragging);
-    document.addEventListener("mouseup", dragStop);
+    window.addEventListener("mousemove", dragging); // Using window to better track mouse movements
+    window.addEventListener("mouseup", dragStop);
+
+    // Optional: for touch screens
+    carousel.addEventListener("touchstart", dragStart);
+    carousel.addEventListener("touchmove", dragging);
+    carousel.addEventListener("touchend", dragStop);
+
+    // Start auto-scrolling on load
+    startAutoScroll();
 });
-*/
