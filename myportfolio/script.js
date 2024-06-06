@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
         startScrollLeft = carousel.scrollLeft;
 
         stopAutoScroll();  // Optional: stop auto scroll on manual dragging
+        clearTimeout(autoScrollTimeout);
     }
   
     function dragging(e) {
@@ -112,9 +113,19 @@ document.addEventListener("DOMContentLoaded", function() {
         carousel.scrollLeft = startScrollLeft - walk;
     }
   
+    let autoScrollTimeout; // Hold the timeout for auto-scrolling after dragging
+    
     function dragStop() {
         isDragging = false;
-        startAutoScroll(); 
+        carousel.classList.remove("dragging");
+      
+        // Clear any existing timeouts to prevent duplication
+        clearTimeout(autoScrollTimeout);
+        
+        // Set a new timeout to restart auto-scrolling
+        autoScrollTimeout = setTimeout(() => {
+            startAutoScroll(); // Optionally: restart auto-scrolling after dragging ends
+        }, 5000); // 5-second delay before auto-scrolling resumes
     }
   
     carousel.addEventListener("mousedown", dragStart);
