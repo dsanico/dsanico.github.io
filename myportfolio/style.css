@@ -116,9 +116,9 @@
 
 /* carousel */
 .wrapper { 
-    max-width: 100%; 
-    width: 100%; 
-    position: relative; 
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
 } 
   
 .wrapper i { 
@@ -146,14 +146,21 @@
 .wrapper .carousel { 
     display: grid; 
     grid-auto-flow: column; 
-    grid-auto-columns: calc( (100% - (2 * 16px)) / 3 );
-    gap: 16px; 
-    overflow-x: auto; 
+    grid-auto-columns: calc(33.333% - 20px);
+    gap: 20px; 
+    overflow-x: scroll; 
     scroll-snap-type: x mandatory; 
     scroll-behavior: smooth; 
-    scrollbar-width: 0; 
+    padding: 16px 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
 } 
-  
+
+.wrapper .carousel::-webkit-scrollbar {
+  display: none;
+}  
+
 .carousel::-webkit-scrollbar { 
     display: none; 
 } 
@@ -181,6 +188,7 @@
 .carousel .card { 
     scroll-snap-align: start; 
     height: 150px; 
+    width: calc(33.333% - 20px);
     list-style: none; 
     background-color: #00274C;
     border-radius: 25px; 
