@@ -146,7 +146,7 @@
 .wrapper .carousel { 
     display: grid; 
     grid-auto-flow: column; 
-    grid-auto-columns: calc(33.333% - 24px);
+    grid-auto-columns: calc(33.333% - 20px);
     gap: 24px; 
     overflow-x: scroll; 
     scroll-snap-type: x mandatory; 
