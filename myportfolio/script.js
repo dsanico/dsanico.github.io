@@ -62,6 +62,7 @@ function typeWriter() {
 typeWriter();
 
 // carousel
+/*
 document.addEventListener("DOMContentLoaded", function() { 
     const carousel = document.querySelector(".carousel"); 
     const arrowBtns = document.querySelectorAll(".wrapper i"); 
@@ -142,4 +143,4 @@ document.addEventListener("DOMContentLoaded", function() {
         }); 
     }); 
 }); 
-
+*/
