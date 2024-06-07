@@ -286,7 +286,7 @@ html {
 .imageHeadshot {
     padding-top: 40px;
     max-width: 100%;
-    width: 25px;
+    width: 255px;
     height: auto;
     display: block;
 }
