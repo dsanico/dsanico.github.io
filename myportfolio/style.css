@@ -246,11 +246,12 @@ html {
   width: 5em; 
   height: 5em;
   fill: currentColor; 
+  transition: transform .2s ease;
 }
   
-.skillsListIcon span {
-  margin-top: 8px; 
-}
+.iconify:hover {
+  transform: scale(1.05);
+}  
   
 /* projects section styling */
 .projectsText.card {
