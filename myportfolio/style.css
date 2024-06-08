@@ -254,6 +254,37 @@ html {
 }  
   
 /* projects section styling */
+.project-image-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.project-image-container .default-img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+
+.project-image-container .hover-img {
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;  
+  opacity: 0;
+}
+
+.project-image-container:hover .default-img {
+  opacity: 0;  
+}
+
+.project-image-container:hover .hover-img {
+  opacity: 1;  
+}
+
 .projectsText.card {
     height: 550px;
     border-radius: 10px;
