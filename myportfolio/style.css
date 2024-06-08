@@ -257,13 +257,11 @@ html {
 .project-image-container {
   width: 100%;
   height: auto;
-  position: relative;
 }
 
 .project-image-container .default-img {
   width: 100%;
   height: auto;
-  position: relative;
   top: 0;
   left: 0;
   opacity: 1;
