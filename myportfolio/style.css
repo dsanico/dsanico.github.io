@@ -254,33 +254,16 @@ html {
 }  
   
 /* projects section styling */
-.project-image-container {
-  width: 100%;
-  height: auto;
+.project-1-img {
+    width: 100%;
+    height: auto;
+    background-image: url('images/project_limelight.png'); /* Initial background image */
+    background-size: cover; /* Cover the entire area of the element */
+    transition: background-image 0.3s ease-in-out; /* Smooth transition */
 }
 
-.project-image-container .default-img {
-  width: 100%;
-  height: auto;
-  top: 0;
-  left: 0;
-  opacity: 1;
-}
-
-.project-image-container .hover-img {
-  width: 100%;
-  height: auto;
-  top: 0;
-  left: 0;  
-  opacity: 0;
-}
-
-.project-image-container:hover .default-img {
-  opacity: 0;  
-}
-
-.project-image-container:hover .hover-img {
-  opacity: 1;  
+.project-1-img:hover {
+    background-image: url('images/project_MLstocks.png'); /* Change on hover */
 }
 
 .projectsText.card {
