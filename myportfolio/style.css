@@ -257,13 +257,36 @@ html {
 .project-1-img {
     width: 100%;
     height: 100%;
-    background-image: url('images/project_limelight.png'); 
+    background-image: url('images/project_Keylime_default.png'); 
     background-size: cover; 
     transition: background-image 0.3s ease-in-out;
 }
 
 .project-1-img:hover {
-    background-image: url('images/project_MLstocks.png'); 
+    background-image: url('images/project_Keylime_hover.png'); 
+}
+
+.project-2-img {
+    width: 100%;
+    height: 100%;
+    background-image: url('images/project_MLstocks_default.png'); 
+    background-size: cover; 
+    transition: background-image 0.3s ease-in-out;
+}
+
+.project-2-img:hover {
+    background-image: url('images/project_MLstocks_hover.png'); 
+}
+.project-3-img {
+    width: 100%;
+    height: 100%;
+    background-image: url('images/project_nerf.png'); 
+    background-size: cover; 
+    transition: background-image 0.3s ease-in-out;
+}
+
+.project-3-img:hover {
+    background-image: url('posts/galleries/nerf-internals.jpg'); 
 }
 
 .projectsText.card {
