@@ -256,14 +256,14 @@ html {
 /* projects section styling */
 .project-1-img {
     width: 100%;
-    height: auto;
-    background-image: url('images/project_limelight.png'); /* Initial background image */
-    background-size: cover; /* Cover the entire area of the element */
-    transition: background-image 0.3s ease-in-out; /* Smooth transition */
+    height: 100%;
+    background-image: url('images/project_limelight.png'); 
+    background-size: cover; 
+    transition: background-image 0.3s ease-in-out;
 }
 
 .project-1-img:hover {
-    background-image: url('images/project_MLstocks.png'); /* Change on hover */
+    background-image: url('images/project_MLstocks.png'); 
 }
 
 .projectsText.card {
