@@ -1,9 +1,57 @@
 /* ========================================= GLOBAL STYLING ========================================= */
-/* snappy scrolling for sections */
+/* catpuccin dark color palette */
+/*  Light Pink----------     #f3bce6	
+    Lavender------------     #c29df1	
+    Very Dark Blue------     #24273a	
+    Very Dark Gray------     #1a1823	
+    Soft Black----------     #131020 
+
+/* dracula color palette */
+/*  Red-----------------     #ff5555
+    Cyan----------------     #8be9fd
+    Neon Green----------     #50fa7b 
+    Neon Orange---------     #ffb86c
+    Dark Gray-----------     #282a36
+    Gray----------------     #44475a
+    Blue Gray-----------     #6272a4
+
+/* U-M color palette */
+/*  U-M Maize-----------     #ffcb05
+    U-M Blue------------     #00274c
+
+/* text styling */
 body {
   margin: 0;
+  background-color: #24273a;
+  color: #ffffff;
+  font-family: Consolas, 'Courier New', Courier, monospace; !important
 }
 
+h1 {
+  color: #f3bce6;
+  font-weight: bold;  
+}
+
+h3 {
+  color: #c29df1;
+}
+
+.highlight-1 {
+  color: #8be9fd;
+  font-weight: bold;  
+}
+
+.highlight-2 {
+  color: #ffb86c;
+  font-style: italic;
+}
+
+.highlight-3 {
+  color: #50fa7b;
+
+}
+
+/* snappy scrolling for sections */
 html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -11,15 +59,17 @@ html {
 
 /* links */
 .link { 
-    color: #FFCB05; /* Maize */
+    color: #c29df1;
 }
 .link:hover {
-    color: #006666; /* Dark Teal */
+    color: #ffcb05; 
 }
 
 /* cards */
 .card-title {
-    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: left;
     color: inherit;
 }
 
@@ -29,20 +79,17 @@ html {
     height: 100%; 
 }
 
-.card:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
 /* buttons */
 .project-btn {
-    background-color: #FFCB05; 
+    background-color: #c29df1; 
     color: white; 
     border: none; 
 }
 
 .project-btn:hover {
-    background-color: #006666; 
+    background-color: #ffcb05; 
     color: white;
+    transform: scale(1.05)
 }
 
 .text-center.mt-auto {
@@ -75,7 +122,7 @@ section {
 /* ========================================= HERO SECTION ========================================= */
 /* navbar scroll */
 .navbarScroll.navbarDark {
-    background-color: black;
+    background-color: #131020;
 }
 
 /* hero background image */
@@ -96,14 +143,13 @@ section {
   flex-direction: column; 
   justify-content: center;
   align-items: center; 
-  color: #FFCB05;
   height: calc(100vh - [navbar-height]px); 
   padding-top: [navbar-height]px;
 }
 
 #typewriter {
-  font-size: 30px;
-  color: #FFCB05;
+  font-size: 1.75rem;
+  color: #ffffff;
 }
 
 .typewriter-text {
@@ -115,7 +161,7 @@ section {
     display: inline-block; 
     width: 2px;
     height: 1em; 
-    background-color: #FFCB05;
+    background-color: #ffffff;
     vertical-align: middle;
     margin-left: 2px;
     animation: blink-caret .7s step-end infinite; /* Blinking animation */
@@ -123,7 +169,7 @@ section {
 
 @keyframes blink-caret {
   from, to { background-color: transparent; }
-  50% { background-color: #FFCB05; }
+  50% { background-color: #ffffff; }
 }
 
 /* ========================================= SKILLS SECTION ========================================= */
@@ -132,7 +178,6 @@ section {
     height: 110px;
     border-radius: 25px;
     cursor: pointer;
-    background-color: #006666; 
     color: white;
   }
 
@@ -141,7 +186,7 @@ section {
     font-size: 45px;
     text-align: center;
     width: 100%;
-    color: #FFCB05;
+    color: #ffcb05;
 }
 
 /* carousel */
@@ -219,13 +264,17 @@ section {
     width: calc(33.333% - 24px);
     list-style: none; 
     user-select: none;
-    background-color: #006666;
+    background-color: #1a1823;
     border-radius: 25px; 
     display: flex; 
     width: 100%; 
     align-items: center; 
     justify-content: center; 
 } 
+
+.carousel .card:hover {
+    transform: scale(1.0075);
+}
 
 @media screen and (max-width: 900px) { 
     .wrapper .carousel { 
@@ -253,15 +302,26 @@ section {
 .iconify {
   width: 5em; 
   height: 5em;
-  fill: currentColor; 
+  fill: #6272a4; 
   transition: transform .2s ease;
 }
   
 .iconify:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  fill: #8be9fd;
 }  
   
 /* ========================================= PROJECTS SECTION ========================================= */
+/* project cards */
+.projectsText.card {
+    height: 550px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #282a36; 
+    color: white;
+}
+
+/* project card images */
 .project-1-img {
     width: 100%;
     height: 100%;
@@ -297,15 +357,7 @@ section {
     background-image: url('posts/galleries/nerf-internals.jpg'); 
 }
 
-.projectsText.card {
-    height: 550px;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: white; 
-    color: black;
-}
-
-/* ========================================= HERO SECTION ========================================= */
+/* ========================================= ADDITIONAL INFO SECTION ========================================= */
 .custom-padding {
     padding-left: 2px;
     padding-right: 1px; 
@@ -320,21 +372,22 @@ section {
     display: block;
 }
 
+/* ========================================= FOOTER SECTION ========================================= */
 /* social media icons styling */
 .social-icons {
     font-size: 36px;
     cursor: pointer;
 }
 .fa-linkedin:hover, .fa-github:hover{
-    color: #006666;
+    color:  #ffcb05;
 }
 .fab {
     color: #000000;
 }
 
-/* ========================================= FOOTER SECTION ========================================= */
+/* footer */
 #footer {
-    background-color: #FFCB05;
+    background-color: #282a36;
     text-align: center;
 }
 
