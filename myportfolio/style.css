@@ -1,27 +1,15 @@
-/* display background color black on navbar scroll */
-.navbarScroll.navbarDark {
-    background-color: black;
+/* ========================================= GLOBAL STYLING ========================================= */
+/* snappy scrolling for sections */
+body {
+  margin: 0;
 }
 
-/* snappy scrolling for sections */
 html {
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
-#about {
-    scroll-snap-align: start;
-}
-#skills {
-    scroll-margin-top: 50px;
-    scroll-snap-align: start;
-}
-#projects {
-    scroll-margin-top: 35px;
-    scroll-snap-align: start;
-}
-
-/* link styling */
+/* links */
 .link { 
     color: #FFCB05; /* Maize */
 }
@@ -29,22 +17,27 @@ html {
     color: #006666; /* Dark Teal */
 }
 
-/* card styling */
+/* cards */
 .card-title {
     text-align: center;
     color: inherit;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column; 
+    height: 100%; 
 }
 
 .card:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* button styles */
+/* buttons */
 .project-btn {
     background-color: #FFCB05; 
     color: white; 
     border: none; 
-
 }
 
 .project-btn:hover {
@@ -57,15 +50,32 @@ html {
 }
 
 /* spacing on all sections */
- #about, #skills, #projects, #projectDescription #gallery {
+section {
+  padding-top: calc(30px + 2rem); 
+  padding-bottom: 4rem; 
+  padding: 2rem 0;
+  min-height: 80vh;
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+}
+
+#additional {
+    height: 80vh;
+}
+
+#projectDescription #gallery {
     margin-top: 2rem;
     padding-top: 2rem;
 } 
 
-#additional {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    padding-bottom: 4rem;
+/* ========================================= HERO SECTION ========================================= */
+/* navbar scroll */
+.navbarScroll.navbarDark {
+    background-color: black;
 }
 
 /* hero background image */
@@ -80,7 +90,7 @@ html {
     justify-content: center; 
 }
 
-/* hero text with typewriter effect */
+/* hero typewriter text */
 .hero-text {
   display: flex;
   flex-direction: column; 
@@ -111,13 +121,13 @@ html {
     animation: blink-caret .7s step-end infinite; /* Blinking animation */
 }
 
-/* add keyframes for blinking animation */
 @keyframes blink-caret {
   from, to { background-color: transparent; }
   50% { background-color: #FFCB05; }
 }
 
-/* skills carousel card styling */
+/* ========================================= SKILLS SECTION ========================================= */
+/* skills carousel cards */
 .skillsText.card {
     height: 110px;
     border-radius: 25px;
@@ -125,6 +135,8 @@ html {
     background-color: #006666; 
     color: white;
   }
+
+/* skills carousel icons */
 .skillsIcon {
     font-size: 45px;
     text-align: center;
@@ -153,12 +165,10 @@ html {
   
 .wrapper i:first-child { 
     left: -22px; 
-  
 } 
   
 .wrapper i:last-child { 
     right: -22px; 
-  
 } 
   
 .wrapper .carousel { 
@@ -220,14 +230,12 @@ html {
 @media screen and (max-width: 900px) { 
     .wrapper .carousel { 
         grid-auto-columns: calc((100% / 2) - 9px); 
-  
     } 
 } 
   
 @media screen and (max-width: 600px) { 
     .wrapper .carousel { 
         grid-auto-columns: 100%; 
-  
     } 
 }
 
@@ -253,7 +261,7 @@ html {
   transform: scale(1.05);
 }  
   
-/* projects section styling */
+/* ========================================= PROJECTS SECTION ========================================= */
 .project-1-img {
     width: 100%;
     height: 100%;
@@ -297,22 +305,7 @@ html {
     color: black;
 }
 
-.card-body {
-    display: flex;
-    flex-direction: column; 
-    height: 100%; 
-}
-
-/* gallery section styling */
-.imageGallery.card {
-    height: 400px;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: white; 
-    color: black;
-  }
-
-/* additional info section styling */
+/* ========================================= HERO SECTION ========================================= */
 .custom-padding {
     padding-left: 2px;
     padding-right: 1px; 
@@ -339,13 +332,23 @@ html {
     color: #000000;
 }
 
-/* footer styling */
+/* ========================================= FOOTER SECTION ========================================= */
 #footer {
     background-color: #FFCB05;
     text-align: center;
 }
 
-/* contact form styling */
+/* ========================================= PROJECT PAGE ========================================= */
+/* gallery section styling */
+.imageGallery.card {
+    height: 400px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white; 
+    color: black;
+  }
+
+/* ========================================= CONTACT PAGE ========================================= */
 .form-header {
   padding-top: 200px;
   margin-bottom: 20px; 
