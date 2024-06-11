@@ -135,7 +135,7 @@ section {
 /* hero background image */
 .bgimage {
     height:100vh;
-    background: url('images/hero_standing.jpg');
+    /* background: url(); */ 
     background-size: cover;
     background-position: center top;
     position: relative;
