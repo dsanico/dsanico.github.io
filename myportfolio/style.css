@@ -22,7 +22,7 @@
 /* text styling */
 body {
   margin: 0;
-  background-color: #24273a;
+  background: linear-gradient(to left top, #0c0e14, #2e324a);
   color: #ffffff;
   font-family: Consolas, 'Courier New', Courier, monospace; !important
 }
@@ -110,8 +110,8 @@ section {
   align-items: center; 
 }
 
-#additional {
-    height: 80vh;
+#contact {
+    height: 90vh;
 }
 
 #projectDescription #gallery {
@@ -120,9 +120,16 @@ section {
 } 
 
 /* ========================================= HERO SECTION ========================================= */
-/* navbar scroll */
+/* navbar dark on scroll */
 .navbarScroll.navbarDark {
     background-color: #131020;
+    opacity: 90%;
+}
+
+/* navbar section higlight */
+.navbar-nav a.active {
+  font-weight: bold;
+  color: #yellow; /* Replace with your desired color */
 }
 
 /* hero background image */
@@ -358,11 +365,6 @@ section {
 }
 
 /* ========================================= ADDITIONAL INFO SECTION ========================================= */
-.custom-padding {
-    padding-left: 2px;
-    padding-right: 1px; 
-}
-
 /* headshot image */
 .imageHeadshot {
     padding-top: 40px;
@@ -370,6 +372,56 @@ section {
     width: 255px;
     height: auto;
     display: block;
+}
+
+.additionalContent .row {
+  display: flex;
+  align-items: start;
+}
+
+.additionalContent .col-lg-6 {
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;  
+}
+/* ========================================= CONTACT SECTION ========================================= */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 15px; 
+    background-color: #44475a;
+    color: #fff;
+    border: 1px solid #000; 
+    border-radius: 4px; 
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #c29df1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #ffcb05;
+    transform: scale(1.05)
+}
+
+#fs-frm {
+  margin: auto; 
+  padding: 20px;
+  background: #282a36; 
+  border-radius: 10px; 
+}
+
+#fs-frm input[type="submit"] {
+  display: block; 
+  width: 100%; 
+  margin-top: 15px; 
 }
 
 /* ========================================= FOOTER SECTION ========================================= */
@@ -401,57 +453,3 @@ section {
     color: black;
   }
 
-/* ========================================= CONTACT PAGE ========================================= */
-.form-header {
-  padding-top: 200px;
-  margin-bottom: 20px; 
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%; 
-    padding: 10px;
-    margin-bottom: 15px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-}
-
-input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #FFCB05;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #006666;
-}
-
-.form-container {
-  min-height: 100vh;
-  padding: 30px;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#fs-frm {
-  max-width: 600px;
-  margin: auto; 
-  padding: 20px;
-  background: #fff; 
-  border: 1px solid #ddd; 
-  border-radius: 8px; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-}
-
-#fs-frm input[type="submit"] {
-  display: block; 
-  width: 100%; 
-  margin-top: 15px; 
-}
