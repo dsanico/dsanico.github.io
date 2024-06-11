@@ -115,7 +115,7 @@ section {
   align-items: center; 
 }
 
-#contact {
+#contact #project-page-skills {
     height: 90vh;
 }
 
@@ -452,11 +452,21 @@ input[type="submit"]:hover {
 
 /* ========================================= PROJECT PAGE ========================================= */
 /* gallery section styling */
-.imageGallery.card {
+.gallery-card {
     height: 400px;
     border-radius: 10px;
     cursor: pointer;
-    background-color: white; 
-    color: black;
-  }
+    background-color: #282a36; 
+    color: white;
+ }
+
+.simple-skills-card {
+    height: 150px; 
+    background-color: #1a1823;
+    border-radius: 25px; 
+    display: flex; 
+    width: 100%; 
+    align-items: center; 
+    justify-content: center; 
+}
 
