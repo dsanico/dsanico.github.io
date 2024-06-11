@@ -179,6 +179,16 @@ section {
   50% { background-color: #ffffff; }
 }
 
+/* ========================================= ABOUT SECTION ========================================= */
+/* headshot image */
+.imageHeadshot {
+    max-width: 100%;
+    width: 255px;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
 /* ========================================= SKILLS SECTION ========================================= */
 /* skills carousel cards */
 .skillsText.card {
@@ -364,16 +374,7 @@ section {
     background-image: url('posts/galleries/nerf-internals.jpg'); 
 }
 
-/* ========================================= ADDITIONAL INFO SECTION ========================================= */
-/* headshot image */
-.imageHeadshot {
-    padding-top: 40px;
-    max-width: 100%;
-    width: 255px;
-    height: auto;
-    display: block;
-}
-
+/* ========================================= CONTACT INFO SECTION ========================================= */
 .additionalContent .row {
   display: flex;
   align-items: start;
@@ -384,7 +385,8 @@ section {
   justify-content: start;
   align-items: start;  
 }
-/* ========================================= CONTACT SECTION ========================================= */
+
+/* contact form */
 input[type="text"],
 input[type="email"],
 textarea {
