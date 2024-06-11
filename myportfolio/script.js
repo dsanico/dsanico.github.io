@@ -1,19 +1,42 @@
 // add class navbarDark on navbar scroll
-const header = document.querySelector('.navbar');
-console.log(header)
-window.onscroll = function() {
-    const top = window.scrollY;
-    if(top >=100) {
-        header.classList.add('navbarDark');
-    }
-    else {
-        header.classList.remove('navbarDark');
-    }
-}
+const header = document.querySelector(".navbar");
+console.log(header);
+window.onscroll = function () {
+  const top = window.scrollY;
+  if (top >= 100) {
+    header.classList.add("navbarDark");
+  } else {
+    header.classList.remove("navbarDark");
+  }
+};
+
+// navbar highlight
+document.addEventListener("DOMContentLoaded", (event) => {
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".navbar-nav a");
+
+  function changeLinkState() {
+    let index = sections.length;
+
+    while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
+
+    navLinks.forEach((link) => link.classList.remove("active"));
+    navLinks[index] && navLinks[index].classList.add("active");
+  }
+
+  changeLinkState();
+  window.addEventListener("scroll", changeLinkState);
+});
 
 // typewriter effect
 let textBase = "I am ";
-let descriptions = ["a U-M engineering student.", "a designer and creator.", "passionate about innovative problem-solving.", "an eager learner.", "a breakfast lover."];
+let descriptions = [
+  "a U-M engineering student.",
+  "a designer and creator.",
+  "passionate about innovative problem-solving.",
+  "an eager learner.",
+  "a breakfast lover."
+];
 let descIdx = 0;
 let i = 0;
 let reverse = false;
@@ -33,7 +56,7 @@ function typeWriter() {
     } else {
       // deleting done. Set next description, and repeat with typing by
       // setting reverse to false
-      descIdx = (descIdx+1) % descriptions.length;
+      descIdx = (descIdx + 1) % descriptions.length;
       reverse = false;
       setTimeout(typeWriter, 500);
     }
@@ -49,9 +72,9 @@ function typeWriter() {
     } else {
       // Write text like a typewriter
       if (i < (textBase + descriptions[descIdx]).length) {
-        document.getElementById("text").innerHTML = document.getElementById("text").innerHTML + (
-          textBase + descriptions[descIdx]
-        ).charAt(i);
+        document.getElementById("text").innerHTML =
+          document.getElementById("text").innerHTML +
+          (textBase + descriptions[descIdx]).charAt(i);
         i++;
         setTimeout(typeWriter, textJitter);
       }
@@ -62,81 +85,81 @@ function typeWriter() {
 typeWriter();
 
 // carousel
-document.addEventListener("DOMContentLoaded", function() {
-    const carousel = document.querySelector(".carousel");
-    let isDragging = false,
-        startX,
-        startScrollLeft;
-  
-    let scrollInterval; // Auto-scroll interval
-  
-    function startAutoScroll() {
-        const autoScroll = () => {
-            // Width of a card (assuming all cards are the same width)
-            const cardWidth = carousel.querySelector(".card").offsetWidth; 
+document.addEventListener("DOMContentLoaded", function () {
+  const carousel = document.querySelector(".carousel");
+  let isDragging = false,
+    startX,
+    startScrollLeft;
 
-            // Scroll to the next card
-            carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+  let scrollInterval; // Auto-scroll interval
 
-            // Calculate the maximum scroll position
-            const maxScrollLeft = carousel.scrollWidth - carousel.offsetWidth;
+  function startAutoScroll() {
+    const autoScroll = () => {
+      // Width of a card (assuming all cards are the same width)
+      const cardWidth = carousel.querySelector(".card").offsetWidth;
 
-            // If at the end, scroll back to the first card smoothly
-            if (carousel.scrollLeft >= maxScrollLeft - cardWidth) {
-                carousel.scrollTo({ left: 0, behavior: 'smooth' });
-            }
-        };
+      // Scroll to the next card
+      carousel.scrollBy({ left: cardWidth, behavior: "smooth" });
 
-        // Start the auto scroll, scrolling to the next card every 5 seconds
-        scrollInterval = setInterval(autoScroll, 5000);
-    }
-  
-    function stopAutoScroll() {
-        clearInterval(scrollInterval);
-    }
+      // Calculate the maximum scroll position
+      const maxScrollLeft = carousel.scrollWidth - carousel.offsetWidth;
 
-    function dragStart(e) {
-        isDragging = true;
-        startX = e.pageX - carousel.offsetLeft;
-        startScrollLeft = carousel.scrollLeft;
+      // If at the end, scroll back to the first card smoothly
+      if (carousel.scrollLeft >= maxScrollLeft - cardWidth) {
+        carousel.scrollTo({ left: 0, behavior: "smooth" });
+      }
+    };
 
-        stopAutoScroll();  // Optional: stop auto scroll on manual dragging
-        clearTimeout(autoScrollTimeout);
-    }
-  
-    function dragging(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        
-        const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 3; // Multiply for faster drag response
-        carousel.scrollLeft = startScrollLeft - walk;
-    }
-  
-    let autoScrollTimeout; // Hold the timeout for auto-scrolling after dragging
-    
-    function dragStop() {
-        isDragging = false;
-        carousel.classList.remove("dragging");
-      
-        // Clear any existing timeouts to prevent duplication
-        clearTimeout(autoScrollTimeout);
-        
-        // Set a new timeout to restart auto-scrolling
-        autoScrollTimeout = setTimeout(() => {
-            startAutoScroll(); // Optionally: restart auto-scrolling after dragging ends
-        }, 5000); // 5-second delay before auto-scrolling resumes
-    }
-  
-    carousel.addEventListener("mousedown", dragStart);
-    window.addEventListener("mousemove", dragging); // Using window to better track mouse movements
-    window.addEventListener("mouseup", dragStop);
+    // Start the auto scroll, scrolling to the next card every 5 seconds
+    scrollInterval = setInterval(autoScroll, 5000);
+  }
 
-    // Optional: for touch screens
-    carousel.addEventListener("touchstart", dragStart);
-    carousel.addEventListener("touchmove", dragging);
-    carousel.addEventListener("touchend", dragStop);
+  function stopAutoScroll() {
+    clearInterval(scrollInterval);
+  }
 
-    // Start auto-scrolling on load
-    startAutoScroll();
+  function dragStart(e) {
+    isDragging = true;
+    startX = e.pageX - carousel.offsetLeft;
+    startScrollLeft = carousel.scrollLeft;
+
+    stopAutoScroll(); // Optional: stop auto scroll on manual dragging
+    clearTimeout(autoScrollTimeout);
+  }
+
+  function dragging(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+
+    const x = e.pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 3; // Multiply for faster drag response
+    carousel.scrollLeft = startScrollLeft - walk;
+  }
+
+  let autoScrollTimeout; // Hold the timeout for auto-scrolling after dragging
+
+  function dragStop() {
+    isDragging = false;
+    carousel.classList.remove("dragging");
+
+    // Clear any existing timeouts to prevent duplication
+    clearTimeout(autoScrollTimeout);
+
+    // Set a new timeout to restart auto-scrolling
+    autoScrollTimeout = setTimeout(() => {
+      startAutoScroll(); // Optionally: restart auto-scrolling after dragging ends
+    }, 5000); // 5-second delay before auto-scrolling resumes
+  }
+
+  carousel.addEventListener("mousedown", dragStart);
+  window.addEventListener("mousemove", dragging); // Using window to better track mouse movements
+  window.addEventListener("mouseup", dragStop);
+
+  // Optional: for touch screens
+  carousel.addEventListener("touchstart", dragStart);
+  carousel.addEventListener("touchmove", dragging);
+  carousel.addEventListener("touchend", dragStop);
+
+  // Start auto-scrolling on load
+  startAutoScroll();
 });
