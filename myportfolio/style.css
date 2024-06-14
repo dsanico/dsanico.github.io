@@ -333,6 +333,7 @@ section {
 .projectsText.card {
     height: 550px;
     width: 80%;
+    padding-right: 20%;
     border-radius: 10px;
     cursor: pointer;
     background-color: #282a36; 
@@ -343,6 +344,7 @@ section {
 .project-1-img {
     width: 100%;
     height: 100%;
+    border-radius: 10px;
     background-image: url('images/project_Keylime_default.png'); 
     background-size: cover; 
     transition: background-image 0.3s ease-in-out;
@@ -350,11 +352,13 @@ section {
 
 .project-1-img:hover {
     background-image: url('images/project_Keylime_hover.png'); 
+    border-radius: 10px;
 }
 
 .project-2-img {
     width: 100%;
     height: 100%;
+    border-radius: 10px;
     background-image: url('images/project_MLstocks_default.png'); 
     background-size: cover; 
     transition: background-image 0.3s ease-in-out;
@@ -362,10 +366,12 @@ section {
 
 .project-2-img:hover {
     background-image: url('images/project_MLstocks_hover.png'); 
+    border-radius: 10px;
 }
 .project-3-img {
     width: 100%;
     height: 100%;
+    border-radius: 10px;
     background-image: url('images/project_nerf.png'); 
     background-size: cover; 
     transition: background-image 0.3s ease-in-out;
@@ -373,6 +379,7 @@ section {
 
 .project-3-img:hover {
     background-image: url('posts/galleries/nerf-internals.jpg'); 
+    border-radius: 10px;
 }
 
 /* ========================================= CONTACT INFO SECTION ========================================= */
