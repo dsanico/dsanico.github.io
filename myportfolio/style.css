@@ -332,6 +332,7 @@ section {
 /* project cards */
 .projectsText.card {
     height: 550px;
+    width: 80%;
     border-radius: 10px;
     cursor: pointer;
     background-color: #282a36; 
