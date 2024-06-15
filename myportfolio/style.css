@@ -356,6 +356,33 @@ section {
     color: white;
 }
 
+@media (max-width: 768px) { 
+  /* Adjust the width threshold as necessary for your design */
+
+  .projectsText.card {
+    flex-direction: column; /* Stack content vertically on mobile */
+    height: auto; /* Set to auto to allow for natural height based on content */
+  }
+
+  .card-content, .card-img {
+    width: 100%; /* Each child takes full width of the card */
+    flex-basis: auto; /* Reset flex-basis */
+  }
+
+  .card-img {
+    margin-bottom: 20px; /* Add space between the image and text content */
+    /* Remove border-radius adjustments if necessary,
+       or adjust them as needed for top-left and top-right corners */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .card-content {
+    /* Continue with existing padding and adjust as needed */
+  }
+}
 /* project card images */
 .card-img {
     flex: 1; 
