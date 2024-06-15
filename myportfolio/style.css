@@ -330,13 +330,13 @@ section {
   
 /* ========================================= PROJECTS SECTION ========================================= */
 /* project cards */
-.projectsText.card {
+.project-card {
     display: flex;
     flex-direction: row;
     align-items: stretch;
     height: 550px;
-    width: 80%;
-    margin-right: 20%;
+    width: 85%;
+    margin-right: 15%;
     border-radius: 10px;
     cursor: pointer;
     background-color: #282a36; 
@@ -345,13 +345,17 @@ section {
 
 .card-content {
     padding: 15px; 
-    flex-basis: 30%;
+    flex-basis: 27%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.card-title,
+.card-title {
+    color: white;
+    padding-top: 4px;
+}
+
 .card-text {
     color: white;
 }
@@ -389,13 +393,14 @@ section {
 /* project card images */
 .card-img {
     flex: 1; 
-    width: 70%; 
+    width: 73%; 
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .project-1-img {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
     background-image: url('images/project_Keylime_default.png'); 
     background-size: cover; 
     transition: background-image 0.3s ease-in-out;
@@ -403,13 +408,11 @@ section {
 
 .project-1-img:hover {
     background-image: url('images/project_Keylime_hover.png'); 
-    border-radius: 10px;
 }
 
 .project-2-img {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
     background-image: url('images/project_MLstocks_default.png'); 
     background-size: cover; 
     transition: background-image 0.3s ease-in-out;
@@ -417,12 +420,11 @@ section {
 
 .project-2-img:hover {
     background-image: url('images/project_MLstocks_hover.png'); 
-    border-radius: 10px;
 }
+
 .project-3-img {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
     background-image: url('images/project_nerf.png'); 
     background-size: cover; 
     transition: background-image 0.3s ease-in-out;
@@ -430,7 +432,6 @@ section {
 
 .project-3-img:hover {
     background-image: url('posts/galleries/nerf-internals.jpg'); 
-    border-radius: 10px;
 }
 
 /* ========================================= CONTACT INFO SECTION ========================================= */
