@@ -133,7 +133,6 @@ section {
 /* navbar section higlight */
 .navbar-nav a.active {
   font-weight: bold;
-  color: #yellow; /* Replace with your desired color */
 }
 
 /* hero background image */
