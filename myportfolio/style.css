@@ -363,9 +363,9 @@ section {
 @media (max-width: 768px) { 
   /* Adjust the width threshold as necessary for your design */
 
-  .projectsText.card {
+  .project-card {
     flex-direction: column; /* Stack content vertically on mobile */
-    height: auto; /* Set to auto to allow for natural height based on content */
+    height: 50vh; /* Set to auto to allow for natural height based on content */
   }
 
   .card-content {
@@ -376,18 +376,12 @@ section {
   .card-img {
     order: 1; /* Order the image to appear before the text content */
     width: 100%;
-    height: auto;
+    height: 100%;
     border-top-left-radius: 10px; /* style only the top corners for the top image */
     border-top-right-radius: 10px;
   }
 
-  /* Specific image holder for each card */
-  .project-1-img,
-  .project-2-img,
-  .project-3-img {
-    height: 50vh; /* Half the viewport height or adjust as needed */
-    border-radius: 10px 10px 0 0; /* round only the top corners */
-  }
+
 }
 
 /* project card images */
