@@ -212,7 +212,7 @@ section {
 }
 
 /* skills list */
-.skills-;=list {
+.skills-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
