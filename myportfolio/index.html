@@ -90,63 +90,61 @@
   <div class="container">
     <h1 class="text-center">Skills</h1>
 
-    <!-- skills carousel-->
+    <!-- skills gallery -->
     <div class="row mt-4">
-      <div class="wrapper">
-        <ul class="carousel">
-
-          <li class="card skillsText">
-            <div class='fas skillsIcon fa-car-battery'></div>
+      <div class="gallery js-flickity mt-4" data-flickity-options='{ "wrapAround": true }'>
+        
+          <div class="skills-card">
+            <div class='fas skills-card-icon fa-car-battery'></div>
             <h4 style="color: white; font-weight:bold;">Electronics</h4>
-          </li>
+          </div>
 
-          <li class="card">
-            <div class="fas skillsIcon fa-microchip"></div>
+          <div class="skills-card">
+            <div class="fas skills-card-icon fa-microchip"></div>
             <h4 style="color: white; font-weight:bold;">PCB Design</h4>
-          </li>
+          </div>
 
-          <li class="card">
-            <div class="fas skillsIcon fa-bolt"></div>
+          <div class="skills-card">
+            <div class="fas skills-card-icon fa-bolt"></div>
             <h4 style="color: white; font-weight:bold;">Circuit Design</h4>
-          </li>
+          </div>
 
-          <li class="card skillsText">
-            <div class='fas skillsIcon fa-brain'></div>
+          <div class="skills-card">
+            <div class='fas skills-card-icon fa-brain'></div>
             <h4 style="color: white; font-weight:bold;">Machine Learning</h4>
-          </li>
+          </div>
 
-          <li class="card skillsText">
-            <div class='fas skillsIcon fa-chart-line'></div>
+          <div class="skills-card">
+            <div class='fas skills-card-icon fa-chart-line'></div>
             <h4 style="color: white; font-weight:bold;">Data Analysis</h4>
-          </li>
+          </div>
 
-          <li class="card skillsText">
-            <div class='fas skillsIcon fa-shield-alt'></div>
+          <div class="skills-card">
+            <div class='fas skills-card-icon fa-shield-alt'></div>
             <h4 style="color: white; font-weight:bold;">DevOps</h4>
-          </li>
+          </div>
 
-          <li class="card skillsText">
-            <div class='fas skillsIcon fa-people-group'></div>
+          <div class="skills-card">
+            <div class='fas skills-card-icon fa-people-group'></div>
             <h4 style="color: white; font-weight:bold;">Leadership</h4>
-          </li>
+          </div>
 
-          <li class="card skillsText">
-            <div class='fas skillsIcon fa-person-chalkboard'></div>
+          <div class="skills-card">
+            <div class='fas skills-card-icon fa-person-chalkboard'></div>
             <h4 style="color: white; font-weight:bold;">Communication</h4>
-          </li>
+          </div>
 
-          <li class="card skillsText">
-            <div class='fas skillsIcon fa-list-check'></div>
+          <div class="skills-card">
+            <div class='fas skills-card-icon fa-list-check'></div>
             <h4 style="color: white; font-weight:bold;">Project Management</h4>
-          </li>
+          </div>
 
-        </ul>
       </div>
     </div>
 
     <!-- CS skills list -->
     <div class="row mt-4">
-      <ul class="skillsList">
+      <ul class="skills-list">
         <li>
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="iconify" viewBox="0 0 24 24">
             <path d="m14.25.18l.9.2l.73.26l.59.3l.45.32l.34.34l.25.34l.16.33l.1.3l.04.26l.02.2l-.01.13V8.5l-.05.63l-.13.55l-.21.46l-.26.38l-.3.31l-.33.25l-.35.19l-.35.14l-.33.1l-.3.07l-.26.04l-.21.02H8.77l-.69.05l-.59.14l-.5.22l-.41.27l-.33.32l-.27.35l-.2.36l-.15.37l-.1.35l-.07.32l-.04.27l-.02.21v3.06H3.17l-.21-.03l-.28-.07l-.32-.12l-.35-.18l-.36-.26l-.36-.36l-.35-.46l-.32-.59l-.28-.73l-.21-.88l-.14-1.05l-.05-1.23l.06-1.22l.16-1.04l.24-.87l.32-.71l.36-.57l.4-.44l.42-.33l.42-.24l.4-.16l.36-.1l.32-.05l.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75l-.02-.37l.05-.34l.11-.31l.17-.28l.25-.26l.31-.23l.38-.2l.44-.18l.51-.15l.58-.12l.64-.1l.71-.06l.77-.04l.84-.02l1.27.05zm-6.3 1.98l-.23.33l-.08.41l.08.41l.23.34l.33.22l.41.09l.41-.09l.33-.22l.23-.34l.08-.41l-.08-.41l-.23-.33l-.33-.22l-.41-.09l-.41.09zm13.09 3.95l.28.06l.32.12l.35.18l.36.27l.36.35l.35.47l.32.59l.28.73l.21.88l.14 1.04l.05 1.23l-.06 1.23l-.16 1.04l-.24.86l-.32.71l-.36.57l-.4.45l-.42.33l-.42.24l-.4.16l-.36.09l-.32.05l-.24.02l-.16-.01h-8.22v.82h5.84l.01 2.76l.02.36l-.05.34l-.11.31l-.17.29l-.25.25l-.31.24l-.38.2l-.44.17l-.51.15l-.58.13l-.64.09l-.71.07l-.77.04l-.84.01l-1.27-.04l-1.07-.14l-.9-.2l-.73-.25l-.59-.3l-.45-.33l-.34-.34l-.25-.34l-.16-.33l-.1-.3l-.04-.25l-.02-.2l.01-.13v-5.34l.05-.64l.13-.54l.21-.46l.26-.38l.3-.32l.33-.24l.35-.2l.35-.14l.33-.1l.3-.06l.26-.04l.21-.02l.13-.01h5.84l.69-.05l.59-.14l.5-.21l.41-.28l.33-.32l.27-.35l.2-.36l.15-.36l.1-.35l.07-.32l.04-.28l.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33l-.08.41l.08.41l.23.33l.33.23l.41.08l.41-.08l.33-.23l.23-.33l.08-.41l-.08-.41l-.23-.33l-.33-.23l-.41-.08l-.41.08z" />
@@ -229,7 +227,7 @@
 
     <!-- EE skills list -->
     <div class="row mt-4">
-      <ul class="skillsList">
+      <ul class="skills-list">
         <li>
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="iconify" viewBox="0 0 24 24">
             <path d="M19.14 5.876a1 1 0 0 0-.442-.442L9.744.171c-.329-.226-.843-.226-1.203-.01L5.148 2.145a2 2 0 0 0-.144.123a1.1 1.1 0 0 0-.288.72l.01 6.569l-.02.215l.062.123a.5.5 0 0 0 .195.206a.52.52 0 0 0 .555.01L8.859 8.2a.6.6 0 0 0 .175-.175l.082-.165V4.643l2.251 1.326l3.536 2.077a.4.4 0 0 1 .164.185a.44.44 0 0 1 .062.226v7.052a.5.5 0 0 1-.072.257c-.041.072-.082.123-.154.154l-4.225 2.488l-1.573.925v-3.228l1.953-1.172l1.049-.627l.185-.175l.021-.051a.54.54 0 0 0 .062-.247V9.999a.5.5 0 0 0-.092-.288l-.062-.123l-.144-.072c-.093-.041-.175-.041-.247-.041l-.175.01l-6.363 3.865a1.13 1.13 0 0 0-.442.463a1.3 1.3 0 0 0-.144.607v6.559c0 .257.103.514.329.75c.082.062.154.113.236.164l3.341 1.943c.186.113.381.164.597.164s.422-.051.596-.164l8.882-5.212c.195-.103.36-.267.442-.432c.113-.185.164-.401.164-.617V6.483a1.24 1.24 0 0 0-.153-.607M8.387 7.624L5.447 9.32V2.988c0-.072.031-.154.092-.216l.216-.123l2.632 1.563zm-2.951 6.795q0-.139.062-.278a.4.4 0 0 1 .175-.175l5.973-3.629v3.392l-.956.576l-2.313 1.388l-2.94 1.778v-3.052zm0 6.559v-2.663l2.94-1.768v3.218l-2.632 1.552l-.103-.062c-.051-.031-.093-.051-.103-.062c-.061-.071-.102-.143-.102-.215m13.128-3.403a.5.5 0 0 1-.072.257a.34.34 0 0 1-.165.154l-8.892 5.222a.405.405 0 0 1-.452 0l-2.508-1.47l4.575-2.693v-.01l4.215-2.478a1 1 0 0 0 .432-.442a1.13 1.13 0 0 0 .175-.606V8.457c0-.216-.062-.421-.165-.596a1.2 1.2 0 0 0-.432-.442l-3.536-2.077l-3.352-1.974l-1.923-1.141L8.911.788a.45.45 0 0 1 .452 0l8.985 5.294a.32.32 0 0 1 .154.154a.5.5 0 0 1 .062.247z" />
@@ -272,7 +270,7 @@
 
 <!-- projects section -->
 <section id="projects">
-  <div class="container mt-3 projectContent">
+  <div class="container mt-3">
     <h1 class="text-center">Projects</h1>
     <div class="row">
       <div class="gallery js-flickity mt-4" data-flickity-options='{ "wrapAround": true }'>
