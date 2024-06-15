@@ -333,7 +333,7 @@ section {
 .projectsText.card {
     height: 550px;
     width: 80%;
-    padding-right: 20%;
+    margin-right: 20%;
     border-radius: 10px;
     cursor: pointer;
     background-color: #282a36; 
