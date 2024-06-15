@@ -364,25 +364,28 @@ section {
     height: auto; /* Set to auto to allow for natural height based on content */
   }
 
-  .card-content, .card-img {
-    width: 100%; /* Each child takes full width of the card */
-    flex-basis: auto; /* Reset flex-basis */
+  .card-content {
+    order: 2; /* Order the text content to appear after the image */
+    padding: 20px; /* Inner padding */
   }
 
   .card-img {
-    margin-bottom: 20px; /* Add space between the image and text content */
-    /* Remove border-radius adjustments if necessary,
-       or adjust them as needed for top-left and top-right corners */
-    border-top-left-radius: 10px;
+    order: 1; /* Order the image to appear before the text content */
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 10px; /* style only the top corners for the top image */
     border-top-right-radius: 10px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
   }
 
-  .card-content {
-    /* Continue with existing padding and adjust as needed */
+  /* Specific image holder for each card */
+  .project-1-img,
+  .project-2-img,
+  .project-3-img {
+    height: 50vh; /* Half the viewport height or adjust as needed */
+    border-radius: 10px 10px 0 0; /* round only the top corners */
   }
 }
+
 /* project card images */
 .card-img {
     flex: 1; 
