@@ -190,123 +190,29 @@ section {
 }
 
 /* ========================================= SKILLS SECTION ========================================= */
-/* skills carousel cards */
-.skillsText.card {
-    height: 110px;
-    border-radius: 25px;
-    cursor: pointer;
+/* skills gallery cards */
+.skill-card {
+    height: 150px; 
+    width: 30%
+    margin-right: 5%;
+    background-color: #1a1823;
     color: white;
+    border-radius: 25px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
   }
 
-/* skills carousel icons */
-.skillsIcon {
+/* skills gallery icons */
+.skill-icon {
     font-size: 45px;
     text-align: center;
     width: 100%;
     color: #ffcb05;
 }
 
-/* carousel */
-.wrapper { 
-    max-width: 100%;
-    margin: auto;
-    overflow: hidden;
-} 
-  
-.wrapper i { 
-    height: 110px; 
-    width: 100%; 
-    text-align: center; 
-    line-height: 50px; 
-    border-radius: 25px; 
-    position: absolute; 
-    top: 50%; 
-    transform: translateY(-50%); 
-  
-} 
-  
-.wrapper i:first-child { 
-    left: -22px; 
-} 
-  
-.wrapper i:last-child { 
-    right: -22px; 
-} 
-  
-.wrapper .carousel { 
-    display: grid; 
-    grid-auto-flow: column; 
-    grid-auto-columns: calc(33.333% - 18px);
-    gap: 24px; 
-    overflow-x: scroll; 
-    scroll-snap-type: x mandatory; 
-    scroll-behavior: smooth; 
-    padding: 16px 0;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; 
-    -ms-overflow-style: none;
-} 
-
-.wrapper .carousel::-webkit-scrollbar {
-  display: none;
-}  
-
-.carousel::-webkit-scrollbar { 
-    display: none; 
-} 
-  
-.carousel :where(.card, .img) { 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-} 
-  
-.carousel.dragging { 
-    scroll-snap-type: none; 
-    scroll-behavior: auto; 
-} 
-  
-.carousel.no-transition { 
-    scroll-behavior: auto; 
-} 
-  
-.carousel.dragging .card { 
-    cursor: grab; 
-    user-select: none; 
-} 
-  
-.carousel .card { 
-    scroll-snap-align: start; 
-    height: 150px; 
-    width: calc(33.333% - 24px);
-    list-style: none; 
-    user-select: none;
-    background-color: #1a1823;
-    border-radius: 25px; 
-    display: flex; 
-    width: 100%; 
-    align-items: center; 
-    justify-content: center; 
-} 
-
-.carousel .card:hover {
-    transform: scale(1.0075);
-}
-
-@media screen and (max-width: 900px) { 
-    .wrapper .carousel { 
-        grid-auto-columns: calc((100% / 2) - 9px); 
-    } 
-} 
-  
-@media screen and (max-width: 600px) { 
-    .wrapper .carousel { 
-        grid-auto-columns: 100%; 
-    } 
-}
-
-/* skills list styling */
-.skillsList {
+/* skills list */
+.skills-;=list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -315,7 +221,8 @@ section {
   list-style: none;
   margin: 0 auto;
 }
- 
+
+/* skills list icon */
 .iconify {
   width: 5em; 
   height: 5em;
@@ -344,7 +251,7 @@ section {
 }
 
 .card-content {
-    padding: 15px; 
+    padding: 20px; 
     flex-basis: 27%;
     display: flex;
     flex-direction: column;
@@ -352,20 +259,20 @@ section {
 }
 
 .card-title {
-    color: white;
-    padding-top: 4px;
+    padding-top: 15px;
+    olor: white;
 }
 
 .card-text {
+    padding-top: 5px;
     color: white;
 }
 
 @media (max-width: 768px) { 
-  /* Adjust the width threshold as necessary for your design */
-
   .project-card {
-    flex-direction: column; /* Stack content vertically on mobile */
-    height: 50vh; /* Set to auto to allow for natural height based on content */
+    flex-direction: column; 
+    min-height: 70vh; 
+    height: auto;
   }
 
   .card-content {
@@ -380,24 +287,21 @@ section {
     border-top-left-radius: 10px; /* style only the top corners for the top image */
     border-top-right-radius: 10px;
   }
-
-
 }
 
 /* project card images */
 .card-img {
     flex: 1; 
     width: 73%; 
+    height: 100%;
+    background-size: cover;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    transition: background-image 0.3s ease-in-out;    
 }
 
 .project-1-img {
-    width: 100%;
-    height: 100%;
     background-image: url('images/project_Keylime_default.png'); 
-    background-size: cover; 
-    transition: background-image 0.3s ease-in-out;
 }
 
 .project-1-img:hover {
@@ -405,11 +309,7 @@ section {
 }
 
 .project-2-img {
-    width: 100%;
-    height: 100%;
     background-image: url('images/project_MLstocks_default.png'); 
-    background-size: cover; 
-    transition: background-image 0.3s ease-in-out;
 }
 
 .project-2-img:hover {
@@ -417,11 +317,7 @@ section {
 }
 
 .project-3-img {
-    width: 100%;
-    height: 100%;
     background-image: url('images/project_nerf.png'); 
-    background-size: cover; 
-    transition: background-image 0.3s ease-in-out;
 }
 
 .project-3-img:hover {
