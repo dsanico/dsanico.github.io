@@ -246,7 +246,7 @@ section {
   .imageHeadshot {
       max-width: 100%;
       width: 50vw;
-      height: 75%;
+      height: 75vw;
       display: block;
       margin: auto;
       border-radius: 10px;    
