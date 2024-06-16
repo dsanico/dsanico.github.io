@@ -418,9 +418,7 @@ section {
 /* ========================================= CONTACT INFO SECTION ========================================= */
 .additionalContent .row {
   display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  align-items: start;
 }
 
 .additionalContent .col-lg-6 {
