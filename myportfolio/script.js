@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   window.addEventListener("scroll", changeLinkState);
 });
 
-// typewriter effect
+// hero section typewriter effect
 let textBase = "I am ";
 let descriptions = [
   "a U-M engineering student.",
@@ -84,82 +84,87 @@ function typeWriter() {
 
 typeWriter();
 
-// carousel
-document.addEventListener("DOMContentLoaded", function () {
-  const carousel = document.querySelector(".carousel");
-  let isDragging = false,
-    startX,
-    startScrollLeft;
+// about section typewriter effect
+function setupAboutTypewriter(t) {
+  var HTML = t.innerHTML;
 
-  let scrollInterval; // Auto-scroll interval
+  t.innerHTML = "";
 
-  function startAutoScroll() {
-    const autoScroll = () => {
-      // Width of a card (assuming all cards are the same width)
-      const cardWidth = carousel.querySelector(".card").offsetWidth;
+  var cursorPosition = 0,
+      tag = "",
+      writingTag = false,
+      tagOpen = false,
+      typeSpeed = 0,
+    tempTypeSpeed = 0;
 
-      // Scroll to the next card
-      carousel.scrollBy({ left: cardWidth, behavior: "smooth" });
-
-      // Calculate the maximum scroll position
-      const maxScrollLeft = carousel.scrollWidth - carousel.offsetWidth;
-
-      // If at the end, scroll back to the first card smoothly
-      if (carousel.scrollLeft >= maxScrollLeft - cardWidth) {
-        carousel.scrollTo({ left: 0, behavior: "smooth" });
+  var type = function() {
+    
+      if (writingTag === true) {
+          tag += HTML[cursorPosition];
       }
-    };
 
-    // Start the auto scroll, scrolling to the next card every 5 seconds
-    scrollInterval = setInterval(autoScroll, 5000);
-  }
+      if (HTML[cursorPosition] === "<") {
+          tempTypeSpeed = 0;
+          if (tagOpen) {
+              tagOpen = false;
+              writingTag = true;
+          } else {
+              tag = "";
+              tagOpen = true;
+              writingTag = true;
+              tag += HTML[cursorPosition];
+          }
+      }
+      if (!writingTag && tagOpen) {
+          tag.innerHTML += HTML[cursorPosition];
+      }
+      if (!writingTag && !tagOpen) {
+          if (HTML[cursorPosition] === " ") {
+              tempTypeSpeed = 0;
+          }
+          else {
+              tempTypeSpeed = (Math.random() * typeSpeed) + 50;
+          }
+          t.innerHTML += HTML[cursorPosition];
+      }
+      if (writingTag === true && HTML[cursorPosition] === ">") {
+          tempTypeSpeed = (Math.random() * typeSpeed) + 50;
+          writingTag = false;
+          if (tagOpen) {
+              var newSpan = document.createElement("span");
+              t.appendChild(newSpan);
+              newSpan.innerHTML = tag;
+              tag = newSpan.firstChild;
+          }
+      }
 
-  function stopAutoScroll() {
-    clearInterval(scrollInterval);
-  }
+      cursorPosition += 1;
+      if (cursorPosition < HTML.length - 1) {
+          setTimeout(type, tempTypeSpeed);
+      }
 
-  function dragStart(e) {
-    isDragging = true;
-    startX = e.pageX - carousel.offsetLeft;
-    startScrollLeft = carousel.scrollLeft;
+  };
 
-    stopAutoScroll(); // Optional: stop auto scroll on manual dragging
-    clearTimeout(autoScrollTimeout);
-  }
+  return {
+      type: type
+  };
+}
 
-  function dragging(e) {
-    if (!isDragging) return;
-    e.preventDefault();
+var typer = document.getElementById('typewriterAbout');
 
-    const x = e.pageX - carousel.offsetLeft;
-    const walk = (x - startX) * 3; // Multiply for faster drag response
-    carousel.scrollLeft = startScrollLeft - walk;
-  }
+typewriterAbout = setupAboutTypewriter(typewriterAbout);
 
-  let autoScrollTimeout; // Hold the timeout for auto-scrolling after dragging
+typewriterAbout.type();
 
-  function dragStop() {
-    isDragging = false;
-    carousel.classList.remove("dragging");
-
-    // Clear any existing timeouts to prevent duplication
-    clearTimeout(autoScrollTimeout);
-
-    // Set a new timeout to restart auto-scrolling
-    autoScrollTimeout = setTimeout(() => {
-      startAutoScroll(); // Optionally: restart auto-scrolling after dragging ends
-    }, 5000); // 5-second delay before auto-scrolling resumes
-  }
-
-  carousel.addEventListener("mousedown", dragStart);
-  window.addEventListener("mousemove", dragging); // Using window to better track mouse movements
-  window.addEventListener("mouseup", dragStop);
-
-  // Optional: for touch screens
-  carousel.addEventListener("touchstart", dragStart);
-  carousel.addEventListener("touchmove", dragging);
-  carousel.addEventListener("touchend", dragStop);
-
-  // Start auto-scrolling on load
-  startAutoScroll();
+// scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    console.log(entry)
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    } 
+  });
 });
+
+const hiddenElements = document.querySelectorAll('.hidden');
+hiddenElements.forEach((el) => observer.observe(el));
