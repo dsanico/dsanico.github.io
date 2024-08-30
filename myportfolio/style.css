@@ -485,7 +485,15 @@ about-image {
 .skills-list-item:nth-child(16) {
     transition-delay: 750ms;
 }
-
+.skills-list-item:nth-child(17) {
+    transition-delay: 750ms;
+}
+.skills-list-item:nth-child(18) {
+    transition-delay: 750ms;
+}
+.skills-list-item:nth-child(19) {
+    transition-delay: 750ms;
+}
 
 /* ========================================= PROJECTS SECTION ========================================= */
 /* project cards */
