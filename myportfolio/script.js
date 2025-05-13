@@ -31,10 +31,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 // hero section typewriter effect
 let textBase = "I am ";
 let descriptions = [
-  "a U-M engineering student.",
+  "a U-M engineer.",
   "a designer and creator.",
-  "passionate about innovative problem-solving.",
-  "an eager learner.",
+  "always eager to learn.",
   "a breakfast lover."
 ];
 let descIdx = 0;
@@ -168,3 +167,42 @@ const observer = new IntersectionObserver((entries) => {
 
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
+
+// Skills section toggle functionality
+/* function toggleSkills(skillsId) {
+    const skillsList = document.getElementById(skillsId);
+    const arrow = skillsList.previousElementSibling.querySelector('.skills-arrow');
+    
+    // Toggle expanded class
+    skillsList.classList.toggle('expanded');
+    arrow.classList.toggle('rotated');
+    
+    // Get all skill items
+    const skillItems = skillsList.querySelectorAll('.skills-list-item');
+    
+    if (skillsList.classList.contains('expanded')) {
+        // Show items with staggered delay
+        skillItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('show');
+            }, index * 100); // 100ms delay between each item
+        });
+    } else {
+        // Hide all items immediately
+        skillItems.forEach(item => {
+            item.classList.remove('show');
+        });
+    }
+}
+
+// Initialize skills lists to be collapsed
+document.addEventListener('DOMContentLoaded', function() {
+    const skillsLists = document.querySelectorAll('.skills-list');
+    skillsLists.forEach(list => {
+        list.classList.remove('expanded');
+        const skillItems = list.querySelectorAll('.skills-list-item');
+        skillItems.forEach(item => {
+            item.classList.remove('show');
+        });
+    });
+}); */
