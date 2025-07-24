@@ -75,50 +75,49 @@
 
     <h1 class="text-center">ABOUT</h1>
 
-    <div class="row mt-3">
-    <div class="about-card col-lg-6">
-      <div class="about-text">
-        <div class="row mt-3">
-          <p> I'm a student at the <span class="highlight-1">University of Michigan, Ann Arbor</span>, 
-            pursuing a bachelor's degree in <span class="highlight-1">Electrical Engineering</span> with a 
-            minor in <span class="highlight-1">Computer Science</span>. 
-            I have extensive technical experience in embedded systems and hardware, and I dream of helping change 
-            the world with innovative quantum and computer technology.
-          </p>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-3" style="width: fit-content">
-            <p>
-              Relevant Coursework:
+    <div class="row about-flex-row align-items-stretch">
+      <div class="about-card col-lg-8">
+        <div class="about-text">
+          <div class="row mt-3">
+            <p>I'm a third-year student at the <span class="highlight-1">University of Michigan, Ann Arbor</span>, 
+              pursuing a bachelor's degree in <span class="highlight-1">Electrical Engineering</span> with a minor in 
+              <span class="highlight-1">Computer Science</span>. My  focus is on embedded systems and hardware design, with hands-on experience in avionics, PCBs, and hardware verification. I'm especially drawn to the intersection of hardware and quantum technology, exploring how quantum principles can drive the future. While my foundation lies in building hardware, I'm also passionate about software and firmware.
             </p>
-            <pre style="font-size: 5">
-- Electrical Circuits
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-3" style="width: fit-content">
+              <p>
+                Relevant Coursework:
+              </p>
+              <pre style="font-size: 5">
+- Circuit Analysis
+- Signals and Systems
 - Intro to DSA
+- Intro to Computer Architecture
 - Principles of Optics
 - Intro to Quantum Information Technology
 - Differential Equations
-- EM Physics
-            </pre>
-          </div>
-          <div class="col-md-3" style="width: fit-content; justify-content: center;">
-            <p>Quick Facts:</p>
-            <pre id="typewriterAbout">
-name: <span class="highlight-3">David Sanico</span>
+- Electromagnetics
+              </pre>
+            </div>
+            <div class="col-md-3" style="width: fit-content; justify-content: center;">
+              <p>Quick Facts:</p>
+              <pre id="typewriterAbout">
+name:  <span class="highlight-3">David Sanico</span>
 class: <span class="highlight-3">2027</span>
 major: <span class="highlight-3">Electrical Engineering</span>
 minor: <span class="highlight-3">Computer Science</span>
-previous internships: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab</span>
-                      <span class="highlight-3">Data Science Intern @ Pair Tech</span>
-            </pre>
+experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab</span>
+            <span class="highlight-3">Avionics Hardware Lead @ MASA</span>
+            <span class="highlight-3">Data Science Intern @ Pair Tech</span></pre>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="about-image col-md-3">
-      <img class="imageHeadshot" src="images/headshot.jpg">
-    </div>
-
+      <div class="about-image col-lg-4 d-flex align-items-stretch">
+        <img class="imageHeadshot" src="images/headshot2.jpg" alt="Headshot">
+      </div>
     </div>
 
   </div>
@@ -304,7 +303,7 @@ previous internships: <span class="highlight-3">Electrical Engineering Intern @ 
         </div>
         <div class="row">
           <image src="images/hardware_integration.svg" class="generic-skill"></image>
-          <p class="highlight-4" style="color: black">Hardware Integration</p>
+          <p class="highlight-4" style="color: black">Integration and Testing</p>
         </div>
         <div class="row">
           <image src="images/soldering_icon.svg" class="generic-skill"></image>
@@ -331,8 +330,9 @@ previous internships: <span class="highlight-3">Electrical Engineering Intern @ 
           <div class="timeline-date">May 2025 - Present</div>
           <div class="timeline-content">
             <h4>Electrical Engineering Intern @ Rocket Lab</h4>
-            <p>Analyzing and testing avionics as part of the Space Systems Avionics Team.
-            </p>
+            <p>Owned the design verification process for a flight-critical avionics PCB, including writing and executing test procedures using DMMs, scopes, and electronic loads. Simulated and analyzed latch and power regulation circuits in LTspice.</p>
+            <p>Designed and tested three PCBs for internal development, including a load emulator for DAQ interfacing, a pulse driver circuit using a timer IC and NMOS, and an LDO development board with phase margin tuning and Bode plot validation.</p>
+            <p>Developed Arduino firmware to verify SPI-based ADC behavior on a flight board, enabling successful channel testing during bring-up.</p>
           </div>
         </div>
         <div class="timeline-item">
@@ -363,7 +363,7 @@ previous internships: <span class="highlight-3">Electrical Engineering Intern @ 
           <div class="timeline-date">Apr. 2025</div>
           <div class="timeline-content">
             <h4>ATD/KTP/TEK Hackathon</h4>
-            <p>Created the beginnings of the Quantum Circuit Simulator (QuaCS) project at a hacakathon
+            <p>Created the beginnings of a Quantum Circuit Simulator (QuaCS) project at a hacakathon
               as a member of Tau Epsilon Kappa.</p>
           </div>
         </div>
@@ -408,9 +408,8 @@ previous internships: <span class="highlight-3">Electrical Engineering Intern @ 
           <h4 class="project-title">Bay Board PCBs</h4>
           <p class="project-date">Project Lead @ MASA; 08/24 to 05/25</p>
           <p class="project-description">
-            Designed a network of 3 PCBs to control valves and receive data from thermocouples and
-            pressure transducers in the plumbing system of MASA's rocket. Each recieves commands directly
-            from the Flight Computer and rests in a different bay of the rocket.
+            Designed a network of 3 PCBs to control valves from a flight autosequence and receive data from 
+            external thermocouples and pressure transducers and onboard IMUs and barometers.
           </p>
           <p class="project-description">
             <span class="highlight-4">Codename: </span> <span class="highlight-5">Trident</span>
@@ -427,6 +426,12 @@ previous internships: <span class="highlight-3">Electrical Engineering Intern @ 
         </div>
         <div class="project-images">
           <div class="image-carousel js-flickity" data-flickity-options='{ "wrapAround": true, "pageDots": true, "prevNextButtons": true }'>
+            <div class="carousel-cell">
+              <img src="images/project_bayboard_5.png" alt="Project Image 5">
+            </div>
+            <div class="carousel-cell">
+              <img src="images/project_bayboard_4.png" alt="Project Image 4">
+            </div>
             <div class="carousel-cell">
               <img src="images/project_bayboard_1.png" alt="Project Image 1">
             </div>
@@ -447,7 +452,7 @@ previous internships: <span class="highlight-3">Electrical Engineering Intern @ 
           <p class="project-date">Project Lead @ MASA; 03/24 to 01/25</p>
           <p class="project-description">Designed and fabricated my first PCB from start to finish.
             Includes onboard sensors, Ethernet, SPI, I2C, EEPROM, and an STM32 to record and protect 
-            flight data. Designed to withstand extreme shock.
+            flight data. Banana-shaped to wrap around the engine.
           </p>
           <p class="project-description">
             <span class="highlight-4">Codename: </span> <span class="highlight-5">Keylime</span>
@@ -456,7 +461,7 @@ previous internships: <span class="highlight-3">Electrical Engineering Intern @ 
             <span class="highlight-4">Num. Components: </span> <span class="highlight-5">181</span>
           </p>
           <p class="project-description">
-            <span class="highlight-4">Layers: </span> <span class="highlight-5">4</span>
+            <span class="highlight-4">Layers: </span> <span class="highlight-5">6</span>
           </p>
           <div class="project-links">
             <a href="https://masa.engin.umich.edu/" target="_blank" class="btn project-btn">Visit MASA</a>
@@ -557,14 +562,14 @@ previous internships: <span class="highlight-3">Electrical Engineering Intern @ 
         <div class="mt-3">
           <h3 class="text-left" style="font-weight: bold">ADDITIONAL BIO</h3>
           <pre>
-            hobbies: <span class="highlight-3">weightlifting</span>
-                     <span class="highlight-3">watercoloring</span>
+            hobbies: <span class="highlight-3">watercoloring</span>
+                     <span class="highlight-3">weightlifting</span>
                      <span class="highlight-3">reading</span>
                      <span class="highlight-3">breakfast</span>
             facts:   <span class="highlight-3">has a corgi</span>
                      <span class="highlight-3">big LeBron fan</span>
                      <span class="highlight-3">former debater (2x NSDA Academic 
-                     All-American, NCFL Finalist '22)</span>
+                     All-American, NCFL Grand Nationals Finalist '22)</span>
           </pre>
           <image src="images/computer.gif" style="width: 15em; margin-left: 7.5em;"></image>
       </div>

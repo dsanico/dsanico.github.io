@@ -403,6 +403,54 @@ color: #ffffff;
     transform: scale(100%);
 }
 
+.about-flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.about-card {
+  flex: 2 1 0;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.about-image {
+  flex: 1 1 0;
+  min-width: 200px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.imageHeadshot {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 1em;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .about-flex-row {
+    flex-direction: column;
+  }
+  .about-image, .about-card {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .imageHeadshot {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    margin: 0 auto;
+  }
+}
+
 /* ========================================= SKILLS SECTION ========================================= */
 .skills-header {
     display: flex;
