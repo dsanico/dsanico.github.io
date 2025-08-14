@@ -42,10 +42,10 @@
           <a class="nav-link" href="#skills">Skills</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#timeline">Timeline</a>
+          <a class="nav-link" href="#projects">Projects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#projects">Projects</a>
+          <a class="nav-link" href="#timeline">Timeline</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#contact">Contact</a>
@@ -79,9 +79,7 @@
       <div class="about-card col-lg-8">
         <div class="about-text">
           <div class="row mt-3">
-            <p>I'm a third-year student at the <span class="highlight-1">University of Michigan, Ann Arbor</span>, 
-              pursuing a bachelor's degree in <span class="highlight-1">Electrical Engineering</span> with a minor in 
-              <span class="highlight-1">Computer Science</span>. My  focus is on embedded systems and hardware design, with hands-on experience in avionics, PCBs, and hardware verification. I'm especially drawn to the intersection of hardware and quantum technology, exploring how quantum principles can drive the future. While my foundation lies in building hardware, I'm also passionate about software and firmware.
+            <p>I'm a junior at the University of Michigan majoring in Electrical Engineering. My  focus is on embedded systems and hardware design, with hands-on experience in avionics, PCBs, and hardware verification. I'm especially drawn to the intersection of hardware and quantum technology, exploring how quantum principles can drive the future. While my foundation lies in building hardware, I'm also passionate about software and firmware.
             </p>
           </div>
           <div class="row mt-3">
@@ -89,7 +87,7 @@
               <p>
                 Relevant Coursework:
               </p>
-              <pre style="font-size: 5">
+              <pre class="coursework-list">
 - Circuit Analysis
 - Signals and Systems
 - Intro to DSA
@@ -318,82 +316,6 @@ experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab
   </div>
 </section>
 
-<!-- timeline section -->
-<section class="bgimage-2" id="timeline">
-  <div class="container mt-3">
-    <h1 class="text-center">TIMELINE</h1>
-    
-    <div class="timeline-container">
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">May 2025 - Present</div>
-          <div class="timeline-content">
-            <h4>Electrical Engineering Intern @ Rocket Lab</h4>
-            <p>Owned the design verification process for a flight-critical avionics PCB, including writing and executing test procedures using DMMs, scopes, and electronic loads. Simulated and analyzed latch and power regulation circuits in LTspice.</p>
-            <p>Designed and tested three PCBs for internal development, including a load emulator for DAQ interfacing, a pulse driver circuit using a timer IC and NMOS, and an LDO development board with phase margin tuning and Bode plot validation.</p>
-            <p>Developed Arduino firmware to verify SPI-based ADC behavior on a flight board, enabling successful channel testing during bring-up.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Apr. 2025 - Present</div>
-          <div class="timeline-content">
-            <h4>Avionics Hardware Lead @ MASA</h4>
-            <p>Responsible for managing the development of all hardware projects in MASA. Overseeing project timeline and goals,
-              conducting technical design reviews of projects, maintaining documentation, and providing technical guidance to the team.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Aug. 2024 - May 2025</div>
-          <div class="timeline-content">
-            <h4>Bay Board PCBs Project Lead @ MASA </h4>
-            <p>Led a team of 4 to develop a 489-component PCB to control valves and receive sensor data in our rocket.
-              Served as primary developer for schematics and layout, optimized multi-vendor BOMs, and coordinated with
-              structures and plumbing subteams for cross-team collaboration.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Apr. 2025</div>
-          <div class="timeline-content">
-            <h4>ATD/KTP/TEK Hackathon</h4>
-            <p>Created the beginnings of a Quantum Circuit Simulator (QuaCS) project at a hacakathon
-              as a member of Tau Epsilon Kappa.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Mar. 2024 - Jan. 2025</div>
-          <div class="timeline-content">
-            <h4>Flight Recorder PCB Project Lead @ MASA</h4>
-            <p>Sole Responsible Engineer for the flight recorder PCB for MASA. 
-              My first time designing and fabricating a PCB.
-            </p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">May 2024 - Aug. 2024</div>
-          <div class="timeline-content">
-            <h4>Data Science Intern @ Pair Tech</h4>
-            <p>
-              Developed and tested three multi-stage Azure pipelines and five Python scripts to automate the 
-              scraping and ingestion of license data. 
-              Containerized scripts using Docker and Kubernetes for efficient deployment, and processed over 
-              100 million datapoints from multiple state databases into Cosmos DB. 
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- projects section -->
 <section id="projects">
@@ -536,6 +458,83 @@ experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab
   </div>
 </section>
 
+<!-- timeline section -->
+<section class="bgimage-2" id="timeline">
+  <div class="container mt-3">
+    <h1 class="text-center">TIMELINE</h1>
+    
+    <div class="timeline-container">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May 2025 - Aug. 2025</div>
+          <div class="timeline-content">
+            <h4>Electrical Engineering Intern @ Rocket Lab</h4>
+            <p>As a member of the Space Systems Avionics Team, I carried out the design verification process of a satellite PCB including
+              assembly, testing equiment, and SPICE analysis. I also designed three new PCBs for testing integration, led a professional PCB
+              lifecycle, and wrote firmware to assist in bring-up.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr. 2025 - Present</div>
+          <div class="timeline-content">
+            <h4>Avionics Hardware Lead @ MASA</h4>
+            <p>I'm currently managing the development of all hardware projects in MASA. I am overseeing project timelines and goals,
+              conducting technical design reviews, maintaining documentation, assisting in integration, and providing technical guidance to the team.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Aug. 2024 - May 2025</div>
+          <div class="timeline-content">
+            <h4>Bay Board PCBs Project Lead @ MASA </h4>
+            <p>I led a team of 4 to develop a 489-component PCB to control valves and receive sensor data in our rocket.
+              I designed over 85% of schematics and layout, optimized multi-vendor BOMs, and coordinated with
+              structures and plumbing subteams for cross-team collaboration.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr. 2025</div>
+          <div class="timeline-content">
+            <h4>ATD/KTP/TEK Hackathon</h4>
+            <p>I created the beginnings of a Quantum Circuit Simulator (QuaCS) project (still in the works) at a hacakathon
+              as a member of Tau Epsilon Kappa.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar. 2024 - Jan. 2025</div>
+          <div class="timeline-content">
+            <h4>Flight Recorder PCB Project Lead @ MASA</h4>
+            <p>I was the designated Responsible Engineer for the flight recorder PCB for MASA. 
+              It was my first time designing and assembling a PCB!
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May 2024 - Aug. 2024</div>
+          <div class="timeline-content">
+            <h4>Data Science Intern @ Pair Tech</h4>
+            <p>
+              I developed and tested three multi-stage Azure pipelines and five Python scripts to automate the 
+              scraping and ingestion of license data. I containerized scripts using Docker and Kubernetes for 
+              efficient deployment, and processed over 100 million datapoints from multiple state databases into Cosmos DB. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- contact section-->
 <section id="contact">
   <div class="container mt-3 additionalContent">
@@ -577,16 +576,6 @@ experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab
   </div>
 </section>
 
-<!-- footer section -->
-<footer id="footer">
-  <div class="container-fluid">
-    <!-- social media icons -->
-    <div class="social-icons mt-4">
-      <a href="https://linkedin.com/in/david-sanico" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/dsanico" target="_blank"><i class="fab fa-github"></i></a>
-    </div>
-  </div>
-</footer>
 
 <!-- load javascript after loading all html content -->
 <script src="script.js"></script>

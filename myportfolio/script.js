@@ -150,10 +150,26 @@ function setupAboutTypewriter(t) {
 }
 
 var typer = document.getElementById('typewriterAbout');
+var typewriterAbout = setupAboutTypewriter(typer);
+var aboutTypewriterStarted = false;
 
-typewriterAbout = setupAboutTypewriter(typewriterAbout);
+// Create intersection observer for about section typewriter
+const aboutObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting && !aboutTypewriterStarted) {
+      aboutTypewriterStarted = true;
+      typewriterAbout.type();
+    }
+  });
+}, {
+  threshold: 0.3 // Start when 30% of the about section is visible
+});
 
-typewriterAbout.type();
+// Observe the about section
+const aboutSection = document.getElementById('about');
+if (aboutSection) {
+  aboutObserver.observe(aboutSection);
+}
 
 // scroll animations
 const observer = new IntersectionObserver((entries) => {
