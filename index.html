@@ -16,7 +16,7 @@
   <script src="https://kit.fontawesome.com/e54e1fb71e.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -33,8 +33,10 @@
 <!-- navbar -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark navbarScroll navbarDark">
   <div class="container">
-
-    <a class="navbar-brand" href="#">DAVID</a>
+    <div class="navbar-brand-container">
+      <img src="images/computer.gif" alt="Computer icon" class="navbar-icon">
+      <a class="navbar-brand" href="#">DAVID</a>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -67,7 +69,13 @@
 </nav>
 
 <!-- main banner -->
-<section class="bgimage" id="home">
+<section class="bgimage-video" id="home">
+  <div class="video-background">
+    <video autoplay muted loop playsinline>
+      <source src="images/hero_black.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
   <div class="hero-text container-fluid">
     <div style="padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center">
       <h1>Hi, my name is David.</h1>
@@ -361,79 +369,134 @@ experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab
       
 
       <!-- Bay Board PCBs Project -->
-      <div class="project-card">
+      <div class="project-card" data-layout="big-picture">
         <div class="project-content">
           <h4 class="project-title">Bay Board PCBs</h4>
-          <p class="project-date">Project Lead @ MASA; 08/24 to 05/25</p>
+          <div class="project-card-item-tags">
+            <span class="project-card-item-tag-1">Project Lead @ MASA</span><span class="project-card-item-tag-2">Altium Designer</span>
+          </div>
+          <span class="project-date">08/24 to 05/25</span>
           <p class="project-description">
-            Designed a network of 3 PCBs to control valves from a flight autosequence and receive data from 
-            external thermocouples and pressure transducers and onboard IMUs and barometers.
-          </p>
-          <p class="project-description">
-            <span class="highlight-4">Codename: </span> <span class="highlight-5">Trident</span>
-          </p>
-          <p class="project-description">
-            <span class="highlight-4">Num. Components: </span> <span class="highlight-5">489</span>
-          </p>
-          <p class="project-description">
-            <span class="highlight-4">Layers: </span> <span class="highlight-5">6</span>
+            Developed a network of 3 control and data acquisition PCBs as a critical component of the flight avionics architecture on MASA's rocket.
+            Each board interfaces with external pressure transducers and thermocouples, as well as onboard IMUs and barometers, to acquire data and send  
+            telemetry to the flight computer. Each board also controls valves to enable precise pressure control and sequencing.
+
+            <br><span class="highlight-4">Alias: </span><span class="highlight-5">Trident</span>
+            <br><span class="highlight-4">Number Components: </span><span class="highlight-5">501</span>
+            <br><span class="highlight-4">Layers: </span><span class="highlight-5">6</span>
+            <br><span class="highlight-4">Team Members: </span><span class="highlight-5">4</span></br>
           </p>
           <div class="project-links">
             <a href="https://masa.engin.umich.edu/" target="_blank" class="btn project-btn">Visit MASA</a>
           </div>
         </div>
         <div class="project-images">
-          <div class="image-carousel js-flickity" data-flickity-options='{ "wrapAround": true, "pageDots": true, "prevNextButtons": true }'>
-            <div class="carousel-cell">
+          <div class="image-carousel-vertical">
+            <div class="image-item">
               <img src="images/project_bayboard_5.png" alt="Project Image 1">
             </div>
-            <div class="carousel-cell">
+            <div class="image-item">
               <img src="images/project_bayboard_4.png" alt="Project Image 2">
             </div>
-            <div class="carousel-cell">
+            <div class="image-item">
               <img src="images/project_bayboard_6.png" alt="Project Image 3">
             </div>  
-            <div class="carousel-cell">
+            <div class="image-item">
               <img src="images/project_bayboard_2.png" alt="Project Image 4">
             </div>
-            <div class="carousel-cell">
+            <div class="image-item">
               <img src="images/project_bayboard_3.png" alt="Project Image 5">
             </div>      
           </div>
         </div>
       </div>
 
+
+<!-- Rocket Lab Projects-->
+<div class="project-card" data-layout="cards">
+  <h2 class="project-cards-header">Electrical Engineering Internship @ Rocket Lab</h2>
+  <div class="project-cards-container">
+    <div class="project-card-item">
+      <h4 class="project-card-item-title">GPS PCB Design Verification</h4>
+      <div class="project-card-item-tags">
+        <span class="project-card-item-tag-2">LTspice</span>
+      </div>
+      <p class="project-card-item-text">
+        Led design verification for a satellite GPS PCB, shaving 4 weeks off testing by soldering a PCB, analyzing power regulation and
+        latch behavior via LTspice, and verifying physical assembly using DMMs, oscilloscope, power supplies, and electronic loads.
+      </p>
+    </div>
+    <div class="project-card-item">
+      <h4 class="project-card-item-title">Test Rig Interface PCB</h4>
+      <div class="project-card-item-tags">
+        <span class="project-card-item-tag-2">Altium Designer</span>
+      </div>
+      <p class="project-card-item-text">
+        Designed, ordered, assembled, and validated an interface board bridging a flight PCB to an automated test rig, enabling integrated and automated testing.
+      </p>
+    </div>
+    <div class="project-card-item">
+      <h4 class="project-card-item-title">Discrete LDO Test PCB</h4>
+      <div class="project-card-item-tags">
+        <span class="project-card-item-tag-2">Altium Designer</span><span class="project-card-item-tag-2">LTspice</span>
+      </div>
+      <p class="project-card-item-text">
+        Developed and utilized a test PCB to analyze a discrete LDO designed for long-term radiation and thermal cycling, uncovering stability issues and
+        preventing costly redesign through Bode instrument analysis, thermal analysis, and LTspice simulations.
+      </p>
+    </div>
+    <div class="project-card-item">
+      <h4 class="project-card-item-title">Pulse-Driver PCB</h4>
+      <div class="project-card-item-tags">
+        <span class="project-card-item-tag-2">Altium Designer</span>
+      </div>
+      <p class="project-card-item-text">
+        Designed a low-side NMOS pulse driver PCB that streamlined board power supply testing and step response analysis.
+      </p>
+    </div>
+    <div class="project-card-item">
+      <h4 class="project-card-item-title">ADC Firmware</h4>
+      <div class="project-card-item-tags">
+        <span class="project-card-item-tag-2">Arduino IDE</span>
+      </div>
+      <p class="project-card-item-text">
+        Wrote firmware in Arduino to validate an onboard ADC, implementing SPI communication and data readout from flight channels to
+        aid in board-level bring-up and testing.
+      </p>
+    </div>
+  </div>
+</div>
+
       <!-- Flight Recorder PCB Project -->
-      <div class="project-card-alt">
+      <div class="project-card-alt" data-layout="big-picture">
         <div class="project-content">
           <h4 class="project-title">Flight Recorder PCB</h4>
-          <p class="project-date">Project Lead @ MASA; 03/24 to 01/25</p>
+          <div class="project-card-item-tags">
+            <span class="project-card-item-tag-1">Project Lead @ MASA</span><span class="project-card-item-tag-2">Altium Designer</span>
+          </div>
+          <span class="project-date">03/24 to 01/25</span>
           <p class="project-description">Designed and fabricated my first PCB from start to finish.
             Includes onboard sensors, Ethernet, SPI, I2C, EEPROM, and an STM32 to record and protect 
             flight data. Banana-shaped to wrap around the engine.
-          </p>
-          <p class="project-description">
-            <span class="highlight-4">Codename: </span> <span class="highlight-5">Keylime</span>
-          </p>
-          <p class="project-description">
-            <span class="highlight-4">Num. Components: </span> <span class="highlight-5">181</span>
-          </p>
-          <p class="project-description">
-            <span class="highlight-4">Layers: </span> <span class="highlight-5">6</span>
+
+            <br><span class="highlight-4">Alias: </span><span class="highlight-5">Keylime</span>
+            <br><span class="highlight-4">Number Components: </span><span class="highlight-5">181</span>
+            <br><span class="highlight-4">Layers: </span><span class="highlight-5">6</span>
+            <br><span class="highlight-4">Team Members: </span><span class="highlight-5">1</span></br>
           </p>
           <div class="project-links">
             <a href="https://masa.engin.umich.edu/" target="_blank" class="btn project-btn">Visit MASA</a>
           </div>
         </div>
         <div class="project-images">
-          <div class="image-carousel js-flickity" data-flickity-options='{ "wrapAround": true, "pageDots": true, "prevNextButtons": true }'>
-            <div class="carousel-cell">
+          <div class="image-carousel-vertical">
+            <div class="image-item">
               <img src="images/project_keylime_1.png" alt="Project Image 1">
             </div>
-            <div class="carousel-cell">
+            <div class="image-item">
               <img src="images/project_keylime_2.png" alt="Project Image 2">
             </div>
-            <div class="carousel-cell">
+            <div class="image-item">
               <img src="images/project_keylime_3.png" alt="Project Image 3">
             </div>
           </div>
@@ -441,10 +504,13 @@ experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab
       </div>
 
       <!-- MDST Stock Market Analysis Project -->
-      <div class="project-card">
+      <div class="project-card" data-layout="big-picture">
         <div class="project-content">
-          <h4 class="project-title">Machine Learning Stock Market Analysis</h4>
-          <p class="project-date">MDST; 01/24 to 05/24</p>
+          <h4 class="project-title">Machine Learning Based Stock Analysis</h4>
+          <div class="project-card-item-tags">
+            <span class="project-card-item-tag-1">Team Member @ MDST</span><span class="project-card-item-tag-2">Python</span>
+          </div>
+          <p class="project-date">01/24 to 05/24</p>
           <p class="project-description">Created an <span class="highlight-5">LSTM model</span> designed to predict NVIDIA's stock price trend for the next day, with performance in <span class="highlight-5">RMSE and MAPE precision</span> benchmarks over <span class="highlight-4">10x greater</span> than the team's base model.</p>
           <div class="project-links">
             <a href="https://mdst-stocks.streamlit.app/" target="_blank" class="btn project-btn">View Streamlit</a>
@@ -452,11 +518,11 @@ experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab
           </div>
         </div>
         <div class="project-images">
-          <div class="image-carousel js-flickity" data-flickity-options='{ "wrapAround": true, "pageDots": true, "prevNextButtons": true }'>
-            <div class="carousel-cell">
+          <div class="image-carousel-vertical">
+            <div class="image-item">
               <img src="images/project_MLstocks_default.png" alt="Project Image 1">
             </div>
-            <div class="carousel-cell">
+            <div class="image-item">
               <img src="images/project_MLstocks_hover.png" alt="Project Image 2">
             </div>
           </div>
@@ -464,7 +530,7 @@ experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab
       </div>
 
       <!-- Nerf Blaster Modification Project -->
-      <div class="project-card-alt">
+      <div class="project-card-alt" data-layout="big-picture">
         <div class="project-content">
           <h4 class="project-title">Electric Nerf Blaster Modification</h4>
           <p class="project-date">Personal Project; 11/19 to 01/22</p>
@@ -474,17 +540,17 @@ experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab
           </div>
         </div>
         <div class="project-images">
-          <div class="image-carousel js-flickity" data-flickity-options='{ "wrapAround": true, "pageDots": true, "prevNextButtons": true }'>
-            <div class="carousel-cell">
+          <div class="image-carousel-vertical">
+            <div class="image-item">
               <img src="images/project_nerf_1.png" alt="Project Image 1">
             </div>
-            <div class="carousel-cell">
+            <div class="image-item">
               <img src="images/project_nerf_2.png" alt="Project Image 2">
             </div>
-            <div class="carousel-cell">
+            <div class="image-item">
               <img src="posts/galleries/nerf-leftside.jpg" alt="Project Image 3">
             </div>
-            <div class="carousel-cell">
+            <div class="image-item">
               <img src="posts/galleries/nerf-rightside.jpg" alt="Project Image 4">
             </div>
           </div>
@@ -575,24 +641,6 @@ experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab
 <section id="contact">
   <div class="container mt-3 additionalContent">
     <div class="row justify-content-center mt-4">
-      <div class="col-lg-6">
-        <h3 class="text-left mt-3" style="font-weight: bold">CONTACT ME</h3> 
-        <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/xzbnvead" method="post" class="contact-form-desktop">
-        <fieldset id="fs-frm-inputs">
-          <label for="full-name">Please Provide a Name:</label>
-          <input type="text" name="name" id="full-name" placeholder="First and Last Name" required="">
-          <label for="email-address">Email Address:</label>
-          <input type="email" name="_replyto" id="email-address" placeholder="example@email.com" required="">
-          <label for="message">Message:</label>
-          <textarea rows="5" name="message" id="message" placeholder="Type your message here..." required=""></textarea>
-          <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
-        </fieldset>
-        <input type="submit" value="Submit">
-        </form>
-                <a href="https://dsanico.github.io/myportfolio/contactme" class="btn project-btn contact-button-mobile">Contact Form Page</a>
-      </div>
-
-      <div class="col-lg-6">
         <!-- additional bio -->
         <div class="mt-3">
           <h3 class="text-left" style="font-weight: bold">ADDITIONAL BIO</h3>
@@ -603,10 +651,78 @@ experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab
                      <span class="highlight-3">breakfast</span>
             facts:   <span class="highlight-3">has a corgi</span>
                      <span class="highlight-3">big LeBron fan</span>
-                     <span class="highlight-3">former debater (2x NSDA Academic 
-                     All-American, NCFL Grand Nationals Finalist '22)</span>
+                     <span class="highlight-3">former debater (NSDA Academic 
+                     All-American, NCFL Grand Nationals Finalist '22, 
+                     7x Tournament of Champions Bid Recipient)</span>
           </pre>
           <image src="images/computer.gif" style="width: 15em; margin-left: 7.5em;"></image>
+    </div>
+    
+    <!-- Sticker Elements -->
+    <!-- 
+      TO ADD A NEW STICKER: Copy the structure below and modify:
+      1. Inline style variables: --sticker-top, --sticker-left, --sticker-rotate, --sticker-scale
+      2. Text content in .sticker-text span
+      3. Icon class in .sticker-icon-section (optional)
+      
+      CONFIGURATION VARIABLES:
+      - --sticker-top: vertical position (e.g., "20%", "50px")
+      - --sticker-left: horizontal position (e.g., "10%", "100px")
+      - --sticker-rotate: rotation angle (e.g., "-5deg", "10deg", "0deg")
+      - --sticker-scale: size multiplier (e.g., "1" = default, "0.5" = half size, "2" = double size)
+    -->
+    
+    <!-- Sticker 1 -->
+    <div class="sticker" style="--sticker-top: 20%; --sticker-left: 70%; --sticker-rotate: -5deg; --sticker-scale: .75;">
+      <div class="sticker-image-section">
+        <img src="images/block_m-hex.png" alt="Block M" class="sticker-image">
+      </div>
+      <div class="sticker-separator"></div>
+      <div class="sticker-text-section">
+        <span class="sticker-text">EECS 370</span>
+      </div>
+      <div class="sticker-icon-section">
+        <i class="fa-regular fa-square-check sticker-icon"></i>
+      </div>
+    </div>
+    
+    <div class="sticker" style="--sticker-top: 50%; --sticker-left: 50%; --sticker-rotate: 7deg; --sticker-scale: .75;">
+      <div class="sticker-image-section">
+        <img src="images/block_m-hex.png" alt="Block M" class="sticker-image">
+      </div>
+      <div class="sticker-separator"></div>
+      <div class="sticker-text-section">
+        <span class="sticker-text">EECS 230</span>
+      </div>
+      <div class="sticker-icon-section">
+        <i class="fa-regular fa-square-check sticker-icon"></i>
+      </div>
+    </div>
+
+    <div class="sticker" style="--sticker-top: 80%; --sticker-left: 60%; --sticker-rotate: -3deg; --sticker-scale: .75;">
+      <div class="sticker-image-section">
+        <img src="images/block_m-hex.png" alt="Block M" class="sticker-image">
+      </div>
+      <div class="sticker-separator"></div>
+      <div class="sticker-text-section">
+        <span class="sticker-text">EECS 215</span>
+      </div>
+      <div class="sticker-icon-section">
+        <i class="fa-regular fa-square-check sticker-icon"></i>
+      </div>
+    </div>
+
+    
+    <div class="sticker" style="--sticker-top:100%; --sticker-left: 50%; --sticker-rotate: 2deg; --sticker-scale: .75;">
+      <div class="sticker-image-section">
+        <img src="images/block_m-hex.png" alt="Block M" class="sticker-image">
+      </div>
+      <div class="sticker-separator"></div>
+      <div class="sticker-text-section">
+        <span class="sticker-text">EECS 398</span>
+      </div>
+      <div class="sticker-icon-section">
+        <i class="fa-regular fa-square-check sticker-icon"></i>
       </div>
     </div>
   </div>

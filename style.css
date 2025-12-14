@@ -74,7 +74,18 @@ h3, h4, h5, h6 {
 .highlight-5 {
     color: #000000;
     font-family: 'Roboto Mono', monospace;
-    font-style: italic;
+}
+
+/* Project section specific highlights for transparent background */
+#projects .highlight-4 {
+    color: #bdbdbd;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+}
+
+#projects .highlight-5 {
+    color: #8be9fd;
+    font-family: 'Roboto Mono', monospace;
 }
 
 @media (max-width: 768px) { 
@@ -91,6 +102,10 @@ h3, h4, h5, h6 {
         font-size: clamp(1rem, min(4vw, 5vh), 1.8rem);
     }
 } 
+
+/* font imports */
+/* Note: Oswald font is available via Google Fonts import in index.html */
+
 
 /* snappy scrolling for sections */
 html {
@@ -143,17 +158,19 @@ html {
 
 /* buttons */
 .project-btn {
-    background-color: #1a1a2e;
+    background-color: rgba(26, 26, 46, 0.8);
     color: white;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     margin-bottom: 10vh;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .project-btn:hover {
-    background-color: #16213e;
+    background-color: rgba(22, 33, 62, 0.9);
     color: white;
     transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .text-center.mt-auto {
@@ -186,6 +203,7 @@ section {
 
 #contact {
     background: linear-gradient(135deg, #1d1d1d 0%, #000000 200%);
+    position: relative;  /* Required for absolute positioning of sticker */
 }
 
 #project-page-skills {
@@ -209,14 +227,29 @@ section {
 font-weight: bold;
 }
 
+.navbar-brand-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .navbar-brand {
     font-family: 'Orbitron', sans-serif;
     color: #ffcb05;
+    margin: 0;
+}
+
+.navbar-icon {
+    height: 2.5em;
+    width: auto;
+    display: block;
+    object-fit: contain;
 }
 
 .nav-link {
     font-family: 'Roboto Mono', monospace;
-    color: #ffcb05;
+    font-weight: 200;
+    color: #ffffff;
 }
 
 /* hero background image */
@@ -229,6 +262,34 @@ font-weight: bold;
     display: flex; 
     align-items: center; 
     justify-content: center; 
+}
+
+/* hero background with video */
+.bgimage-video {
+    height:100vh;
+    background-color: #000000; /* Fallback color if video fails */
+    position: relative;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden;
+}
+
+.bgimage-video .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Behind all content but above background */
+    overflow: hidden;
+}
+
+.bgimage-video .video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
 }
 
 .bgimage-2 {
@@ -251,6 +312,8 @@ font-weight: bold;
     align-items: center; 
     height: calc(100vh - [navbar-height]px); 
     padding-top: [navbar-height]px;
+    position: relative;
+    z-index: 1; /* Above video background */
 }
 
 #typewriter {
@@ -747,7 +810,7 @@ color: #ffffff;
 /* ========================================= PROJECTS SECTION ========================================= */
 #projects {
   padding: 0;
-  background: #1a1823;
+  background: #111111;
   position: relative;
 }
 
@@ -763,7 +826,7 @@ color: #ffffff;
   width: 100%;
   height: calc(100vh - 56px);
   display: flex;
-  background: linear-gradient(135deg, #ffffff 0%, #a477ae 100%);
+  background: transparent;
   border: none;
   overflow: hidden;
   margin: 0;
@@ -771,9 +834,23 @@ color: #ffffff;
 }
 
 .project-card-alt {
-    background: linear-gradient(45deg, #a477ae 0%, #ffffff 100%); 
+    background: transparent; 
 }
 
+/* Big Picture Layout - Default */
+.project-card[data-layout="big-picture"] .project-content,
+.project-card-alt[data-layout="big-picture"] .project-content {
+  padding: clamp(20px, 3vh, 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: min(25%, 30%);
+  background: transparent;
+  margin-left: clamp(50px, 2vw, 90px);
+  margin-top: clamp(50px, 8vh, 100px);
+}
+
+/* Legacy support - if no data-layout attribute, assume big-picture */
 .project-content {
   padding: clamp(20px, 3vh, 40px);
   display: flex;
@@ -781,18 +858,33 @@ color: #ffffff;
   justify-content: center;
   width: min(25%, 30%);
   background: transparent;
-  margin-left: clamp(2vw, 3vh, 3vw);
+  margin-left: clamp(50px, 2vw, 90px);
   margin-top: clamp(50px, 8vh, 100px);
 }
 
+/* Big Picture Layout - Images */
+.project-card[data-layout="big-picture"] .project-images,
+.project-card-alt[data-layout="big-picture"] .project-images {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  width: 65%;
+  margin-bottom: 0;
+}
+
+/* Legacy support */
 .project-images {
   flex: 1;
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   background: transparent;
   width: 65%;
-  margin-bottom: 100px;
+  margin-bottom: 0;
 }
 
 .project-title {
@@ -800,7 +892,7 @@ color: #ffffff;
   font-weight: 700;
   font-size: clamp(1.5em, min(4vw, 5vh), 2.5em);
   margin-bottom: clamp(10px, 2vh, 20px);
-  color: #1a1a2e;
+  color: #ffffff;
   letter-spacing: clamp(0.5px, 0.5vw, 1px);
 }
 
@@ -808,22 +900,23 @@ color: #ffffff;
   font-family: 'Roboto Mono', monospace;
   font-weight: 500;
   font-size: clamp(0.9em, min(2.5vw, 3vh), 1.1em);
-  color: #16213e;
+  color: #ffffff;
   margin-bottom: clamp(10px, 2vh, 20px);
 }
 
 .project-description {
   font-family: 'Inter', Arial, sans-serif;
-  font-size: clamp(0.8em, min(2.2vw, 2.8vh), 1em);
+  font-size: clamp(0.6em, min(2.2vw, 2.8vh), 0.9em);
   line-height: 1.6;
   margin-bottom: clamp(15px, 3vh, 30px);
-  color: #0f3460;
+  color: #ffffff;
 }
 
 .project-links {
   margin: auto;
 }
 
+/* Legacy horizontal carousel - keeping for reference but not used */
 .image-carousel {
   width: 100%;
   height: 100%;
@@ -842,6 +935,61 @@ color: #ffffff;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+/* Vertical Scrollable Image Container */
+.image-carousel-vertical {
+  width: 100%;
+  max-height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(15px, 2vh, 25px);
+  padding-left: clamp(10px, 1vw, 15px);
+  direction: rtl; /* Move scrollbar to left */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #7a7e76 #1a1823; /* For Firefox */
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Custom scrollbar for Webkit browsers - matching timeline style */
+.image-carousel-vertical::-webkit-scrollbar {
+  width: 8px;
+}
+
+.image-carousel-vertical::-webkit-scrollbar-track {
+  background: #1a1823;
+  border-radius: 4px;
+}
+
+.image-carousel-vertical::-webkit-scrollbar-thumb {
+  background: #00d9ff;
+  border-radius: 4px;
+}
+
+.image-carousel-vertical::-webkit-scrollbar-thumb:hover {
+  background: #00ffff;
+}
+
+.image-carousel-vertical .image-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-height: fit-content;
+  direction: ltr; /* Reset direction for content */
+}
+
+.image-carousel-vertical .image-item img {
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: clamp(4px, 0.5vw, 8px);
 }
 
 /* Flickity Navigation */
@@ -883,7 +1031,7 @@ color: #ffffff;
   right: 20px;
 }
 
-/* Image Carousel Navigation */
+/* Image Carousel Navigation - Legacy (not used for vertical carousel) */
 .image-carousel .flickity-button {
   top: auto;
   bottom: -33px;
@@ -900,7 +1048,7 @@ color: #ffffff;
   right: 30vw;
 }
 
-/* Dots */
+/* Dots - Legacy (not used for vertical carousel) */
 .flickity-page-dots {
   bottom: -2.5vh;
 }
@@ -917,6 +1065,110 @@ color: #ffffff;
 .flickity-page-dots .dot.is-selected {
   background: #1a1a2e;
   opacity: 1;
+}
+
+/* Cards Layout */
+.project-card[data-layout="cards"],
+.project-card-alt[data-layout="cards"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(20px, 3vh, 40px) clamp(2vw, 3vh, 3vw);
+  overflow-y: auto;
+  position: relative;
+}
+
+.project-cards-header {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8em, min(4vw, 5vh), 2.5em);
+  color: #ffffff;
+  margin: 0 auto;
+  margin-bottom: clamp(20px, 3vh, 30px);
+  margin-top: clamp(30px, 6vh, 70px);
+  letter-spacing: clamp(0.5px, 0.5vw, 1px);
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.project-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(20px, 3vw, 30px);
+  width: 100%;
+  max-width: 1200px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.project-card-item {
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: clamp(8px, 1vw, 12px);
+  padding: clamp(20px, 2.5vw, 30px);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.project-card-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.project-card-item-title {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1em, min(3vw, 4vh), 1.2em);
+  margin-bottom: clamp(8px, 1vh, 12px);
+  color: #ffffff;
+  letter-spacing: clamp(0.5px, 0.5vw, 1px);
+}
+
+.project-card-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(6px, 0.8vw, 10px);
+  margin-bottom: clamp(10px, 1.5vh, 15px);
+  align-items: center;
+}
+
+.project-card-item-tag-1 {
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  font-size: clamp(0.65em, min(1.8vw, 2.2vh), 0.8em);
+  color: #50fa7b;
+  background: rgba(80, 250, 123, 0.1);
+  padding: clamp(3px, 0.4vh, 5px) clamp(6px, 0.8vw, 10px);
+  border-radius: 4px;
+  width: fit-content;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.project-card-item-tag-2 {
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  font-size: clamp(0.65em, min(1.8vw, 2.2vh), 0.8em);
+  color: #82dcff;
+  background: rgba(80, 134, 250, 0.1);
+  padding: clamp(3px, 0.4vh, 5px) clamp(6px, 0.8vw, 10px);
+  border-radius: 4px;
+  width: fit-content;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.project-card-item-text {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: clamp(0.6em, min(2.2vw, 2.8vh), 0.9em);
+  line-height: 1.4;
+  color: #ffffff;
+  flex-grow: 1;
 }
 
 /* Responsive Design */
@@ -937,7 +1189,29 @@ color: #ffffff;
     height: min(50vh, 60vh);
     max-width: 100%;
     width: 100%;
-    margin-bottom: clamp(10px, 2vh, 20px);
+    justify-content: center;
+  }
+
+  .image-carousel-vertical {
+    gap: clamp(10px, 1.5vh, 15px);
+    max-height: 75vh;
+  }
+
+  .image-carousel-vertical .image-item img {
+    max-height: 60vh;
+  }
+
+  .project-images {
+    margin-bottom: 0;
+  }
+
+  .project-cards-header {
+    margin-top: clamp(10px, 2vh, 20px);
+  }
+
+  .project-card[data-layout="cards"],
+  .project-card-alt[data-layout="cards"] {
+    padding: clamp(20px, 3vh, 40px) clamp(15px, 2vw, 20px);
   }
 
   .project-title {
@@ -947,9 +1221,19 @@ color: #ffffff;
   .project-description {
     font-size: clamp(0.9em, min(2.5vw, 3vh), 1.1em);
   }
+
+  .project-cards-container {
+    grid-template-columns: 1fr;
+    width: 95%;
+    gap: clamp(15px, 2vw, 20px);
+  }
 }
 
 /* ========================================= CONTACT INFO SECTION ========================================= */
+.additionalContent {
+    position: relative;  /* Required for absolute positioning of sticker */
+}
+
 .additionalContent .row {
     display: flex;
     align-items: start;
@@ -959,6 +1243,118 @@ color: #ffffff;
     flex-direction: column;
     justify-content: start;
     align-items: start;  
+}
+
+/* ========================================= STICKER ELEMENT ========================================= */
+/* Base sticker class - uses CSS custom properties for easy customization */
+/* To add a new sticker, copy the HTML structure and set these inline styles:
+   style="--sticker-top: 20%; --sticker-left: 10%; --sticker-rotate: -5deg; --sticker-scale: 1;"
+   CONFIGURATION: --sticker-scale controls size (1 = default, 0.5 = half size, 2 = double size, etc.)
+*/
+.sticker {
+    position: absolute;
+    /* CONFIGURATION: Use CSS variables for position, rotation, and scale - set via inline styles */
+    top: var(--sticker-top, 20%);
+    left: var(--sticker-left, 10%);
+    display: flex;
+    align-items: center;
+    background-color: #00274c;  /* U-M Blue color */
+    border-radius: 0.067em 0 0 0.067em;  /* ~4px relative to base, scales proportionally */
+    height: 60px;          /* Base height - scales with --sticker-scale */
+    width: 360px;          /* Base width - scales with --sticker-scale (approximately 6x height) */
+    font-size: 60px;       /* Base font-size for em units (1em = 60px) */
+    transform: rotate(var(--sticker-rotate, -5deg)) scale(var(--sticker-scale, 1));  /* Scale and rotate */
+    transform-origin: center center;  /* Scale from center */
+    box-shadow: 0 0.033em 0.133em rgba(0, 0, 0, 0.3);  /* Scales proportionally */
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* Left section: Image container - all dimensions scale proportionally */
+.sticker-image-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 1.167em;       /* ~70px relative to 60px base, scales proportionally */
+    padding: 0;            /* No padding - image touches left edge */
+    flex-shrink: 0;
+}
+
+.sticker-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* White separator line - scales proportionally */
+.sticker-separator {
+    width: 0.017em;        /* ~1px relative to base, scales proportionally */
+    height: 80%;
+    background-color: #ffffff;
+    flex-shrink: 0;
+    margin-left: 0.167em; /* ~10px relative to base, scales proportionally */
+}
+
+/* Middle section: Text - scales proportionally */
+.sticker-text-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 0 0.25em;     /* ~15px relative to base, scales proportionally */
+    height: 100%;
+}
+
+.sticker-text {
+    color: #ffffff;
+    font-family: 'Oswald', monospace;
+    font-weight: 400;
+    font-size: 3rem;       /* Scales with sticker via transform: scale() */
+    white-space: nowrap;
+}
+
+/* Right section: White square with icon - scales proportionally */
+.sticker-icon-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 1em;            /* ~60px relative to 60px base, scales proportionally */
+    height: 100%;
+    flex-shrink: 0;
+    border-radius: 0 0.067em 0.067em 0;  /* ~4px relative to base, scales proportionally */
+    margin-right: -0.167em; /* ~-10px relative to base, scales proportionally */
+}
+
+.sticker-icon {
+    color: #000000;
+    font-size: 3rem;       /* Scales with sticker via transform: scale() */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sticker {
+        width: 280px;       /* Smaller width on mobile */
+        height: 50px;       /* Smaller height on mobile */
+        /* Position variables still work, but can be overridden here if needed */
+    }
+    
+    .sticker-image-section {
+        width: 50px;
+    }
+    
+    .sticker-text {
+        font-size: 0.9rem;
+    }
+    
+    .sticker-icon-section {
+        width: 50px;
+    }
+    
+    .sticker-icon {
+        font-size: 1.2rem;
+    }
 }
 
 /* contact form */
