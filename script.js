@@ -184,6 +184,100 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
 
+// Carousel indicators
+function initializeCarouselIndicators() {
+  const carousel = document.querySelector('.project-carousel');
+  const indicatorsContainer = document.getElementById('carouselIndicators');
+  
+  if (!carousel || !indicatorsContainer) {
+    return;
+  }
+
+  // Try multiple times to catch Flickity initialization
+  let attempts = 0;
+  const maxAttempts = 10;
+  
+  const tryInit = () => {
+    attempts++;
+    const flkty = Flickity.data(carousel);
+    
+    if (flkty && flkty.slides && flkty.slides.length > 0) {
+      const slideCount = flkty.slides.length;
+      
+      // Clear any existing dots
+      indicatorsContainer.innerHTML = '';
+      
+      // Create indicator dots
+      for (let i = 0; i < slideCount; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'carousel-indicator-dot';
+        if (i === 0) {
+          dot.classList.add('active');
+        }
+        dot.setAttribute('data-index', i);
+        indicatorsContainer.appendChild(dot);
+      }
+      
+      // Update active dot on slide change
+      flkty.on('select', function() {
+        const activeIndex = flkty.selectedIndex;
+        const dots = indicatorsContainer.querySelectorAll('.carousel-indicator-dot');
+        dots.forEach((dot, index) => {
+          if (index === activeIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      });
+      
+      // Make dots clickable
+      indicatorsContainer.querySelectorAll('.carousel-indicator-dot').forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          flkty.select(index);
+        });
+      });
+    } else if (attempts < maxAttempts) {
+      setTimeout(tryInit, 200);
+    }
+  };
+  
+  // Start trying after a short delay
+  setTimeout(tryInit, 100);
+}
+
+document.addEventListener('DOMContentLoaded', initializeCarouselIndicators);
+// Also try after window load in case Flickity initializes later
+window.addEventListener('load', initializeCarouselIndicators);
+
+// Group highlight functionality for skills section
+// When hovering over a general-skill-item, highlight related skill items
+document.addEventListener('DOMContentLoaded', function() {
+  const generalSkillItems = document.querySelectorAll('.general-skill-item[data-group]');
+  const skillItems = document.querySelectorAll('.skills-list-item[data-group]');
+  
+  generalSkillItems.forEach(generalItem => {
+    const groupName = generalItem.getAttribute('data-group');
+    
+    // Mouse enter - add group-highlight class to related skills
+    generalItem.addEventListener('mouseenter', function() {
+      skillItems.forEach(skillItem => {
+        const skillGroup = skillItem.getAttribute('data-group');
+        if (skillGroup === groupName) {
+          skillItem.classList.add('group-highlight');
+        }
+      });
+    });
+    
+    // Mouse leave - remove group-highlight class from all skills
+    generalItem.addEventListener('mouseleave', function() {
+      skillItems.forEach(skillItem => {
+        skillItem.classList.remove('group-highlight');
+      });
+    });
+  });
+});
+
 // Skills section toggle functionality
 /* function toggleSkills(skillsId) {
     const skillsList = document.getElementById(skillsId);
