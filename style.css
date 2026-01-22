@@ -203,6 +203,17 @@ html {
     border-color: rgba(255, 255, 255, 0.3);
 }
 
+.contact-btn {
+  font-size: 5em;
+  color: white;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.contact-btn:hover {
+  transform: scale(1.05);
+}
+
 .text-center.mt-auto {
     margin-top: auto; 
 }
