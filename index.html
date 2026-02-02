@@ -91,7 +91,7 @@
 <section id="about">
   <div class="container mt-4 pt-4">
 
-    <h1 class="text-center">ABOUT</h1>
+    <h1 class="text-center" style="color: black">ABOUT</h1>
 
     <div class="row about-flex-row align-items-stretch">
       <div class="about-card col-lg-8">
@@ -101,34 +101,17 @@
             </p>
           </div>
           <div class="row mt-3">
-            <div class="col-md-3" style="width: fit-content">
-              <p>
-                Relevant Coursework:
-              </p>
-              <pre class="coursework-list">
-- Circuit Analysis
-- Signals and Systems
-- Electromagnetics
-- Digital Logic
-- Intro to DSA
-- Intro to Computer Organization
-- Principles of Optics
-- Intro to Quantum Information Technology
-- Electrical Engineering System Design
-              </pre>
-            </div>
-            <div class="col-md-3" style="width: fit-content; justify-content: center;">
               <p>Quick Facts:</p>
               <pre id="typewriterAbout">
-name:  <span class="highlight-3">David Sanico</span>
-class: <span class="highlight-3">2027</span>
-major: <span class="highlight-3">Electrical Engineering</span>
-minor: <span class="highlight-3">Computer Science</span>
-GPA:   <span class="highlight-3">3.66/4.00</span>
+name:       <span class="highlight-3">David Sanico</span>
+class:      <span class="highlight-3">2027</span>
+major:      <span class="highlight-3">Electrical Engineering</span>
+minor:      <span class="highlight-3">Computer Science</span>
+GPA:        <span class="highlight-3">3.66/4.00</span>
+awards:     <span class="highlight-3">Dean's List, James B. Angell Scholar, Ernest W. Reynolds Endowed Scholar</span>
 experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab</span>
             <span class="highlight-3">Avionics Hardware Lead @ MASA</span>
             <span class="highlight-3">Data Science Intern @ Pair Tech</span></pre>
-            </div>
           </div>
         </div>
       </div>
@@ -826,22 +809,82 @@ experience: <span class="highlight-3">Electrical Engineering Intern @ Rocket Lab
         <!-- ========== Additional Bio ========== -->
         <div class="mt-3">
           <h3 class="text-left" style="font-weight: bold">ADDITIONAL BIO</h3>
-          <pre>
-hobbies: <span class="highlight-3">watercoloring</span>
-         <span class="highlight-3">weightlifting</span>
-         <span class="highlight-3">running & hiking</span>
-         <span class="highlight-3">reading</span>
-         <span class="highlight-3">breakfast</span>
-facts:   <span class="highlight-3">has a corgi</span>
-         <span class="highlight-3">LeBron fan</span>
-         <span class="highlight-3">former debater (NSDA Academic 
-         All-American, NCFL Grand Nationals Finalist '22, 
-         7x Tournament of Champions Bid Recipient)</span>
-          </pre>
-        
-        <h3 class="text-left" style="font-weight: bold">ABOUT THIS SITE</h3>
-        <pre>I created this website on my own with HTML/CSS/JS, mostly for fun. 
-Perhaps in another life I was a web designer.
+
+          <div class="additional-bio-section">
+            <div class="additional-bio-buttons">
+              <div class="general-skill-item additional-bio-trigger" data-bio-card="bio-coursework-card">
+                <p class="highlight-4" style="color: white; margin: 0;">Relevant Coursework</p>
+                <i class="fa-solid fa-book" style="color: white; font-size: 2em"></i>
+              </div>
+              <div class="general-skill-item additional-bio-trigger" data-bio-card="bio-hobbies-card">
+                <p class="highlight-4" style="color: white; margin: 0;">Hobbies and Interests</p>
+                <i class="fa-solid fa-running" style="color: white; font-size: 2em"></i>
+              </div>
+              <div class="general-skill-item additional-bio-trigger" data-bio-card="bio-fun-facts-card">
+                <p class="highlight-4" style="color: white; margin: 0;">Facts</p>
+                <i class="fa-solid fa-star" style="color: white; font-size: 2em"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overlay cards that appear over stickers on hover -->
+          <div class="additional-bio-card" id="bio-coursework-card">
+            <div class="additional-bio-card-header">
+              <h3>RELEVANT COURSEWORK</h3>
+            </div>
+            <div class="additional-bio-card-body">
+              <p class="additional-bio-card-subtitle">University of Michigan:</p>
+              <ul class="additional-bio-card-list">
+                <li>Circuit Analysis</li>
+                <li>Signals and Systems</li>
+                <li>Electromagnetics</li>
+                <li>Intro to Data Structures and Algorithms</li>
+                <li>Intro to Computer Organization</li>
+                <li>Principles of Optics</li>
+                <li>Intro to Quantum Information Technology</li>
+                <li>Electrical Engineering System Design</li>
+              </ul>
+              <p class="additional-bio-card-subtitle">Universidad Carlos III de Madrid:</p>
+              <ul class="additional-bio-card-list">
+                <li>Digital Logic (VHDL)</li>
+                <li>Intro to Engineering Management</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="additional-bio-card" id="bio-hobbies-card">
+            <div class="additional-bio-card-header">
+              <h3>HOBBIES AND INTERESTS</h3>
+            </div>
+            <div class="additional-bio-card-body">
+              <ul class="additional-bio-card-list">
+                <li>Watercoloring & Drawing</li>
+                <li>Weightlifting</li>
+                <li>Running & Hiking</li>
+                <li>Reading</li>
+                <li>Breakfast</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="additional-bio-card" id="bio-fun-facts-card">
+            <div class="additional-bio-card-header">
+              <h3>FACTS</h3>
+            </div>
+            <div class="additional-bio-card-body">
+              <ul class="additional-bio-card-list">
+                <li>LeBron fan</li>
+                <li>from Baltimore</li>
+                <li>former debater (NSDA Academic All-American, NCFL Grand Nationals Finalist '22, 7x Tournament of Champions Bid Recipient)</li>
+              </ul>
+            <div class="additional-bio-card-header">
+              <h3 class="text-left" style="font-weight: bold">ABOUT THIS SITE</h3>
+            </div>
+            I created this website on my own with HTML/CSS/JS, mostly for fun. 
+            Perhaps in another life I was a web designer.
+            </div>
+          </div>
+      
 
 </pre>
 
@@ -850,6 +893,7 @@ Perhaps in another life I was a web designer.
         <a href="https://linkedin.com/in/david-sanico" target="_blank">
           <i class="fa-brands fa-linkedin contact-btn"></i>
         </a>
+
     </div>
     
     <!-- ========== Stickers ========== -->
@@ -866,7 +910,7 @@ Perhaps in another life I was a web designer.
       - --sticker-scale: size multiplier (e.g., "1" = default, "0.5" = half size, "2" = double size)
     -->
     
-    <div class="sticker" style="--sticker-top: 20%; --sticker-left: 70%; --sticker-rotate: -5deg; --sticker-scale: .75;">
+    <div class="sticker" style="--sticker-top: 15%; --sticker-left: 70%; --sticker-rotate: -5deg; --sticker-scale: .75;">
       <div class="sticker-image-section">
         <img src="images/block_m-hex.png" alt="Block M" class="sticker-image">
       </div>
@@ -879,7 +923,7 @@ Perhaps in another life I was a web designer.
       </div>
     </div>
     
-    <div class="sticker" style="--sticker-top: 50%; --sticker-left: 50%; --sticker-rotate: 7deg; --sticker-scale: .75;">
+    <div class="sticker" style="--sticker-top: 40%; --sticker-left: 50%; --sticker-rotate: 7deg; --sticker-scale: .75;">
       <div class="sticker-image-section">
         <img src="images/block_m-hex.png" alt="Block M" class="sticker-image">
       </div>
@@ -892,7 +936,7 @@ Perhaps in another life I was a web designer.
       </div>
     </div>
 
-    <div class="sticker" style="--sticker-top: 80%; --sticker-left: 60%; --sticker-rotate: -3deg; --sticker-scale: .75;">
+    <div class="sticker" style="--sticker-top: 70%; --sticker-left: 60%; --sticker-rotate: -3deg; --sticker-scale: .75;">
       <div class="sticker-image-section">
         <img src="images/block_m-hex.png" alt="Block M" class="sticker-image">
       </div>
@@ -916,6 +960,11 @@ Perhaps in another life I was a web designer.
       <div class="sticker-icon-section">
         <i class="fa-regular fa-square-check sticker-icon"></i>
       </div>
+    </div>
+
+    <div class="sticker" style="--sticker-top:100%; --sticker-left: 75%; --sticker-rotate: -2deg; --sticker-scale: .75;
+    background-color: transparent;">
+      <p>^my favorite classes</p>
     </div>
 
   </div>

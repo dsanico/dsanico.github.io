@@ -208,6 +208,7 @@ html {
   color: white;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  margin-right: 10px;
 }
 
 .contact-btn:hover {
@@ -235,7 +236,7 @@ section {
 }
 
 #about {
-    background: linear-gradient(135deg, #1d1d1d 0%, #000000 200%);
+    background: linear-gradient(45deg, #ffffff 0%, #8fffa9 200%);
 }
 
 #skills {
@@ -266,7 +267,7 @@ section {
 
 /* navbar section higlight */
 .navbar-nav a.active {
-font-weight: bold;
+font-weight: 500;
 }
 
 /* Navbar container - full width with proper spacing */
@@ -441,19 +442,26 @@ color: #ffffff;
 .about-card {
     width: min(60vw, 90vw);
     height: min(60vh, 80vh); 
-    background-color: #030207;
     border-radius: clamp(5px, 1vw, 10px); 
-    border: solid 1px;
-    border-color: rgb(63, 62, 87);
+    background: rgba(30, 30, 30);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex; 
     flex-direction: row; 
     align-items: center; 
     justify-content: center; 
     margin: auto;
     box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .about-text {
+    color: #ffffff;
     text-align: left;
     height: auto;
     overflow-wrap: normal;
@@ -722,8 +730,10 @@ color: #ffffff;
     justify-content: space-between;
     gap: clamp(0.5rem, 1vw, 1rem);
     padding: clamp(0.5rem, 1vh, 0.75rem) clamp(0.75rem, 1.5vw, 1rem);
-    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     min-width: 400px;
     min-height: 60px;
@@ -733,7 +743,7 @@ color: #ffffff;
 .general-skill-item:hover{
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .general-skill-item p {
@@ -1734,6 +1744,98 @@ color: #ffffff;
     flex-direction: column;
     justify-content: start;
     align-items: start;  
+}
+
+/* Additional bio buttons & overlay cards */
+.additional-bio-section {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.additional-bio-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.75rem, 1.5vh, 1rem);
+    max-width: min(32vw, 420px);
+}
+
+.additional-bio-buttons .general-skill-item {
+    cursor: pointer;
+    min-width: 0;
+    width: 100%;
+}
+
+.additional-bio-card {
+    position: absolute;
+    top: 50%;
+    right: 6vw;
+    transform: translateY(-50%);
+    width: min(50vw, 720px);
+    height: min(66vh, 520px);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+    padding: clamp(1.5rem, 3vh, 2rem);
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    z-index: 20; /* Above stickers (z-index: 10) */
+    box-sizing: border-box;
+}
+
+.additional-bio-card.active {
+    display: flex;
+}
+
+.additional-bio-card-header h3 {
+    margin: 0;
+    color: #ffffff;
+    letter-spacing: clamp(3px, 1.2vw, 8px);
+}
+
+.additional-bio-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    overflow-y: auto;
+}
+
+.additional-bio-card-subtitle {
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
+    color: #bdbdbd;
+}
+
+.additional-bio-card-list {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.additional-bio-card-list li {
+    font-size: clamp(0.85rem, 1.9vw, 1.05rem);
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .additional-bio-buttons {
+        max-width: 100%;
+    }
+
+    .additional-bio-card {
+        right: 50%;
+        top: 55%;
+        transform: translate(50%, -50%);
+        width: 90vw;
+        height: min(65vh, 480px);
+    }
 }
 
 /* Sticker Elements */

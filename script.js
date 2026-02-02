@@ -276,6 +276,38 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   });
+
+  // Additional Bio hover cards in contact section
+  const bioTriggers = document.querySelectorAll('.additional-bio-trigger');
+  const bioCards = document.querySelectorAll('.additional-bio-card');
+  const contactSection = document.getElementById('contact');
+
+  function showBioCard(targetId) {
+    if (!targetId) return;
+    bioCards.forEach(card => {
+      if (card.id === targetId) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+  }
+
+  if (bioTriggers.length && bioCards.length && contactSection) {
+    bioTriggers.forEach(trigger => {
+      const targetId = trigger.getAttribute('data-bio-card');
+
+      // Show the corresponding card while hovering over the trigger
+      trigger.addEventListener('mouseenter', () => {
+        showBioCard(targetId);
+      });
+
+      // Hide all cards when the pointer leaves the trigger
+      trigger.addEventListener('mouseleave', () => {
+        bioCards.forEach(card => card.classList.remove('active'));
+      });
+    });
+  }
 });
 
 // Skills section toggle functionality
