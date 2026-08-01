@@ -68,33 +68,29 @@
   </div>
 </nav>
 
-<!-- ==================== MAIN BANNER ==================== -->
-<section class="bgimage-video" id="home">
-  <div class="video-background">
-    <video autoplay muted loop playsinline>
-      <source src="images/hero_black.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <div class="hero-text container-fluid">
-    <div style="padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center">
-      <h1>Hi, my name is David.</h1>
-      <div id="typewriter" class="typewriter-text">
-        <span id="text"></span>
-        <span class="caret"></span>
+<!-- ==================== HERO → ABOUT SCROLL SCENE ==================== -->
+<div id="hero-about-scene" class="hero-about-scene">
+  <div class="hero-about-sticky">
+    <section class="bgimage-video" id="home">
+      <div class="video-background">
+        <video autoplay muted loop playsinline>
+          <source src="images/hero_black.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="hero-text container-fluid">
+        <div class="hero-text-animate">
+          <h1>Hi, my name is David.</h1>
+          <div id="typewriter" class="typewriter-text">
+            <span id="text"></span>
+            <span class="caret"></span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- ==================== ABOUT SECTION ==================== -->
-<section id="about">
-  <div class="container mt-4 pt-4">
-
-    <h1 class="text-center" style="color: black">ABOUT</h1>
-
-    <div class="row about-flex-row align-items-stretch">
-      <div class="about-card col-lg-8">
+    <div class="about-card-stage" aria-hidden="true">
+      <div class="about-card about-card--transition col-lg-8">
         <div class="about-text">
           <div class="row mt-3">
             <p>I'm a rising senior at the University of Michigan majoring in Electrical Engineering. My focus is on embedded systems, with hands-on experience in PCB design, hardware verification, and firmware development. 
@@ -117,6 +113,18 @@ experience: <span class="highlight-3">Quantum Firmware Intern @ IBM</span>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ABOUT SECTION ==================== -->
+<section id="about">
+  <div class="container mt-4 pt-4">
+
+    <h1 class="text-center" style="color: black">ABOUT</h1>
+
+    <div class="row about-flex-row align-items-stretch">
+      <div class="about-card-slot col-lg-8"></div>
 
       <div class="about-image col-lg-4 d-flex align-items-stretch">
         <img class="imageHeadshot" src="images/headshot2.jpg" alt="Headshot">
@@ -974,7 +982,11 @@ experience: <span class="highlight-3">Quantum Firmware Intern @ IBM</span>
 
 
 <!-- load javascript after loading all html content -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="script.js"></script>
+<script src="scroll-animations.js"></script>
 <script src="flickity.pkgd.min.js"></script>
 
 </body>

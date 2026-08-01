@@ -146,18 +146,27 @@ h3, h4, h5, h6 {
   }
 }
 
-/* ========== SNAPPY SCROLLING ========== */
-html {
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+/* ========== SMOOTH SCROLL (Lenis) ========== */
+html.lenis,
+html.lenis body {
+    height: auto;
 }
 
-@media (max-width: 768px) { 
-    html {
-        scroll-snap-type: none;
-        scroll-behavior: smooth;
-    }
-} 
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
 
 /* ========== CARDS ========== */
 .card-title {
@@ -227,7 +236,6 @@ section {
     padding-right: clamp(1rem, 2vw, 2rem);
     min-height: 80vh;
     height: 100vh;
-    scroll-snap-align: start;
     display: flex; 
     flex-direction: column; 
     justify-content: center;
@@ -258,6 +266,62 @@ section {
     padding-top: 2rem;
 } 
 
+
+/* ========================================= HERO → ABOUT SCROLL SCENE ========================================= */
+.hero-about-scene {
+    height: 200vh;
+    position: relative;
+}
+
+.hero-about-sticky {
+    position: relative;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+#home.bgimage-video {
+    height: 100vh;
+    width: 100%;
+}
+
+.hero-text-animate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    will-change: transform, opacity;
+}
+
+.about-card-stage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+    padding: clamp(1rem, 2vw, 2rem);
+}
+
+.about-card-stage .about-card {
+    pointer-events: auto;
+    will-change: transform, opacity;
+}
+
+.about-card--transition {
+    margin: 0;
+}
+
+.about-card-slot {
+    min-height: min(60vh, 80vh);
+}
+
+.about-card-slot:empty {
+    visibility: hidden;
+}
 
 /* ========================================= HERO SECTION ========================================= */
 /* navbar dark on scroll */
@@ -458,6 +522,12 @@ color: #ffffff;
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   border-color: rgba(255, 255, 255, 0.2);
+}
+
+.about-card--transition:hover,
+.about-card--transition {
+  transform: none;
+  box-shadow: none;
 }
 
 .about-text {

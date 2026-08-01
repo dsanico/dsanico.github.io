@@ -1,33 +1,3 @@
-// add class navbarDark on navbar scroll
-const header = document.querySelector(".navbar");
-console.log(header);
-window.onscroll = function () {
-  const top = window.scrollY;
-  if (top >= 100) {
-    header.classList.add("navbarDark");
-  } else {
-    header.classList.remove("navbarDark");
-  }
-};
-
-// navbar highlight
-document.addEventListener("DOMContentLoaded", (event) => {
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".navbar-nav a");
-
-  function changeLinkState() {
-    let index = sections.length;
-
-    while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
-
-    navLinks.forEach((link) => link.classList.remove("active"));
-    navLinks[index] && navLinks[index].classList.add("active");
-  }
-
-  changeLinkState();
-  window.addEventListener("scroll", changeLinkState);
-});
-
 // hero section typewriter effect
 let textBase = "I am ";
 let descriptions = [
