@@ -308,10 +308,20 @@ section {
 }
 
 .terminal-card {
-    width: min(60vw, 90vw);
-    max-height: min(60vh, 75vh);
-    background: #000000;
-    border: 1px solid #ffffff;
+    /* TERMINAL THEME: edit these values to customize terminal text and colors. */
+    --terminal-font: 'Roboto Mono', monospace;
+    --terminal-font-size: clamp(0.75rem, 1.35vw, 0.95rem);
+    --terminal-background: #000000;
+    --terminal-text: #ffffff;
+    --terminal-muted: #a7a7a7;
+    --terminal-green: #8fffa9;
+    --terminal-red: #f72626;
+    --terminal-scrollbar-track: #161616;
+
+    width: 60vw;
+    height: 60vh;
+    background: var(--terminal-background);
+    border: 1px solid var(--terminal-text);
     border-radius: 0;
     display: flex;
     flex-direction: column;
@@ -329,11 +339,11 @@ section {
     align-items: center;
     gap: 0.5rem;
     padding: 0.45rem 0.75rem;
-    background: #000000;
-    border-bottom: 1px solid #ffffff;
-    font-family: 'Roboto Mono', monospace;
+    background: var(--terminal-background);
+    border-bottom: 1px solid var(--terminal-text);
+    font-family: var(--terminal-font);
     font-size: clamp(0.65rem, 1.5vw, 0.8rem);
-    color: #ffffff;
+    color: var(--terminal-text);
     letter-spacing: 0.04em;
     text-transform: lowercase;
     flex-shrink: 0;
@@ -348,22 +358,106 @@ section {
     line-height: 1;
 }
 
+/* Explicitly override the site's global Inter typography inside the terminal. */
+.terminal-ribbon-label,
+.terminal-body,
+.terminal-body * {
+    font-family: var(--terminal-font) !important;
+}
+
 .terminal-body {
     padding: clamp(1rem, 2vh, 1.5rem);
-    color: #ffffff;
+    color: var(--terminal-text);
     overflow-y: auto;
     flex: 1;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    font-family: var(--terminal-font);
+    font-size: var(--terminal-font-size);
+    line-height: 1.55;
+    cursor: text;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--terminal-green) var(--terminal-scrollbar-track);
 }
 
 .terminal-body::-webkit-scrollbar {
+    width: 0.55rem;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+    background: var(--terminal-scrollbar-track);
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: var(--terminal-green);
+    border: 2px solid var(--terminal-scrollbar-track);
+    border-radius: 999px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--terminal-text);
+}
+
+.terminal-output {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.terminal-line {
+    margin: 0;
+    color: var(--terminal-text);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.terminal-line--muted {
+    color: var(--terminal-muted);
+}
+
+.terminal-line--error {
+    color: var(--terminal-red);
+}
+
+.terminal-command-echo {
+    color: var(--terminal-green);
+}
+
+.terminal-prompt {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.45rem;
+    color: var(--terminal-green);
+}
+
+.terminal-prompt[hidden] {
     display: none;
 }
 
-.terminal-body p {
-    margin: 0;
-    text-align: left;
+.terminal-prompt-symbol {
+    flex: 0 0 auto;
+    font-weight: 700;
+}
+
+.terminal-input {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--terminal-text);
+    font: inherit;
+    caret-color: var(--terminal-green);
+}
+
+.terminal-input:disabled {
+    opacity: 0.55;
+}
+
+.terminal-card:focus-within {
+    border-color: var(--terminal-green);
 }
 
 .skills-continue-button {
@@ -427,6 +521,7 @@ section {
 @media (max-width: 768px) {
     .terminal-card {
         width: 90vw;
+        height: 60vh;
     }
 }
 

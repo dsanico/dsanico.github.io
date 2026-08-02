@@ -92,8 +92,11 @@ function initHeroAboutTransition() {
   window.heroAboutScrollLock = { release };
 
   const shouldBlockDownwardScroll = () => terminalComplete && !released;
+  const isTerminalInteraction = (target) =>
+    target instanceof Element && Boolean(target.closest("#portfolio-terminal"));
 
   window.addEventListener("wheel", (event) => {
+    if (isTerminalInteraction(event.target)) return;
     if (!shouldBlockDownwardScroll()) return;
     if (event.deltaY > 0) {
       event.preventDefault();
@@ -107,6 +110,7 @@ function initHeroAboutTransition() {
   }, { passive: true });
 
   window.addEventListener("touchmove", (event) => {
+    if (isTerminalInteraction(event.target)) return;
     const currentY = event.touches[0]?.clientY ?? touchStartY;
     if (!shouldBlockDownwardScroll()) return;
     if (currentY < touchStartY) {
@@ -119,6 +123,8 @@ function initHeroAboutTransition() {
   window.addEventListener("keydown", (event) => {
     const downwardKeys = ["ArrowDown", "PageDown", "End", " "];
     const upwardKeys = ["ArrowUp", "PageUp", "Home"];
+    const isTyping = event.target instanceof Element && event.target.matches("input, textarea, [contenteditable='true']");
+    if (isTyping) return;
     if (!shouldBlockDownwardScroll()) return;
     if (downwardKeys.includes(event.key)) {
       event.preventDefault();
@@ -156,9 +162,17 @@ function initHeroAboutTransition() {
       onUpdate: (self) => {
         terminalComplete = self.progress >= 0.995;
 
+        if (terminalComplete) window.portfolioTerminal?.start();
+
         if (self.progress < 0.98) released = false;
         sticky.classList.toggle("is-terminal-complete", terminalComplete && !released);
-        if (terminalComplete && !released) lenis.stop();
+        if (terminalComplete && !released) {
+          const lockPosition = self.end - 1;
+          if (self.scroll() > lockPosition) {
+            lenis.scrollTo(lockPosition, { immediate: true, force: true });
+          }
+          lenis.stop();
+        }
       },
     },
   });
