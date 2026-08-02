@@ -7,38 +7,64 @@ function initPortfolioTerminal() {
 
   if (!terminal || !output || !form || !input || !announcer) return;
 
-  const about = "I'm a rising senior at the University of Michigan majoring in Electrical Engineering. My focus is embedded systems, with hands-on experience in PCB design, hardware verification, and firmware development. I'm especially drawn to the intersection of embedded systems and quantum technology, while remaining passionate about software and firmware.";
+  const about = "I'm a rising senior at the University of Michigan majoring in Electrical Engineering. My focus is embedded systems, with hands-on experience in PCB design, hardware verification, and firmware development. I'm especially drawn to the intersection of embedded systems and quantum technology, and I have specialized experience in qubit control electronics and space-grade hardware.";
 
   const virtualFiles = {
     "bio.txt": [about],
     "education.txt": [
-      "University of Michigan — Electrical Engineering",
-      "Rising senior focused on embedded systems, PCB design, hardware verification, and firmware development.",
-      "Study Abroad — Universidad Carlos III de Madrid (Jan. 2026 – May 2026)",
+      "University of Michigan",
+      "     graduation date: May 2027",
+      "     major: Electrical Engineering",
+      "     GPA: 3.67/4 (Magna Cum Laude)",
+      "     honors and awards: Dean's List, James B. Angell Scholar, Ernest W. Reynolds Endowment",
+      "Universidad Carlos III de Madrid (study abroad)",
+      "     term: Spring 2026",
+      "     churros eaten: 112"
     ],
-    "objective.txt": [
-      "Build dependable embedded systems and help advance the hardware and firmware behind emerging quantum technology.",
+    "experience.txt": [
+      "IBM        | Quantum Firmware Intern       | Jun. 2026 - Aug. 2026",
+      "MASA       | Avionics Hardware Lead        | Apr. 2025 - Dec. 2025",
+      "Rocket Lab | Electrical Engineering Intern | May 2025 - Aug. 2025",
+      "Pair Tech  | Data Science Intern           | May 2024 - Aug. 2024",
+      "",
+      "(view the projects and timeline section of this website for more details"
     ],
-    "prof_exp.txt": [
-      "IBM — Quantum Firmware Intern (Jun. 2026 – Sep. 2026)",
-      "MASA — Avionics Hardware Lead (Apr. 2025 – Dec. 2025)",
-      "Rocket Lab — Electrical Engineering Intern (May 2025 – Aug. 2025)",
-      "Pair Tech — Data Science Intern (May 2024 – Aug. 2024)",
-    ],
-    "xtracurriculars.txt": [
-      "Michigan Aeronautical Research Association — Avionics",
-      "Tau Epsilon Kappa — Quantum Circuit Simulator hackathon project",
+    "skills.txt": [
+      "Hardware            | Firmware/Software",
+      "---------------------------------------",
+      "Altium              | Python",
+      "LTspice             | C++",
+      "VHDL                | C",
+      "Oscilloscope        | Assembly",
+      "VNA                 | Qiskit",
+      "DMM                 | Linux",
+      "Power Supplies      | Arduino",
+      "Low-Voltage Design  | MATLAB",
+      "Mixed-System Design | Git",
+      "Hardware Assembly   | Pytest",
+      "Systems Integration | Docker",
+      "",
+      "(view the skills section of this website for more details)"
     ],
     "hobbies.txt": [
-      "Watercoloring and drawing",
+      "Travelling",
       "Weightlifting",
       "Running and hiking",
       "Reading",
+      "Coding for fun",
       "Breakfast",
     ],
   };
 
-  const fileNames = Object.keys(virtualFiles);
+  const contentFileNames = Object.keys(virtualFiles);
+  const fileNames = [...contentFileNames, "all.txt"];
+
+  const getAllFileContent = () =>
+    contentFileNames.flatMap((fileName, index) => [
+      ...(index === 0 ? [] : [""]),
+      `===== ${fileName} =====`,
+      ...virtualFiles[fileName],
+    ]);
 
   const helpText = [
     "Available commands:",
@@ -47,6 +73,8 @@ function initPortfolioTerminal() {
     "  help                  show this guide",
     "  clear                 clear the terminal",
     "Use ↑ and ↓ to browse command history.",
+    "",
+    "(Enter 'cat all.txt' to view all information)"
   ];
 
   let started = false;
@@ -135,7 +163,9 @@ function initPortfolioTerminal() {
       const fileName = args[0];
 
       if (!fileName || args.length > 1) {
-        await printLines(["Usage: cat <file>", "Try: cat bio.txt or cat prof_exp.txt"], "muted");
+        await printLines(["Usage: cat <file>", "Try: cat bio.txt or cat all.txt"], "muted");
+      } else if (fileName === "all.txt") {
+        await printLines(getAllFileContent());
       } else if (virtualFiles[fileName]) {
         await printLines(virtualFiles[fileName]);
       } else {
