@@ -25,6 +25,9 @@ function initLenis() {
       if (!target) return;
 
       e.preventDefault();
+      if (target.offsetTop > document.getElementById("hero-about-scene")?.offsetTop) {
+        window.heroAboutScrollLock?.release();
+      }
       lenis.scrollTo(target, { offset: 0, duration: 1.2 });
     });
   });
@@ -66,53 +69,74 @@ function initNavHighlight() {
   lenis.on("scroll", changeLinkState);
 }
 
-function moveAboutCardToSection() {
-  const card = document.querySelector(".about-card--transition");
-  const slot = document.querySelector(".about-card-slot");
-  const stage = document.querySelector(".about-card-stage");
-
-  if (!card || !slot || card.dataset.placed === "true") return;
-
-  card.classList.remove("about-card--transition");
-  card.classList.add("about-card--placed");
-  card.dataset.placed = "true";
-  slot.appendChild(card);
-
-  if (stage) {
-    stage.setAttribute("aria-hidden", "true");
-    stage.style.visibility = "hidden";
-  }
-
-  gsap.set(card, { clearProps: "transform,opacity" });
-  ScrollTrigger.refresh();
-}
-
-function moveAboutCardToStage() {
-  const card = document.querySelector(".about-card-slot .about-card, .about-card--placed");
-  const slot = document.querySelector(".about-card-slot");
-  const stage = document.querySelector(".about-card-stage");
-
-  if (!card || !stage || !slot || card.dataset.placed !== "true") return;
-
-  card.classList.add("about-card--transition");
-  card.classList.remove("about-card--placed");
-  card.dataset.placed = "false";
-  stage.appendChild(card);
-  slot.innerHTML = "";
-
-  stage.setAttribute("aria-hidden", "false");
-  stage.style.visibility = "";
-
-  ScrollTrigger.refresh();
-}
-
 function initHeroAboutTransition() {
   const scene = document.getElementById("hero-about-scene");
   const heroText = document.querySelector(".hero-text-animate");
-  const aboutCard = document.querySelector(".about-card--transition");
+  const terminalCard = document.querySelector(".terminal-card--transition");
   const sticky = document.querySelector(".hero-about-sticky");
+  const continueButton = document.querySelector(".skills-continue-button");
+  const skills = document.getElementById("skills");
 
-  if (!scene || !heroText || !aboutCard || !sticky) return;
+  if (!scene || !heroText || !terminalCard || !sticky || !continueButton || !skills) return;
+
+  let terminalComplete = false;
+  let released = false;
+  let touchStartY = 0;
+
+  const release = () => {
+    released = true;
+    sticky.classList.remove("is-terminal-complete");
+    lenis.start();
+  };
+
+  window.heroAboutScrollLock = { release };
+
+  const shouldBlockDownwardScroll = () => terminalComplete && !released;
+  const isTerminalInteraction = (target) =>
+    target instanceof Element && Boolean(target.closest("#portfolio-terminal"));
+
+  window.addEventListener("wheel", (event) => {
+    if (isTerminalInteraction(event.target)) return;
+    if (!shouldBlockDownwardScroll()) return;
+    if (event.deltaY > 0) {
+      event.preventDefault();
+    } else if (event.deltaY < 0) {
+      lenis.start();
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener("touchstart", (event) => {
+    touchStartY = event.touches[0]?.clientY ?? 0;
+  }, { passive: true });
+
+  window.addEventListener("touchmove", (event) => {
+    if (isTerminalInteraction(event.target)) return;
+    const currentY = event.touches[0]?.clientY ?? touchStartY;
+    if (!shouldBlockDownwardScroll()) return;
+    if (currentY < touchStartY) {
+      event.preventDefault();
+    } else if (currentY > touchStartY) {
+      lenis.start();
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener("keydown", (event) => {
+    const downwardKeys = ["ArrowDown", "PageDown", "End", " "];
+    const upwardKeys = ["ArrowUp", "PageUp", "Home"];
+    const isTyping = event.target instanceof Element && event.target.matches("input, textarea, [contenteditable='true']");
+    if (isTyping) return;
+    if (!shouldBlockDownwardScroll()) return;
+    if (downwardKeys.includes(event.key)) {
+      event.preventDefault();
+    } else if (upwardKeys.includes(event.key)) {
+      lenis.start();
+    }
+  }, { capture: true });
+
+  continueButton.addEventListener("click", () => {
+    release();
+    lenis.scrollTo(skills, { offset: 0, duration: 1.2 });
+  });
 
   gsap.set(heroText, {
     scale: 1,
@@ -120,7 +144,7 @@ function initHeroAboutTransition() {
     transformOrigin: "center center",
   });
 
-  gsap.set(aboutCard, {
+  gsap.set(terminalCard, {
     scale: 0.5,
     opacity: 0,
     transformOrigin: "center center",
@@ -135,8 +159,21 @@ function initHeroAboutTransition() {
       scrub: 1,
       anticipatePin: 1,
       invalidateOnRefresh: true,
-      onLeave: moveAboutCardToSection,
-      onEnterBack: moveAboutCardToStage,
+      onUpdate: (self) => {
+        terminalComplete = self.progress >= 0.995;
+
+        if (terminalComplete) window.portfolioTerminal?.start();
+
+        if (self.progress < 0.98) released = false;
+        sticky.classList.toggle("is-terminal-complete", terminalComplete && !released);
+        if (terminalComplete && !released) {
+          const lockPosition = self.end - 1;
+          if (self.scroll() > lockPosition) {
+            lenis.scrollTo(lockPosition, { immediate: true, force: true });
+          }
+          lenis.stop();
+        }
+      },
     },
   });
 
@@ -150,7 +187,7 @@ function initHeroAboutTransition() {
     },
     0
   ).to(
-    aboutCard,
+    terminalCard,
     {
       scale: 1,
       opacity: 1,
