@@ -115,6 +115,74 @@
 
 <!-- ==================== SKILLS SECTION ==================== -->
 <section id="skills">
+  <div class="bayboard-skills">
+    <header class="bayboard-skills-header">
+      <p class="bayboard-eyebrow">INTERACTIVE SKILLS BOARD</p>
+      <h1>EXPLORE THE BAY BOARD</h1>
+      <p>Select a callout to inspect the skills behind the design.</p>
+    </header>
+
+    <div class="bayboard-workspace">
+      <div class="bayboard-visual">
+        <div class="bayboard-image-frame">
+          <img src="images/project_bayboard_5.png" alt="Limelight Bay Board PCB designed by David Sanico">
+
+          <!-- CALLOUT CONFIGURATION
+               --point-x / --point-y: target location as a percentage of the PCB image.
+               --label-x / --label-y: optional label offset from that point.
+               --panel-anchor-y: where the active line meets the side panel. -->
+          <button class="bayboard-callout" type="button" data-skill-category="programming"
+            style="--point-x: 66%; --point-y: 43%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 25%;">
+            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Programming</span>
+          </button>
+          <button class="bayboard-callout" type="button" data-skill-category="digital"
+            style="--point-x: 72%; --point-y: 34%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 35%;">
+            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Digital design</span>
+          </button>
+          <button class="bayboard-callout" type="button" data-skill-category="analog"
+            style="--point-x: 18%; --point-y: 31%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 45%;">
+            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Analog design</span>
+          </button>
+          <button class="bayboard-callout" type="button" data-skill-category="hardware"
+            style="--point-x: 48%; --point-y: 53%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 55%;">
+            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Hardware design</span>
+          </button>
+          <button class="bayboard-callout" type="button" data-skill-category="test"
+            style="--point-x: 82%; --point-y: 48%; --label-x: -8.5rem; --label-y: -50%; --panel-anchor-y: 65%;">
+            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Hardware test</span>
+          </button>
+          <button class="bayboard-callout" type="button" data-skill-category="other"
+            style="--point-x: 57%; --point-y: 80%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 75%;">
+            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Other</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="bayboard-active-line" aria-hidden="true"></div>
+
+      <aside class="bayboard-skill-panel" aria-live="polite" aria-atomic="true" data-lenis-prevent>
+        <div class="bayboard-panel-empty">
+          <span class="bayboard-panel-number">00</span>
+          <h2>BOARD OVERVIEW</h2>
+          <p>The Limelight Bay Board is a real PCB designed for MASA's liquid-fueled rocket. Choose a callout to explore the engineering skills represented on the board.</p>
+        </div>
+        <div class="bayboard-panel-content" hidden>
+          <div class="bayboard-panel-meta"><span class="bayboard-panel-number"></span><span class="bayboard-panel-total">/ 06</span></div>
+          <p class="bayboard-panel-kicker"></p>
+          <h2 class="bayboard-panel-title"></h2>
+          <p class="bayboard-panel-description"></p>
+          <ul class="bayboard-panel-skills"></ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="bayboard-section-controls">
+      <button class="bayboard-section-nav" type="button" data-skills-exit="about"><span aria-hidden="true">←</span> Back to About</button>
+      <p>SELECT A CALLOUT TO EXPLORE</p>
+      <button class="bayboard-section-nav" type="button" data-skills-exit="projects">View Projects <span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+
     <div class="skills-container">
 
     <!-- ========== Primary Skills ========== -->
@@ -967,6 +1035,7 @@
 <script src="script.js"></script>
 <script src="terminal.js"></script>
 <script src="scroll-animations.js"></script>
+<script src="skills-pcb.js"></script>
 <script src="flickity.pkgd.min.js"></script>
 
 </body>

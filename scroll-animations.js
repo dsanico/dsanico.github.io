@@ -8,6 +8,7 @@ function initLenis() {
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true,
   });
+  window.siteLenis = lenis;
 
   lenis.on("scroll", ScrollTrigger.update);
 
@@ -25,6 +26,7 @@ function initLenis() {
       if (!target) return;
 
       e.preventDefault();
+      window.skillsScrollLock?.release();
       if (target.offsetTop > document.getElementById("hero-about-scene")?.offsetTop) {
         window.heroAboutScrollLock?.release();
       }
