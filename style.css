@@ -243,10 +243,6 @@ section {
     box-sizing: border-box;
 }
 
-#about {
-    background: linear-gradient(45deg, #ffffff 0%, #8fffa9 200%);
-}
-
 #skills {
     background: linear-gradient(135deg, #ffffff 0%, #8fffa9 200%);
     position: relative; /* Required for absolute positioning of general skills list */
@@ -295,7 +291,7 @@ section {
     will-change: transform, opacity;
 }
 
-.about-card-stage {
+.terminal-stage {
     position: absolute;
     inset: 0;
     display: flex;
@@ -306,21 +302,132 @@ section {
     padding: clamp(1rem, 2vw, 2rem);
 }
 
-.about-card-stage .about-card {
+.terminal-stage .terminal-card {
     pointer-events: auto;
     will-change: transform, opacity;
 }
 
-.about-card--transition {
+.terminal-card {
+    width: min(60vw, 90vw);
+    max-height: min(60vh, 75vh);
+    background: #000000;
+    border: 1px solid #ffffff;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
     margin: 0;
 }
 
-.about-card-slot {
-    min-height: min(60vh, 80vh);
+.terminal-card--transition {
+    box-shadow: none;
 }
 
-.about-card-slot:empty {
-    visibility: hidden;
+.terminal-ribbon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.75rem;
+    background: #000000;
+    border-bottom: 1px solid #ffffff;
+    font-family: 'Roboto Mono', monospace;
+    font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    flex-shrink: 0;
+}
+
+.terminal-ribbon-icon {
+    font-size: clamp(0.7rem, 1.6vw, 0.85rem);
+    line-height: 1;
+}
+
+.terminal-ribbon-label {
+    line-height: 1;
+}
+
+.terminal-body {
+    padding: clamp(1rem, 2vh, 1.5rem);
+    color: #ffffff;
+    overflow-y: auto;
+    flex: 1;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.terminal-body::-webkit-scrollbar {
+    display: none;
+}
+
+.terminal-body p {
+    margin: 0;
+    text-align: left;
+}
+
+.skills-continue-button {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(1.25rem, 4vh, 2.5rem);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.75rem 1.1rem;
+    border: 1px solid #ffffff;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.72);
+    color: #ffffff;
+    font-family: 'Roboto Mono', monospace;
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 1rem);
+    transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s ease;
+    backdrop-filter: blur(8px);
+}
+
+.hero-about-sticky.is-terminal-complete .skills-continue-button {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+
+.skills-continue-button:hover,
+.skills-continue-button:focus-visible {
+    background: #ffffff;
+    color: #000000;
+}
+
+.skills-continue-button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+.skills-continue-button i {
+    animation: skills-arrow-bounce 1.4s ease-in-out infinite;
+}
+
+@keyframes skills-arrow-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(0.2rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skills-continue-button,
+    .skills-continue-button i {
+        transition: none;
+        animation: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .terminal-card {
+        width: 90vw;
+    }
 }
 
 /* ========================================= HERO SECTION ========================================= */
