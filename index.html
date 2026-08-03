@@ -377,10 +377,92 @@
     </div>
 
     <!-- ========== Project Carousel ========== -->
+    <!--
+      PROJECT THUMBNAIL OPTIONS (add these to any top-level project card):
+      data-thumbnail-fit="cover|contain"       Fill/crop or fit the whole image.
+      data-thumbnail-src="images/file.jpg"    Override the default first image.
+      data-thumbnail-fallback="true"          Force the computer.gif fallback.
+      Optional: data-thumbnail-position, data-thumbnail-padding,
+      data-thumbnail-background, data-thumbnail-scale, data-thumbnail-hover-scale.
+    -->
     <div class="project-carousel js-flickity" data-flickity-options='{ "wrapAround": true, "pageDots": false, "cellAlign": "left", "contain": true }'>
 
+
+      <!-- IBM Projects-->
+      <div class="project-card" data-layout="cards"
+           data-thumbnail-src="images/project_IBM_qcomp.jpg"
+           data-thumbnail-alt="IBM Quantum Computer"
+           data-thumbnail-fit="cover"
+           data-thumbnail-position="center"
+           data-thumbnail-padding="0"
+           data-thumbnail-scale="1"
+           data-thumbnail-hover-scale="1.055">
+        <h2 class="project-cards-header">Quantum Firmware Internship @ IBM</h2>
+        <div class="project-cards-container">
+          <div class="project-card-item">
+            <h4 class="project-card-item-title">GPS PCB Design Verification</h4>
+            <div class="project-card-item-tags">
+              <span class="item-tag-2">LTspice</span>
+            </div>
+            <p class="project-card-item-text">
+              Led design verification for a satellite GPS PCB, shaving 4 weeks off testing by soldering a PCB, analyzing power regulation and
+              latch behavior via LTspice, and verifying physical assembly using DMMs, oscilloscope, power supplies, and electronic loads.
+            </p>
+          </div>
+          <div class="project-card-item">
+            <h4 class="project-card-item-title">Test Rig Interface PCB</h4>
+            <div class="project-card-item-tags">
+              <span class="item-tag-2">Altium Designer</span>
+            </div>
+            <p class="project-card-item-text">
+              Designed, ordered, assembled, and validated an interface board bridging a flight PCB to an automated test rig, enabling integrated and automated testing.
+              Underwent full product lifecycle including design reviews to meet customer needs, parts sourcing with efficient costs, and in-house assembly and validation.
+            </p>
+          </div>
+          <div class="project-card-item">
+            <h4 class="project-card-item-title">Discrete LDO Test PCB</h4>
+            <div class="project-card-item-tags">
+              <span class="item-tag-2">Altium Designer</span><span class="item-tag-2">LTspice</span>
+            </div>
+            <p class="project-card-item-text">
+              Developed and utilized a test PCB to analyze a discrete LDO designed for long-term radiation and thermal cycling, uncovering stability issues and
+              preventing costly redesign through Bode instrument analysis, thermal analysis, and LTspice simulations.
+            </p>
+          </div>
+          <div class="project-card-item">
+            <h4 class="project-card-item-title">Pulse-Driver PCB</h4>
+            <div class="project-card-item-tags">
+              <span class="item-tag-2">Altium Designer</span>
+            </div>
+            <p class="project-card-item-text">
+              Designed a low-side NMOS pulse driver PCB that streamlined board power supply testing and step response analysis.
+            </p>
+          </div>
+          <div class="project-card-item">
+            <h4 class="project-card-item-title">ADC Firmware</h4>
+            <div class="project-card-item-tags">
+              <span class="item-tag-2">Arduino IDE</span>
+            </div>
+            <p class="project-card-item-text">
+              Wrote firmware in Arduino to validate an onboard ADC, implementing SPI communication and data readout from flight channels to
+              aid in board-level bring-up and testing.
+            </p>
+          </div>
+          <div class="project-card-item">
+            <img style="max-height: 75%; max-width: 75%; align-self: center; margin-top: 10%;" 
+            src="images/timeline-RL.png" alt="Rocket Lab Internship">
+          </div>
+        </div>
+      </div>
+
       <!-- Bay Board PCBs Project -->
-      <div class="project-card" data-layout="big-picture">
+      <div class="project-card" data-layout="big-picture"
+           data-thumbnail-fit="contain"
+           data-thumbnail-position="center"
+           data-thumbnail-padding="1rem"
+           data-thumbnail-background="#0b100e"
+           data-thumbnail-scale="0.9"
+           data-thumbnail-hover-scale="0.94">
         <div class="project-content">
           <h4 class="project-title">Bay Board PCBs</h4>
           <div class="project-card-item-tags">
@@ -424,7 +506,14 @@
       </div>
 
       <!-- Rocket Lab Projects-->
-      <div class="project-card" data-layout="cards">
+      <div class="project-card" data-layout="cards"
+           data-thumbnail-src="images/project_rklb_t2tl.jpg"
+           data-thumbnail-alt="Rocket Lab test hardware"
+           data-thumbnail-fit="cover"
+           data-thumbnail-position="center"
+           data-thumbnail-padding="0"
+           data-thumbnail-scale="1"
+           data-thumbnail-hover-scale="1.055">
         <h2 class="project-cards-header">Electrical Engineering Internship @ Rocket Lab</h2>
         <div class="project-cards-container">
           <div class="project-card-item">
@@ -484,7 +573,7 @@
       </div>
 
       <!-- Flight Recorder PCB Project -->
-      <div class="project-card-alt" data-layout="big-picture">
+      <div class="project-card-alt" data-layout="big-picture" style="--thumbnail-fit: contain; --thumbnail-position: center; --thumbnail-padding: 1rem; --thumbnail-background: #0b100e; --thumbnail-scale: 0.9; --thumbnail-hover-scale: 0.94;">
         <div class="project-content">
           <h4 class="project-title">Flight Recorder PCB</h4>
           <div class="project-card-item-tags">
@@ -615,8 +704,81 @@
         </div>
       </div>
 
+
+      <!-- MDST Stock Analysis Project -->
+      <div class="project-card" data-layout="big-picture"
+        data-thumbnail-fit="cover"
+        data-thumbnail-src="images/project_MLstocks_hover.png"
+      >
+        <div class="project-content">
+          <h4 class="project-title">Machine Learning Based Stock Analysis</h4>
+          <div class="project-card-item-tags">
+            <span class="item-tag-1">Team Member @ MDST</span><span class="item-tag-2">Python</span>
+          </div>
+          <p class="project-date">01/24 to 05/24</p>
+          <p class="project-description">Created an LSTM model designed to predict NVIDIA's stock price trend 
+            for the next day, with performance in RMSE and MAPE precision benchmarks over 10x greater than the MDST team's base model.
+          </p>
+          <span class="highlight-4">Libraries:</span>
+          <span class="highlight-5"> Numpy</span>
+          <span class="highlight-5"> Pandas</span>
+          <span class="highlight-5"> TensorFlow</span>
+          <span class="highlight-5"> Keras</span>
+          <div class="project-links">
+            <a href="https://mdst.club/" target="_blank" class="btn project-btn">Visit MDST</a>
+            <a href="https://mdst-stocks.streamlit.app/" target="_blank" class="btn project-btn">View Streamlit</a>
+          </div>
+        </div>
+        <div class="project-images">
+          <div class="image-carousel-vertical">
+            <div class="image-item">
+              <img src="images/project_MLstocks_default.png" alt="Project Image 1">
+            </div>
+            <div class="image-item">
+              <img src="images/project_MLstocks_hover.png" alt="Project Image 2">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nerf Blaster Modification Project -->
+      <div class="project-card-alt" data-layout="big-picture"
+        data-thumbnail-fit="contain"
+      >
+        <div class="project-content">
+          <h4 class="project-title">Electric Nerf Blaster Modification</h4>
+          <div class="project-card-item-tags">
+            <span class="item-tag-1">Personal Project (High School)</span>
+          </div>
+          <p class="project-date">11/19 to 01/22</p>
+          <p class="project-description">Converted a semi-automatic pistol into a fully-automatic rifle with increased power, 
+            dual-ammo compatibility, tracer-ammo UV charging, and an integrated voltmeter. This was a fun high school project
+            that introduced me to the world of electrical engineering.
+          </p>
+          <div class="project-links"></div>
+        </div>
+        <div class="project-images">
+          <div class="image-carousel-vertical">
+            <div class="image-item">
+              <img src="images/project_nerf_1.png" alt="Project Image 1">
+            </div>
+            <div class="image-item">
+              <img src="images/project_nerf_2.png" alt="Project Image 2">
+            </div>
+            <div class="image-item">
+              <img src="posts/galleries/nerf-leftside.jpg" alt="Project Image 3">
+            </div>
+            <div class="image-item">
+              <img src="posts/galleries/nerf-rightside.jpg" alt="Project Image 4">
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Miscellaneous Projects-->
-      <div class="project-card" data-layout="cards">
+      <div class="project-card" data-layout="cards"
+        data-thumbnail-fit="contain"    
+        data-thumbnail-src="images/project_QuaCS.png">
         <h2 class="project-cards-header">Miscellaneous Projects</h2>
         <div class="project-cards-container">
           <div style="min-height: 70vh; max-height: 70vh;" class="project-card-item">
@@ -660,71 +822,6 @@
               and support for front-end features and entanglement is in progress!
             </p>
             <img src="images/project_QuaCS.png" alt="Quantum Circuit Simulator Front-End Design">
-          </div>
-        </div>
-      </div>
-
-      <!-- MDST Stock Analysis Project -->
-      <div class="project-card" data-layout="big-picture">
-        <div class="project-content">
-          <h4 class="project-title">Machine Learning Based Stock Analysis</h4>
-          <div class="project-card-item-tags">
-            <span class="item-tag-1">Team Member @ MDST</span><span class="item-tag-2">Python</span>
-          </div>
-          <p class="project-date">01/24 to 05/24</p>
-          <p class="project-description">Created an LSTM model designed to predict NVIDIA's stock price trend 
-            for the next day, with performance in RMSE and MAPE precision benchmarks over 10x greater than the MDST team's base model.
-          </p>
-          <span class="highlight-4">Libraries:</span>
-          <span class="highlight-5"> Numpy</span>
-          <span class="highlight-5"> Pandas</span>
-          <span class="highlight-5"> TensorFlow</span>
-          <span class="highlight-5"> Keras</span>
-          <div class="project-links">
-            <a href="https://mdst.club/" target="_blank" class="btn project-btn">Visit MDST</a>
-            <a href="https://mdst-stocks.streamlit.app/" target="_blank" class="btn project-btn">View Streamlit</a>
-          </div>
-        </div>
-        <div class="project-images">
-          <div class="image-carousel-vertical">
-            <div class="image-item">
-              <img src="images/project_MLstocks_default.png" alt="Project Image 1">
-            </div>
-            <div class="image-item">
-              <img src="images/project_MLstocks_hover.png" alt="Project Image 2">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Nerf Blaster Modification Project -->
-      <div class="project-card-alt" data-layout="big-picture">
-        <div class="project-content">
-          <h4 class="project-title">Electric Nerf Blaster Modification</h4>
-          <div class="project-card-item-tags">
-            <span class="item-tag-1">Personal Project (High School)</span>
-          </div>
-          <p class="project-date">11/19 to 01/22</p>
-          <p class="project-description">Converted a semi-automatic pistol into a fully-automatic rifle with increased power, 
-            dual-ammo compatibility, tracer-ammo UV charging, and an integrated voltmeter. This was a fun high school project
-            that introduced me to the world of electrical engineering.
-          </p>
-          <div class="project-links"></div>
-        </div>
-        <div class="project-images">
-          <div class="image-carousel-vertical">
-            <div class="image-item">
-              <img src="images/project_nerf_1.png" alt="Project Image 1">
-            </div>
-            <div class="image-item">
-              <img src="images/project_nerf_2.png" alt="Project Image 2">
-            </div>
-            <div class="image-item">
-              <img src="posts/galleries/nerf-leftside.jpg" alt="Project Image 3">
-            </div>
-            <div class="image-item">
-              <img src="posts/galleries/nerf-rightside.jpg" alt="Project Image 4">
-            </div>
           </div>
         </div>
       </div>

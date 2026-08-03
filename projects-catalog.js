@@ -20,20 +20,48 @@ function initProjectCatalog() {
     const preview = document.createElement("div");
     preview.className = "catalog-card-preview";
 
+    const thumbnailVariables = {
+      thumbnailFit: "--thumbnail-fit",
+      thumbnailPosition: "--thumbnail-position",
+      thumbnailPadding: "--thumbnail-padding",
+      thumbnailBackground: "--thumbnail-background",
+      thumbnailScale: "--thumbnail-scale",
+      thumbnailHoverScale: "--thumbnail-hover-scale",
+    };
+    Object.entries(thumbnailVariables).forEach(([dataKey, cssVariable]) => {
+      if (card.dataset[dataKey]) preview.style.setProperty(cssVariable, card.dataset[dataKey]);
+    });
+
     const media = document.createElement("div");
     media.className = "catalog-card-media";
     const sourceImage = card.querySelector("img");
-    if (sourceImage) {
+    const thumbnailSrc = card.dataset.thumbnailSrc;
+
+    const appendFallback = () => {
+      const fallback = document.createElement("img");
+      fallback.className = "catalog-card-fallback";
+      fallback.src = "images/computer.gif";
+      fallback.alt = "Animated computer icon";
+      fallback.loading = "lazy";
+
+      const fallbackNumber = document.createElement("span");
+      fallbackNumber.className = "catalog-card-fallback-number";
+      fallbackNumber.textContent = String(index + 1).padStart(2, "0");
+      fallbackNumber.setAttribute("aria-hidden", "true");
+
+      media.replaceChildren(fallback, fallbackNumber);
+    };
+
+    const forceFallback = card.dataset.thumbnailFallback === "true";
+    if (!forceFallback && (thumbnailSrc || sourceImage)) {
       const image = document.createElement("img");
-      image.src = sourceImage.currentSrc || sourceImage.src;
-      image.alt = sourceImage.alt || "";
+      image.src = thumbnailSrc || sourceImage.currentSrc || sourceImage.src;
+      image.alt = card.dataset.thumbnailAlt || sourceImage?.alt || "";
       image.loading = "lazy";
+      image.addEventListener("error", appendFallback, { once: true });
       media.appendChild(image);
     } else {
-      const fallback = document.createElement("span");
-      fallback.className = "catalog-card-fallback";
-      fallback.textContent = String(index + 1).padStart(2, "0");
-      media.appendChild(fallback);
+      appendFallback();
     }
 
     const body = document.createElement("div");
