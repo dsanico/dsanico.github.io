@@ -164,31 +164,19 @@ function initProjectCatalog() {
     if (event.key === "Escape" && overlay) closeDetail();
   });
 
-  const previews = cards.map((card) => card.querySelector(".catalog-card-preview"));
   section.classList.add("catalog-ready");
 
-  if (reducedMotion) {
-    gsap.set(previews, { x: 0, opacity: 1 });
-  } else {
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top bottom",
-        end: "top 18%",
-        scrub: 1,
-        invalidateOnRefresh: true,
-      },
-    }).fromTo(
-      previews,
-      { x: () => Math.min(window.innerWidth * 0.65, 720), opacity: 0 },
-      { x: 0, opacity: 1, stagger: 0.11, duration: 1, ease: "power2.out" }
-    );
+  function resizeCarousel(attempt = 0) {
+    const flickity = Flickity.data(carousel);
+    if (!flickity) {
+      if (attempt < 12) requestAnimationFrame(() => resizeCarousel(attempt + 1));
+      return;
+    }
+
+    flickity.resize();
   }
 
-  requestAnimationFrame(() => {
-    Flickity.data(carousel)?.resize();
-    ScrollTrigger.refresh();
-  });
+  requestAnimationFrame(() => resizeCarousel());
 }
 
 if (document.readyState === "loading") {

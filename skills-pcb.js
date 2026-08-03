@@ -63,8 +63,6 @@ function initBayboardSkills() {
   const panelNumber = panelContent.querySelector(".bayboard-panel-number");
 
   let activeCallout = null;
-  let locked = false;
-  let released = false;
 
   function getPanelAnchorPercent(callout) {
     const value = getComputedStyle(callout).getPropertyValue("--panel-anchor-y");
@@ -145,23 +143,6 @@ function initBayboardSkills() {
     activeLine.classList.remove("is-visible");
   }
 
-  function lock() {
-    if (released) return;
-    locked = true;
-    section.classList.add("is-scroll-locked");
-    window.siteLenis?.scrollTo(section, { immediate: true, force: true });
-    window.siteLenis?.stop();
-  }
-
-  function release() {
-    released = true;
-    locked = false;
-    section.classList.remove("is-scroll-locked");
-    window.siteLenis?.start();
-  }
-
-  window.skillsScrollLock = { release };
-
   callouts.forEach((callout) => {
     callout.setAttribute("aria-pressed", "false");
     callout.addEventListener("click", () => selectCategory(callout));
@@ -171,58 +152,12 @@ function initBayboardSkills() {
 
   section.querySelectorAll("[data-skills-exit]").forEach((button) => {
     button.addEventListener("click", () => {
-      release();
-
-      if (button.dataset.skillsExit === "projects") {
-        window.siteLenis?.scrollTo(document.getElementById("projects"), { duration: 1.2 });
-        return;
-      }
-
       const scene = document.getElementById("hero-about-scene");
       if (scene) {
         const aboutPosition = scene.offsetTop + window.innerHeight * 0.97;
         window.siteLenis?.scrollTo(aboutPosition, { duration: 1.2 });
       }
     });
-  });
-
-  function panelCanScroll(deltaY) {
-    if (panel.scrollHeight <= panel.clientHeight) return false;
-    if (deltaY < 0) return panel.scrollTop > 1;
-    return panel.scrollTop + panel.clientHeight < panel.scrollHeight - 1;
-  }
-
-  window.addEventListener("wheel", (event) => {
-    if (!locked) return;
-    const target = event.target instanceof Element ? event.target : null;
-    if (target?.closest(".bayboard-skill-panel") && panelCanScroll(event.deltaY)) return;
-    event.preventDefault();
-  }, { passive: false, capture: true });
-
-  window.addEventListener("touchmove", (event) => {
-    if (!locked) return;
-    const target = event.target instanceof Element ? event.target : null;
-    if (target?.closest(".bayboard-skill-panel")) return;
-    event.preventDefault();
-  }, { passive: false, capture: true });
-
-  window.addEventListener("keydown", (event) => {
-    if (!locked) return;
-    const target = event.target instanceof Element ? event.target : null;
-    if (target?.matches("input, textarea, button, [contenteditable='true']")) return;
-    if (["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(event.key)) {
-      event.preventDefault();
-    }
-  }, { capture: true });
-
-  ScrollTrigger.create({
-    trigger: section,
-    start: "top top",
-    end: "bottom top",
-    onEnter: () => { released = false; requestAnimationFrame(lock); },
-    onEnterBack: () => { released = false; requestAnimationFrame(lock); },
-    onLeave: () => { locked = false; section.classList.remove("is-scroll-locked"); },
-    onLeaveBack: () => { locked = false; section.classList.remove("is-scroll-locked"); },
   });
 
   const resizeObserver = new ResizeObserver(updateActiveLine);

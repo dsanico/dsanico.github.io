@@ -3,11 +3,19 @@
 /*  U-M Maize-----------     #ffcb05
     U-M Blue------------     #00274c
 
+/* Keep the viewport canvas dark when scroll locking removes the browser gutter. */
+html {
+    background: #000000;
+    overflow-x: hidden;
+}
+
 /* ========== TEXT ========== */
 body {
     margin: 0;
+    background: #000000;
     color: #ffffff;
     font-family: 'Inter', Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 p, li {

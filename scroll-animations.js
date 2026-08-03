@@ -26,7 +26,6 @@ function initLenis() {
       if (!target) return;
 
       e.preventDefault();
-      window.skillsScrollLock?.release();
       if (target.offsetTop > document.getElementById("hero-about-scene")?.offsetTop) {
         window.heroAboutScrollLock?.release();
       }
@@ -163,12 +162,18 @@ function initHeroAboutTransition() {
       invalidateOnRefresh: true,
       onUpdate: (self) => {
         terminalComplete = self.progress >= 0.995;
+        const movingDown = self.direction >= 0;
 
         if (terminalComplete) window.portfolioTerminal?.start();
 
         if (self.progress < 0.98) released = false;
-        sticky.classList.toggle("is-terminal-complete", terminalComplete && !released);
-        if (terminalComplete && !released) {
+        sticky.classList.toggle("is-terminal-complete", terminalComplete && !released && movingDown);
+
+        // The terminal gate only applies while progressing from Hero toward
+        // Skills. Re-entering this boundary from below must remain scrollable.
+        if (terminalComplete && !movingDown) {
+          lenis.start();
+        } else if (terminalComplete && !released) {
           const lockPosition = self.end - 1;
           if (self.scroll() > lockPosition) {
             lenis.scrollTo(lockPosition, { immediate: true, force: true });
