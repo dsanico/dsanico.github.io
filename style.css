@@ -1392,9 +1392,25 @@ color: #ffffff;
   letter-spacing: 0.04em;
   line-height: 1.15;
   text-align: left;
+  overflow: hidden;
+  isolation: isolate;
   transform: translate(var(--label-x), var(--label-y));
   backdrop-filter: blur(0.35rem);
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.bayboard-callout-label::after {
+  content: "";
+  position: absolute;
+  top: -70%;
+  bottom: -70%;
+  left: -65%;
+  z-index: 1;
+  width: 38%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.72), transparent);
+  transform: skewX(-20deg) translateX(0);
+  animation: bayboard-label-shimmer 3.2s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .bayboard-callout:hover .bayboard-callout-dot,
@@ -1436,7 +1452,7 @@ color: #ffffff;
   top: 0;
   height: 0.13rem;
   border-radius: 999px;
-  background: linear-gradient(90deg, #c88d00, #4a3920);
+  background: #c88d00;
   box-shadow: 0 0 0.5rem rgba(200, 141, 0, 0.5);
   transform-origin: left center;
 }
@@ -1473,6 +1489,38 @@ color: #ffffff;
   transition: transform 0.25s ease, border-color 0.25s ease;
   scrollbar-width: thin;
   scrollbar-color: #c88d00 transparent;
+}
+
+.bayboard-panel-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.45rem;
+}
+
+.bayboard-panel-column .bayboard-skill-panel {
+  width: 100%;
+}
+
+.bayboard-summary-reset {
+  padding: 0.32rem 0.58rem;
+  border: 1px solid rgba(93, 69, 13, 0.55);
+  border-radius: 999px;
+  background: rgba(250, 252, 251, 0.72);
+  color: #5d450d;
+  font-family: 'Roboto Mono', monospace;
+  font-size: clamp(0.52rem, 0.72vw, 0.64rem);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.bayboard-summary-reset:hover,
+.bayboard-summary-reset:focus-visible {
+  background: #6e510d;
+  color: #fff;
+  outline: none;
 }
 
 .bayboard-skill-panel.is-open {
@@ -1585,6 +1633,12 @@ color: #ffffff;
   75%, 100% { opacity: 0; transform: scale(1.45); }
 }
 
+@keyframes bayboard-label-shimmer {
+  0%, 58% { transform: skewX(-20deg) translateX(0); opacity: 0; }
+  63% { opacity: 0.9; }
+  82%, 100% { transform: skewX(-20deg) translateX(440%); opacity: 0; }
+}
+
 @media (max-width: 800px) {
   #skills { padding-top: 4.25rem; }
   .bayboard-skills-header > p:not(.bayboard-eyebrow) { display: none; }
@@ -1605,6 +1659,7 @@ color: #ffffff;
 
 @media (prefers-reduced-motion: reduce) {
   .bayboard-callout-dot::after { animation: none; }
+  .bayboard-callout-label::after { animation: none; }
   .bayboard-callout-dot, .bayboard-callout-label, .bayboard-skill-panel, .bayboard-section-nav { transition: none; }
 }
 

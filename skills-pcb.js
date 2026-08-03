@@ -5,43 +5,50 @@ function initBayboardSkills() {
   const panel = section?.querySelector(".bayboard-skill-panel");
   const panelEmpty = panel?.querySelector(".bayboard-panel-empty");
   const panelContent = panel?.querySelector(".bayboard-panel-content");
+  const summaryReset = section?.querySelector(".bayboard-summary-reset");
   const activeLine = section?.querySelector(".bayboard-active-line");
   const callouts = [...(section?.querySelectorAll(".bayboard-callout") ?? [])];
 
-  if (!section || !workspace || !image || !panel || !panelEmpty || !panelContent || !activeLine || !callouts.length) return;
+  if (!section || !workspace || !image || !panel || !panelEmpty || !panelContent || !summaryReset || !activeLine || !callouts.length) return;
 
   const categories = {
-    programming: {
-      kicker: "SOFTWARE / FIRMWARE",
-      title: "Programming",
-      description: "Developing software and low-level firmware that controls, validates, and supports embedded hardware.",
-      skills: ["C", "C++", "Python", "Assembly", "Embedded firmware", "Qiskit"],
-    },
-    digital: {
-      kicker: "DIGITAL SYSTEMS",
-      title: "Digital Design",
-      description: "Designing logic and interfaces that move reliable data between devices and board-level subsystems.",
-      skills: ["VHDL", "Digital logic", "UART", "SPI", "I²C", "Shift registers"],
-    },
-    analog: {
-      kicker: "ANALOG SYSTEMS",
-      title: "Analog Design",
-      description: "Analyzing, simulating, and conditioning real-world signals in mixed-signal systems.",
-      skills: ["Circuit analysis", "LTspice", "Signal conditioning", "Filtering", "Sensor interfaces", "Mixed-signal design"],
-    },
     hardware: {
+      number: 1,
       kicker: "BOARD DEVELOPMENT",
       title: "Hardware Design",
       description: "Taking hardware from requirements and architecture through schematic capture, layout, and assembly.",
-      skills: ["Altium", "PCB design", "PCB layout", "Component selection", "Power supplies", "Fusion 360"],
+      skills: ["Altium", "PCB schematics", "PCB layout", "Component selection"],
     },
     test: {
+      number: 2,
       kicker: "VERIFICATION / VALIDATION",
       title: "Hardware Test",
       description: "Using instrumentation and repeatable test methods to prove that hardware meets its requirements.",
-      skills: ["Oscilloscope", "DMM", "VNA", "Hardware verification", "MATLAB", "Pytest"],
+      skills: ["Oscilloscope", "DMM", "VNA", "Bode plot analyzer", "MATLAB", "Pytest"],
+    },
+    digital: {
+      number: 3,
+      kicker: "DIGITAL SYSTEMS",
+      title: "Digital Design",
+      description: "Designing logic and interfaces that move reliable data between devices and board-level subsystems.",
+      skills: ["MCUs", "SPI", "I2C", "Ethernet","Shift registers", "Digital Sensors", "VHDL", "Digital logic"],
+    },
+    analog: {
+      number: 4,
+      kicker: "ANALOG SYSTEMS",
+      title: "Analog Design",
+      description: "Analyzing, simulating, and conditioning real-world signals in mixed-signal systems.",
+      skills: ["Circuit analysis", "LTspice", "Signal conditioning", "Filtering", "Analog sensors", "Mixed-signal design"],
+    },
+    programming: {
+      number: 5,
+      kicker: "SOFTWARE / FIRMWARE",
+      title: "Programming",
+      description: "Developing software and low-level firmware that controls, validates, and supports embedded hardware.",
+      skills: ["C", "C++", "Python", "Assembly", "Embedded firmware", "Pytest", "Qiskit"],
     },
     other: {
+      number: 6,
       kicker: "TOOLS / INTEGRATION",
       title: "Other Skills",
       description: "Supporting engineering work with practical development, collaboration, and system-integration tools.",
@@ -110,7 +117,7 @@ function initBayboardSkills() {
     panel.classList.add("is-open");
     panelEmpty.hidden = true;
     panelContent.hidden = false;
-    panelNumber.textContent = String(callouts.indexOf(callout) + 1).padStart(2, "0");
+    panelNumber.textContent = String(category.number).padStart(2, "0");
     kicker.textContent = category.kicker;
     title.textContent = category.title;
     description.textContent = category.description;
@@ -119,8 +126,23 @@ function initBayboardSkills() {
       item.textContent = skill;
       return item;
     }));
+    summaryReset.hidden = false;
 
     requestAnimationFrame(updateActiveLine);
+  }
+
+  function showSummary() {
+    activeCallout = null;
+    callouts.forEach((callout) => {
+      callout.classList.remove("is-active");
+      callout.setAttribute("aria-pressed", "false");
+    });
+    panel.classList.remove("is-open");
+    panelEmpty.hidden = false;
+    panelContent.hidden = true;
+    panel.scrollTop = 0;
+    summaryReset.hidden = true;
+    activeLine.classList.remove("is-visible");
   }
 
   function lock() {
@@ -144,6 +166,8 @@ function initBayboardSkills() {
     callout.setAttribute("aria-pressed", "false");
     callout.addEventListener("click", () => selectCategory(callout));
   });
+
+  summaryReset.addEventListener("click", showSummary);
 
   section.querySelectorAll("[data-skills-exit]").forEach((button) => {
     button.addEventListener("click", () => {

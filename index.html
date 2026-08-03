@@ -117,8 +117,7 @@
 <section id="skills">
   <div class="bayboard-skills">
     <header class="bayboard-skills-header">
-      <h1>EXPLORE MY SKILLS</h1>
-      <p>Select a callout to inspect my skills.</p>
+      <h1>EXPLORE SKILLS</h1>
     </header>
 
     <div class="bayboard-workspace">
@@ -131,27 +130,27 @@
                --label-x / --label-y: optional label offset from that point.
                --panel-anchor-y: where the active line meets the side panel. -->
           <button class="bayboard-callout" type="button" data-skill-category="programming"
-            style="--point-x: 75%; --point-y: 25%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 25%;">
+            style="--point-x: 17%; --point-y: 78%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 25%;">
             <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Programming</span>
           </button>
           <button class="bayboard-callout" type="button" data-skill-category="digital"
-            style="--point-x: 63.5%; --point-y: 41.5%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 35%;">
-            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Digital design</span>
+            style="--point-x: 65%; --point-y: 42%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 35%;">
+            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Digital Design</span>
           </button>
           <button class="bayboard-callout" type="button" data-skill-category="analog"
-            style="--point-x: 18%; --point-y: 31%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 45%;">
-            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Analog design</span>
+            style="--point-x: 42%; --point-y: 50%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 45%;">
+            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Analog Design</span>
           </button>
           <button class="bayboard-callout" type="button" data-skill-category="hardware"
-            style="--point-x: 48%; --point-y: 53%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 55%;">
-            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Hardware design</span>
+            style="--point-x: 15%; --point-y: 19%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 55%;">
+            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">PCB Design</span>
           </button>
           <button class="bayboard-callout" type="button" data-skill-category="test"
-            style="--point-x: 82%; --point-y: 48%; --label-x: -8.5rem; --label-y: -50%; --panel-anchor-y: 65%;">
-            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Hardware test</span>
+            style="--point-x: 75%; --point-y: 19%; --label-x: -8.5rem; --label-y: -50%; --panel-anchor-y: 65%;">
+            <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Hardware Test</span>
           </button>
           <button class="bayboard-callout" type="button" data-skill-category="other"
-            style="--point-x: 57%; --point-y: 80%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 75%;">
+            style="--point-x: 85%; --point-y: 89%; --label-x: 1rem; --label-y: -50%; --panel-anchor-y: 75%;">
             <span class="bayboard-callout-dot" aria-hidden="true"></span><span class="bayboard-callout-label">Other</span>
           </button>
         </div>
@@ -159,20 +158,26 @@
 
       <div class="bayboard-active-line" aria-hidden="true"></div>
 
-      <aside class="bayboard-skill-panel" aria-live="polite" aria-atomic="true" data-lenis-prevent>
-        <div class="bayboard-panel-empty">
-          <span class="bayboard-panel-number">00</span>
-          <h2>BOARD OVERVIEW</h2>
-          <p>The Limelight Bay Board is a real PCB designed for MASA's liquid-fueled rocket. Choose a callout to explore the engineering skills represented on the board.</p>
-        </div>
-        <div class="bayboard-panel-content" hidden>
-          <div class="bayboard-panel-meta"><span class="bayboard-panel-number"></span><span class="bayboard-panel-total">/ 06</span></div>
-          <p class="bayboard-panel-kicker"></p>
-          <h2 class="bayboard-panel-title"></h2>
-          <p class="bayboard-panel-description"></p>
-          <ul class="bayboard-panel-skills"></ul>
-        </div>
-      </aside>
+      <div class="bayboard-panel-column">
+        <aside class="bayboard-skill-panel" aria-live="polite" aria-atomic="true" data-lenis-prevent>
+          <div class="bayboard-panel-empty">
+            <span class="bayboard-panel-number">00</span>
+            <h2>SUMMARY</h2>
+            <p>As a rising senior with internship experience at Rocket Lab and IBM + leadership experience at MASA,
+              I've grown engineering skills in demanding contexts, from <span style="font-weight: bold;">Low Earth Orbit</span> to <span style="font-weight: bold;">superconducting qubits</span>.
+
+              Choose a callout to explore the engineering skills represented on the board.</p>
+          </div>
+          <div class="bayboard-panel-content" hidden>
+            <div class="bayboard-panel-meta"><span class="bayboard-panel-number"></span><span class="bayboard-panel-total">/ 06</span></div>
+            <p class="bayboard-panel-kicker"></p>
+            <h2 class="bayboard-panel-title"></h2>
+            <p class="bayboard-panel-description"></p>
+            <ul class="bayboard-panel-skills"></ul>
+          </div>
+        </aside>
+        <button class="bayboard-summary-reset" type="button" hidden>← Skills Summary</button>
+      </div>
     </div>
 
     <div class="bayboard-section-controls">
