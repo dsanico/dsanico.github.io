@@ -361,8 +361,15 @@
 
 
 <!-- ==================== PROJECTS SECTION ==================== -->
-<section id="projects">
+<section id="projects" class="project-catalog">
   <div class="container-fluid p-0">
+    <header class="project-catalog-header">
+      <div>
+        <p>SELECTED ENGINEERING WORK</p>
+        <h1>PROJECT CATALOG</h1>
+      </div>
+      <p>Browse the collection. Select a card to inspect the full project.</p>
+    </header>
     <!-- Carousel Slide Indicators -->
     <div class="carousel-indicators-container">
       <div class="carousel-indicators" id="carouselIndicators">
@@ -371,7 +378,7 @@
     </div>
 
     <!-- ========== Project Carousel ========== -->
-    <div class="project-carousel js-flickity" data-flickity-options='{ "wrapAround": true, "pageDots": false }'>
+    <div class="project-carousel js-flickity" data-flickity-options='{ "wrapAround": true, "pageDots": false, "cellAlign": "left", "contain": true }'>
 
       <!-- Bay Board PCBs Project -->
       <div class="project-card" data-layout="big-picture">
@@ -1041,6 +1048,7 @@
 <script src="scroll-animations.js"></script>
 <script src="skills-pcb.js"></script>
 <script src="flickity.pkgd.min.js"></script>
+<script src="projects-catalog.js"></script>
 
 </body>
 </html>
