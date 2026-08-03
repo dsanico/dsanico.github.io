@@ -75,20 +75,16 @@ function initProjectCatalog() {
     title.className = "catalog-card-title";
     title.textContent = getCardTitle(card, index);
 
-    const tagRow = document.createElement("div");
-    tagRow.className = "catalog-card-tags";
-    [...card.querySelectorAll(".project-card-item-tags span")].slice(0, 3).forEach((sourceTag) => {
-      const tag = document.createElement("span");
-      tag.textContent = sourceTag.textContent.trim();
-      tagRow.appendChild(tag);
-    });
+    const tagRow = card.querySelector(":scope > .catalog-card-tags");
 
     const button = document.createElement("button");
     button.className = "catalog-view-button";
     button.type = "button";
     button.textContent = "View project";
 
-    body.append(number, title, tagRow, button);
+    body.append(number, title);
+    if (tagRow) body.appendChild(tagRow);
+    body.appendChild(button);
     preview.append(media, body);
     card.appendChild(preview);
     card.classList.add("catalog-card");
