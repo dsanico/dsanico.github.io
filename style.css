@@ -1704,24 +1704,160 @@ color: #ffffff;
 /* ========================================= TIMELINE SECTION ========================================= */
 #timeline {
   padding: 0;
-  background: #111111;
+  background: #03050a;
   position: relative;
+  overflow: visible;
+}
+
+.timeline-legacy {
+  display: none !important;
+}
+
+.orbital-timeline {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.orbital-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 620px;
   overflow: hidden;
+  isolation: isolate;
+  color: #f4f7fb;
+  background: linear-gradient(180deg, #476b91 0%, #7898b3 40%, #c4d1d8 72%, #64798a 100%);
+}
+
+.orbit-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 75% 20%, rgba(52, 100, 174, 0.25), transparent 32%),
+    linear-gradient(180deg, #02030a 0%, #091327 52%, #204f78 100%);
+}
+
+.orbit-heading {
+  position: absolute;
+  top: clamp(5rem, 9vh, 8rem);
+  left: clamp(1.25rem, 5vw, 5rem);
+  z-index: 8;
+}
+
+.orbit-heading h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.6rem, 6vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.orbit-eyebrow {
+  display: block;
+  margin-bottom: 0.7rem;
+  color: rgba(255, 255, 255, 0.72);
+  font: 600 clamp(0.65rem, 0.9vw, 0.8rem)/1 "Roboto Mono", monospace;
+  letter-spacing: 0.18em;
+}
+
+.orbit-earth {
+  position: absolute;
+  left: 50%;
+  bottom: min(-43vw, -20rem);
+  width: min(88vw, 980px);
+  translate: -50% 0;
+  z-index: 1;
+  filter: invert(13%) sepia(12%) saturate(1480%) hue-rotate(175deg) brightness(93%);
+}
+
+.orbit-tower {
+  position: absolute;
+  left: calc(50% - clamp(70px, 9vw, 130px));
+  bottom: 2vh;
+  width: clamp(110px, 14vw, 210px);
+  z-index: 4;
+  filter: invert(12%) drop-shadow(0 15px 12px rgba(0, 0, 0, 0.35));
+}
+
+.orbit-cloud,
+.orbit-star,
+.orbit-satellite {
+  position: absolute;
+  display: block;
+  user-select: none;
+}
+
+.orbit-cloud {
+  z-index: 5;
+  filter: invert(1) drop-shadow(0 12px 18px rgba(28, 48, 65, 0.18));
+  opacity: 0.82;
+}
+
+.orbit-cloud--1 { width: clamp(220px, 32vw, 540px); left: -8%; top: 42%; }
+.orbit-cloud--2 { width: clamp(170px, 24vw, 390px); right: -4%; top: 30%; }
+.orbit-cloud--3 { width: clamp(250px, 38vw, 620px); right: 12%; top: 68%; }
+.orbit-cloud--4 { width: clamp(100px, 14vw, 220px); left: 25%; top: 21%; opacity: 0.55; }
+.orbit-cloud--5 { width: clamp(120px, 18vw, 270px); right: 26%; top: 52%; opacity: 0.62; }
+
+.orbit-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+}
+
+.orbit-star {
+  filter: invert(1);
+  opacity: 0.72;
+}
+
+.orbit-star--1 { width: 34px; left: 13%; top: 27%; }
+.orbit-star--2 { width: 56px; right: 14%; top: 18%; }
+.orbit-star--3 { width: 24px; left: 41%; top: 14%; }
+.orbit-star--4 { width: 42px; right: 35%; top: 44%; }
+
+.orbit-satellite {
+  right: -15%;
+  top: 20%;
+  width: clamp(90px, 10vw, 150px);
+  z-index: 5;
+  opacity: 0;
+  filter: invert(1) drop-shadow(0 0 18px rgba(121, 192, 255, 0.3));
+}
+
+.orbit-trajectory {
+  position: absolute;
+  left: 49%;
+  top: 20%;
+  width: 48vw;
+  height: 43vh;
+  z-index: 3;
+  border-top: 1px solid rgba(151, 211, 255, 0.65);
+  border-right: 1px solid rgba(151, 211, 255, 0.65);
+  border-radius: 0 100% 0 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0;
 }
 
 /* Live liquid-metal rocket experiment.
    Adjust its placement and size here without touching JavaScript. */
 .liquid-metal-rocket {
   position: absolute;
-  top: clamp(5rem, 9vw, 9rem);
-  right: clamp(1rem, 5vw, 6rem);
-  width: clamp(90px, 12vw, 180px);
+  left: calc(50% - clamp(35px, 4vw, 55px));
+  bottom: 16vh;
+  width: clamp(70px, 8vw, 110px);
   aspect-ratio: 1;
-  z-index: 2;
+  z-index: 6;
   pointer-events: none;
   filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2))
           drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
-  transform: rotate(18deg);
+  transform: rotate(0deg);
 }
 
 .liquid-metal-rocket #liquid-metal-rocket-canvas,
@@ -1732,18 +1868,129 @@ color: #ffffff;
 }
 
 .liquid-metal-rocket .liquid-metal-fallback {
-  background: center / 82% no-repeat url("images/tl_animation/rocket-svgrepo-com.svg");
+  background: center / 82% no-repeat url("images/tl_animation/rocket.svg");
   filter: invert(1);
   opacity: 0.75;
 }
 
+.orbit-event-panel {
+  position: absolute;
+  right: clamp(1rem, 5vw, 5rem);
+  bottom: clamp(4.5rem, 9vh, 7rem);
+  z-index: 10;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  width: min(520px, 43vw);
+  min-height: 185px;
+  padding: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 14px;
+  background: rgba(5, 10, 19, 0.76);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(16px);
+}
+
+.orbit-event-controls {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.65rem;
+  display: flex;
+  gap: 0.45rem;
+}
+
+.orbit-step,
+.orbit-back-projects {
+  border: 1px solid rgba(151, 215, 255, 0.42);
+  color: #dff4ff;
+  background: rgba(7, 18, 30, 0.74);
+  font: 600 0.62rem/1 "Roboto Mono", monospace;
+  letter-spacing: 0.09em;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.orbit-step {
+  padding: 0.45rem 0.58rem;
+  border-radius: 5px;
+}
+
+.orbit-step:hover,
+.orbit-step:focus-visible,
+.orbit-back-projects:hover,
+.orbit-back-projects:focus-visible {
+  border-color: rgba(185, 232, 255, 0.9);
+  background: rgba(20, 52, 76, 0.88);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.orbit-back-projects {
+  position: absolute;
+  top: clamp(5rem, 9vh, 8rem);
+  right: clamp(1rem, 5vw, 5rem);
+  z-index: 12;
+  padding: 0.62rem 0.78rem;
+  border-radius: 6px;
+}
+
+.orbit-event-index {
+  position: absolute;
+  right: 0.8rem;
+  top: 0.45rem;
+  color: rgba(255, 255, 255, 0.15);
+  font: 700 3rem/1 "Roboto Mono", monospace;
+}
+
+.orbit-event-image {
+  width: 110px;
+  height: 100%;
+  min-height: 150px;
+  margin-right: 1rem;
+  object-fit: cover;
+  border-radius: 9px;
+  background: #101722;
+}
+
+.orbit-event-copy { align-self: center; padding-right: 1.3rem; }
+.orbit-event-date { color: #92d7ff; font: 500 0.7rem/1.4 "Roboto Mono", monospace; }
+.orbit-event-title { margin: 0.35rem 0 0.55rem; color: #fff; font-size: clamp(1rem, 1.6vw, 1.35rem); line-height: 1.15; }
+.orbit-event-description { display: -webkit-box; margin: 0; overflow: hidden; color: rgba(255,255,255,0.72); font-size: 0.82rem; line-height: 1.45; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
+
+.orbit-progress {
+  position: absolute;
+  left: clamp(1.25rem, 5vw, 5rem);
+  bottom: clamp(1.5rem, 4vh, 3rem);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  width: min(420px, 40vw);
+  gap: 0.75rem;
+  color: rgba(255,255,255,0.52);
+  font: 500 0.58rem/1 "Roboto Mono", monospace;
+  letter-spacing: 0.12em;
+}
+
+.orbit-progress-track { flex: 1; height: 2px; overflow: hidden; background: rgba(255,255,255,0.2); }
+.orbit-progress-track i { display: block; width: 100%; height: 100%; background: #9cddff; transform: scaleX(0); transform-origin: left; }
+
 @media (max-width: 700px) {
   .liquid-metal-rocket {
-    top: 5rem;
-    right: 0.75rem;
-    width: 82px;
-    opacity: 0.8;
+    left: calc(50% - 34px);
+    bottom: 20vh;
+    width: 68px;
+    opacity: 0.95;
   }
+
+  .orbital-timeline,
+  .orbital-stage { min-height: 560px; }
+  .orbit-heading { top: 4.8rem; }
+  .orbit-event-panel { left: 1rem; right: 1rem; bottom: 4.8rem; width: auto; min-height: 145px; }
+  .orbit-event-image { width: 78px; min-height: 112px; }
+  .orbit-event-description { font-size: 0.72rem; -webkit-line-clamp: 3; }
+  .orbit-event-controls { bottom: 0.45rem; }
+  .orbit-back-projects { top: 4.8rem; right: 1rem; padding: 0.5rem 0.6rem; }
+  .orbit-progress { left: 1rem; bottom: 2rem; width: calc(100% - 2rem); }
 }
 
 .timeline-container {

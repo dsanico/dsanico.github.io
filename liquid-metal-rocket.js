@@ -9,7 +9,7 @@ import {
 const mountElement = document.getElementById("liquid-metal-rocket-canvas");
 
 if (mountElement) {
-  const maskUrl = "images/tl_animation/rocket-svgrepo-com.svg";
+  const maskUrl = "images/tl_animation/rocket.svg";
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let shader;
   let processedMaskUrl;

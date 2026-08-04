@@ -26,6 +26,7 @@ function initLenis() {
       if (!target) return;
 
       e.preventDefault();
+      window.orbitTimelineClamp?.release();
       if (target.offsetTop > document.getElementById("hero-about-scene")?.offsetTop) {
         window.heroAboutScrollLock?.release({ bypassScene: true });
       }

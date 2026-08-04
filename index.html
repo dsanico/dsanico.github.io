@@ -57,9 +57,6 @@
         <li class="nav-item">
           <a class="nav-link" href="#timeline">Timeline</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
-        </li>
       </ul>
     </div>
 
@@ -194,7 +191,7 @@
   <div class="container-fluid p-0">
     <header class="project-catalog-header">
       <div>
-        <p>SELECTED ENGINEERING WORK</p>
+        <p>FROM LOW EARTH ORBIT TO SUPERCONDUCTING QUBITS</p>
         <h1>PROJECT CATALOG</h1>
       </div>
       <p>Browse the collection. Select a card to inspect the full project.</p>
@@ -280,7 +277,7 @@
           </div>
           <div class="project-card-item">
             <img style="max-height: 75%; max-width: 75%; align-self: center; margin-top: 10%;" 
-            src="images/timeline-IBM.png" alt="IBM Q Internship">
+            src="images/tl_IBM.png" alt="IBM Q Internship">
           </div>
         </div>
       </div>
@@ -697,10 +694,65 @@
 
 <!-- ==================== TIMELINE SECTION ==================== -->
 <section id="timeline">
-  <div class="liquid-metal-rocket" aria-hidden="true">
-    <div id="liquid-metal-rocket-canvas"></div>
+  <div class="orbital-timeline" aria-label="Career timeline">
+    <div class="orbital-stage">
+      <div class="orbit-atmosphere" aria-hidden="true"></div>
+
+      <div class="orbit-stars" aria-hidden="true">
+        <img class="orbit-star orbit-star--1" src="images/tl_animation/star_01.svg" alt="">
+        <img class="orbit-star orbit-star--2" src="images/tl_animation/star_02.svg" alt="">
+        <img class="orbit-star orbit-star--3" src="images/tl_animation/star_03.svg" alt="">
+        <img class="orbit-star orbit-star--4" src="images/tl_animation/star_fall.svg" alt="">
+      </div>
+
+      <img class="orbit-earth" src="images/tl_animation/earth.svg" alt="" aria-hidden="true">
+      <img class="orbit-tower" src="images/tl_animation/tower.svg" alt="" aria-hidden="true">
+
+      <div class="orbit-clouds" aria-hidden="true">
+        <img class="orbit-cloud orbit-cloud--1" src="images/tl_animation/cloud_01.svg" alt="">
+        <img class="orbit-cloud orbit-cloud--2" src="images/tl_animation/cloud_02.svg" alt="">
+        <img class="orbit-cloud orbit-cloud--3" src="images/tl_animation/cloud_03.svg" alt="">
+        <img class="orbit-cloud orbit-cloud--4" src="images/tl_animation/cloud_04.svg" alt="">
+        <img class="orbit-cloud orbit-cloud--5" src="images/tl_animation/cloud_05.svg" alt="">
+      </div>
+
+      <div class="orbit-trajectory" aria-hidden="true"></div>
+      <img class="orbit-satellite" src="images/tl_animation/satellite.svg" alt="" aria-hidden="true">
+
+      <div class="liquid-metal-rocket" aria-hidden="true">
+        <div id="liquid-metal-rocket-canvas"></div>
+      </div>
+
+      <header class="orbit-heading">
+        <span class="orbit-eyebrow">FLIGHT LOG / CAREER TRAJECTORY</span>
+        <h1>TIMELINE</h1>
+      </header>
+
+      <article class="orbit-event-panel" aria-live="polite">
+        <div class="orbit-event-index">01</div>
+        <img class="orbit-event-image" src="" alt="">
+        <div class="orbit-event-copy">
+          <span class="orbit-event-date"></span>
+          <h2 class="orbit-event-title"></h2>
+          <p class="orbit-event-description"></p>
+        </div>
+        <div class="orbit-event-controls">
+          <button type="button" class="orbit-step orbit-step--previous" aria-label="Previous timeline event">PREV</button>
+          <button type="button" class="orbit-step orbit-step--next" aria-label="Next timeline event">NEXT</button>
+        </div>
+      </article>
+
+      <button type="button" class="orbit-back-projects">← BACK TO PROJECTS</button>
+
+      <div class="orbit-progress" aria-hidden="true">
+        <span class="orbit-progress-label">LAUNCH</span>
+        <div class="orbit-progress-track"><i></i></div>
+        <span class="orbit-progress-label">ORBIT</span>
+      </div>
+    </div>
   </div>
-  <div class="container mt-3" style="min-width:90vw">
+
+  <div class="container mt-3 timeline-legacy" style="min-width:90vw" aria-hidden="true">
     <h1 class="text-center">TIMELINE</h1>
     
     <div class="timeline-container">
@@ -709,7 +761,7 @@
         <div class="timeline-item first">
           <div class="timeline-dot"></div>
           <div class="timeline-image">
-            <img src="images/timeline-IBM.png" alt="IBM Quantum">
+            <img src="images/tl_IBM_Q.png" alt="IBM Quantum">
           </div>
           <span style="font-size: 1em" class="item-tag-1">Quantum Firmware Intern @ IBM</span>
           <span class="timeline-date">| Jun. 2026 - Sep. 2026 </span>
@@ -723,7 +775,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-image">
-            <img src="images/timeline-uc3m.png" alt="UC3M">
+            <img src="images/tl_UC3M.png" alt="UC3M">
           </div>
           <span style="font-size: 1em" class="item-tag-1">Study Abroad @ UC3M</span>
           <span class="timeline-date">| Jan. 2026 - May 2026 </span>
@@ -737,7 +789,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-image">
-            <img src="images/timeline-MASA.png" alt="MASA Avionics Hardware Lead">
+            <img src="images/tl_MASA.png" alt="MASA Avionics Hardware Lead">
           </div>
           <span style="font-size: 1em" class="item-tag-1">Avionics Hardware Lead @ MASA</span>
           <span class="timeline-date">| Apr. 2025 - Dec. 2025</span>
@@ -757,7 +809,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-image">
-            <img src="images/timeline-RL.png" alt="Rocket Lab Internship">
+            <img src="images/tl_RKLB.png" alt="Rocket Lab Internship">
           </div>
           <span style="font-size: 1em" class="item-tag-1">Electrical Engineering Intern @ Rocket Lab</span>
           <span class="timeline-date">| May 2025 - Aug. 2025</span>
@@ -773,7 +825,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-image">
-            <img src="images/timeline-MASA.png" alt="MASA Avionics Hardware Lead">
+            <img src="images/tl_MASA.png" alt="MASA Avionics Hardware Lead">
           </div>
           <span style="font-size: 1em" class="item-tag-1">Bay Board PCBs Project Lead @ MASA</span>
           <span class="timeline-date">| Aug. 2024 - May 2025</span>
@@ -788,7 +840,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-image">
-            <img src="images/timeline-TEK.png" alt="TEK Hackathon">
+            <img src="images/tl_TEK.png" alt="TEK Hackathon">
           </div>
           <span style="font-size: 1em" class="item-tag-1">ATD/KTP/TEK Hackathon</span>
           <span class="timeline-date">| Apr. 2025</span>
@@ -801,7 +853,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-image">
-            <img src="images/timeline-MASA.png" alt="MASA Avionics Hardware Lead">
+            <img src="images/tl_MASA.png" alt="MASA Avionics Hardware Lead">
           </div>          
           <span style="font-size: 1em" class="item-tag-1">Flight Recorder PCB Project Lead @ MASA</span>
           <span class="timeline-date">| Mar. 2024 - Jan. 2025</span>
@@ -815,7 +867,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-image rounded-corners">
-            <img src="images/timeline-pair-tech.png" alt="Pair Tech Internship">
+            <img src="images/tl_pair_tech.png" alt="Pair Tech Internship">
           </div>
           <span style="font-size: 1em" class="item-tag-1">Data Science Intern @ Pair Tech</span>
           <span class="timeline-date">| May 2024 - Aug. 2024</span>
@@ -834,7 +886,7 @@
 </section>
 
 <!-- ==================== CONTACT SECTION ==================== -->
-<section id="contact">
+<section id="contact" hidden aria-hidden="true">
   <div class="container mt-3 additionalContent">
     <div class="row justify-content-center mt-4">
 
@@ -1011,6 +1063,7 @@
 <script src="skills-pcb.js"></script>
 <script src="flickity.pkgd.min.js"></script>
 <script src="projects-catalog.js"></script>
+<script src="timeline-orbit.js"></script>
 <script type="module" src="liquid-metal-rocket.js"></script>
 
 </body>
