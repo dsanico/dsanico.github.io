@@ -517,6 +517,7 @@ font-weight: 500;
 
 .navbar-brand {
     font-family: 'Orbitron', sans-serif;
+    font-size: 1.75rem;
     color: #ffcb05;
     margin: 0;
 }
@@ -1705,6 +1706,44 @@ color: #ffffff;
   padding: 0;
   background: #111111;
   position: relative;
+  overflow: hidden;
+}
+
+/* Live liquid-metal rocket experiment.
+   Adjust its placement and size here without touching JavaScript. */
+.liquid-metal-rocket {
+  position: absolute;
+  top: clamp(5rem, 9vw, 9rem);
+  right: clamp(1rem, 5vw, 6rem);
+  width: clamp(90px, 12vw, 180px);
+  aspect-ratio: 1;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2))
+          drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
+  transform: rotate(18deg);
+}
+
+.liquid-metal-rocket #liquid-metal-rocket-canvas,
+.liquid-metal-rocket canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.liquid-metal-rocket .liquid-metal-fallback {
+  background: center / 82% no-repeat url("images/tl_animation/rocket-svgrepo-com.svg");
+  filter: invert(1);
+  opacity: 0.75;
+}
+
+@media (max-width: 700px) {
+  .liquid-metal-rocket {
+    top: 5rem;
+    right: 0.75rem;
+    width: 82px;
+    opacity: 0.8;
+  }
 }
 
 .timeline-container {
