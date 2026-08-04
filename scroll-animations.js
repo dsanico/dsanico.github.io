@@ -27,7 +27,7 @@ function initLenis() {
 
       e.preventDefault();
       if (target.offsetTop > document.getElementById("hero-about-scene")?.offsetTop) {
-        window.heroAboutScrollLock?.release();
+        window.heroAboutScrollLock?.release({ bypassScene: true });
       }
       lenis.scrollTo(target, { offset: 0, duration: 1.2 });
     });
@@ -83,11 +83,43 @@ function initHeroAboutTransition() {
   let terminalComplete = false;
   let released = false;
   let touchStartY = 0;
+  let settleTimer = 0;
+  let settlingToTerminal = false;
+  let correctingTerminalOvershoot = false;
+  let bypassingScene = false;
 
-  const release = () => {
+  const cancelSettleTimer = () => {
+    window.clearTimeout(settleTimer);
+    settleTimer = 0;
+  };
+
+  const release = ({ bypassScene = false } = {}) => {
+    cancelSettleTimer();
+    settlingToTerminal = false;
+    const sceneBottom = scene.offsetTop + scene.offsetHeight;
+    bypassingScene = bypassScene && lenis.scroll < sceneBottom;
     released = true;
     sticky.classList.remove("is-terminal-complete");
     lenis.start();
+  };
+
+  const lockAtTerminal = (trigger) => {
+    cancelSettleTimer();
+    settlingToTerminal = false;
+    terminalComplete = true;
+    window.portfolioTerminal?.start();
+
+    const lockPosition = trigger.end - 1;
+    if (trigger.scroll() > lockPosition && !correctingTerminalOvershoot) {
+      correctingTerminalOvershoot = true;
+      lenis.scrollTo(lockPosition, { immediate: true, force: true });
+      correctingTerminalOvershoot = false;
+    }
+
+    // Apply the visible locked state after any backward overshoot correction,
+    // so that correction cannot be mistaken for intentional upward scrolling.
+    sticky.classList.add("is-terminal-complete");
+    lenis.stop();
   };
 
   window.heroAboutScrollLock = { release };
@@ -166,20 +198,47 @@ function initHeroAboutTransition() {
 
         if (terminalComplete) window.portfolioTerminal?.start();
 
-        if (self.progress < 0.98) released = false;
-        sticky.classList.toggle("is-terminal-complete", terminalComplete && !released && movingDown);
+        if (self.progress < 0.98 && !bypassingScene) released = false;
+        // Once a downward transition has started, finish it after the user
+        // pauses instead of leaving the terminal stranded at a partial scale.
+        if (movingDown && self.progress > 0.001 && !terminalComplete && !released && !settlingToTerminal) {
+          cancelSettleTimer();
+          settleTimer = window.setTimeout(() => {
+            settlingToTerminal = true;
+            lenis.start();
+            lenis.scrollTo(self.end - 1, {
+              duration: 0.65,
+              force: true,
+              onComplete: () => {
+                settlingToTerminal = false;
+              },
+            });
+          }, 140);
+        } else if (!movingDown) {
+          cancelSettleTimer();
+        }
 
         // The terminal gate only applies while progressing from Hero toward
         // Skills. Re-entering this boundary from below must remain scrollable.
-        if (terminalComplete && !movingDown) {
+        if (terminalComplete && !movingDown && !correctingTerminalOvershoot) {
+          settlingToTerminal = false;
+          sticky.classList.remove("is-terminal-complete");
           lenis.start();
         } else if (terminalComplete && !released) {
-          const lockPosition = self.end - 1;
-          if (self.scroll() > lockPosition) {
-            lenis.scrollTo(lockPosition, { immediate: true, force: true });
-          }
-          lenis.stop();
+          lockAtTerminal(self);
+        } else {
+          sticky.classList.remove("is-terminal-complete");
         }
+      },
+      onLeave: (self) => {
+        if (!released) {
+          lockAtTerminal(self);
+          return;
+        }
+
+        // A navbar jump has safely cleared the scene; normal Hero locking can
+        // be armed again the next time the user scrolls back into it.
+        bypassingScene = false;
       },
     },
   });
