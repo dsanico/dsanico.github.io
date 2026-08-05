@@ -1728,17 +1728,17 @@ color: #ffffff;
   overflow: hidden;
   isolation: isolate;
   color: #f4f7fb;
-  background: linear-gradient(180deg, #476b91 0%, #7898b3 40%, #c4d1d8 72%, #64798a 100%);
+  background: #78bce1;
 }
 
 .orbit-atmosphere {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   opacity: 0;
   background:
-    radial-gradient(circle at 75% 20%, rgba(52, 100, 174, 0.25), transparent 32%),
-    linear-gradient(180deg, #02030a 0%, #091327 52%, #204f78 100%);
+    radial-gradient(circle at 70% 16%, rgba(64, 105, 170, 0.18), transparent 32%),
+    linear-gradient(180deg, rgba(2, 4, 11, 0.92) 0%, rgba(7, 17, 38, 0.7) 68%, rgba(31, 69, 104, 0.45) 100%);
 }
 
 .orbit-heading {
@@ -1768,11 +1768,12 @@ color: #ffffff;
 .orbit-earth {
   position: absolute;
   left: 50%;
-  bottom: min(-43vw, -20rem);
-  width: min(88vw, 980px);
+  bottom: min(-31vw, -14rem);
+  width: min(68vw, 860px);
   translate: -50% 0;
-  z-index: 1;
-  filter: invert(13%) sepia(12%) saturate(1480%) hue-rotate(175deg) brightness(93%);
+  z-index: 2;
+  opacity: 0;
+  filter: invert(19%) sepia(18%) saturate(1040%) hue-rotate(164deg) brightness(108%) opacity(0.72);
 }
 
 .orbit-tower {
@@ -1781,7 +1782,19 @@ color: #ffffff;
   bottom: 2vh;
   width: clamp(110px, 14vw, 210px);
   z-index: 4;
-  filter: invert(12%) drop-shadow(0 15px 12px rgba(0, 0, 0, 0.35));
+  opacity: 0.42;
+  filter: invert(12%) drop-shadow(0 15px 12px rgba(0, 0, 0, 0.22));
+}
+
+.orbit-ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  height: clamp(10px, 2.2vh, 24px);
+  background: #080b0e;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.12), 0 -12px 35px rgba(15, 31, 39, 0.16);
 }
 
 .orbit-cloud,
@@ -1794,8 +1807,8 @@ color: #ffffff;
 
 .orbit-cloud {
   z-index: 5;
-  filter: invert(1) drop-shadow(0 12px 18px rgba(28, 48, 65, 0.18));
-  opacity: 0.82;
+  filter: invert(88%) sepia(8%) saturate(520%) hue-rotate(171deg) brightness(110%) drop-shadow(0 12px 18px rgba(28, 48, 65, 0.12));
+  opacity: 0;
 }
 
 .orbit-cloud--1 { width: clamp(220px, 32vw, 540px); left: -8%; top: 42%; }
@@ -1807,13 +1820,13 @@ color: #ffffff;
 .orbit-stars {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 1;
   opacity: 0;
 }
 
 .orbit-star {
-  filter: invert(1);
-  opacity: 0.72;
+  filter: invert(91%) sepia(7%) saturate(790%) hue-rotate(177deg) brightness(108%);
+  opacity: 0;
 }
 
 .orbit-star--1 { width: 34px; left: 13%; top: 27%; }
@@ -1822,42 +1835,30 @@ color: #ffffff;
 .orbit-star--4 { width: 42px; right: 35%; top: 44%; }
 
 .orbit-satellite {
-  right: -15%;
-  top: 20%;
   width: clamp(90px, 10vw, 150px);
-  z-index: 5;
+  z-index: 3;
   opacity: 0;
-  filter: invert(1) drop-shadow(0 0 18px rgba(121, 192, 255, 0.3));
+  filter: invert(78%) sepia(8%) saturate(610%) hue-rotate(172deg) brightness(93%) drop-shadow(0 0 18px rgba(121, 192, 255, 0.16));
 }
 
-.orbit-trajectory {
-  position: absolute;
-  left: 49%;
-  top: 20%;
-  width: 48vw;
-  height: 43vh;
-  z-index: 3;
-  border-top: 1px solid rgba(151, 211, 255, 0.65);
-  border-right: 1px solid rgba(151, 211, 255, 0.65);
-  border-radius: 0 100% 0 0;
-  transform: scaleX(0);
-  transform-origin: left center;
-  opacity: 0;
-}
+.orbit-satellite--1 { left: 10%; top: 20%; }
+.orbit-satellite--2 { right: 8%; bottom: 14%; transform: scale(0.72) rotate(18deg); }
 
 /* Live liquid-metal rocket experiment.
    Adjust its placement and size here without touching JavaScript. */
 .liquid-metal-rocket {
   position: absolute;
-  left: calc(50% - clamp(35px, 4vw, 55px));
-  bottom: 16vh;
-  width: clamp(70px, 8vw, 110px);
+  left: 34%;
+  top: 50%;
+  width: 30vh;
+  max-width: 26vw;
   aspect-ratio: 1;
   z-index: 6;
   pointer-events: none;
   filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2))
           drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
-  transform: rotate(0deg);
+  transform: translate(-50%, -50%) rotate(0deg);
+  transform-origin: 50% 50%;
 }
 
 .liquid-metal-rocket #liquid-metal-rocket-canvas,
@@ -1876,13 +1877,15 @@ color: #ffffff;
 .orbit-event-panel {
   position: absolute;
   right: clamp(1rem, 5vw, 5rem);
-  bottom: clamp(4.5rem, 9vh, 7rem);
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
   z-index: 10;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  width: min(520px, 43vw);
-  min-height: 185px;
-  padding: 1rem;
+  width: min(520px, 42vw);
+  min-height: 230px;
+  padding: 1.2rem 1rem 3rem;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.26);
   border-radius: 14px;
@@ -1942,29 +1945,40 @@ color: #ffffff;
   font: 700 3rem/1 "Roboto Mono", monospace;
 }
 
+.orbit-event-phase {
+  position: absolute;
+  left: 1rem;
+  top: 0.65rem;
+  color: rgba(178, 226, 255, 0.72);
+  font: 600 0.58rem/1 "Roboto Mono", monospace;
+  letter-spacing: 0.12em;
+}
+
 .orbit-event-image {
   width: 110px;
   height: 100%;
-  min-height: 150px;
+  min-height: 170px;
+  margin-top: 0.7rem;
   margin-right: 1rem;
   object-fit: cover;
   border-radius: 9px;
   background: #101722;
 }
 
-.orbit-event-copy { align-self: center; padding-right: 1.3rem; }
+.orbit-event-copy { align-self: center; padding: 0.8rem 1.3rem 0 0; }
 .orbit-event-date { color: #92d7ff; font: 500 0.7rem/1.4 "Roboto Mono", monospace; }
 .orbit-event-title { margin: 0.35rem 0 0.55rem; color: #fff; font-size: clamp(1rem, 1.6vw, 1.35rem); line-height: 1.15; }
 .orbit-event-description { display: -webkit-box; margin: 0; overflow: hidden; color: rgba(255,255,255,0.72); font-size: 0.82rem; line-height: 1.45; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
 
 .orbit-progress {
   position: absolute;
-  left: clamp(1.25rem, 5vw, 5rem);
+  left: auto;
+  right: clamp(1rem, 5vw, 5rem);
   bottom: clamp(1.5rem, 4vh, 3rem);
   z-index: 10;
   display: flex;
   align-items: center;
-  width: min(420px, 40vw);
+  width: min(520px, 42vw);
   gap: 0.75rem;
   color: rgba(255,255,255,0.52);
   font: 500 0.58rem/1 "Roboto Mono", monospace;
@@ -1976,21 +1990,22 @@ color: #ffffff;
 
 @media (max-width: 700px) {
   .liquid-metal-rocket {
-    left: calc(50% - 34px);
-    bottom: 20vh;
-    width: 68px;
+    left: 50%;
+    top: 31%;
+    width: 25vh;
+    max-width: 44vw;
     opacity: 0.95;
   }
 
   .orbital-timeline,
   .orbital-stage { min-height: 560px; }
   .orbit-heading { top: 4.8rem; }
-  .orbit-event-panel { left: 1rem; right: 1rem; bottom: 4.8rem; width: auto; min-height: 145px; }
-  .orbit-event-image { width: 78px; min-height: 112px; }
+  .orbit-event-panel { left: 1rem; right: 1rem; top: auto; bottom: 4.8rem; width: auto; min-height: 165px; transform: none; padding-bottom: 2.5rem; }
+  .orbit-event-image { width: 78px; min-height: 118px; }
   .orbit-event-description { font-size: 0.72rem; -webkit-line-clamp: 3; }
   .orbit-event-controls { bottom: 0.45rem; }
   .orbit-back-projects { top: 4.8rem; right: 1rem; padding: 0.5rem 0.6rem; }
-  .orbit-progress { left: 1rem; bottom: 2rem; width: calc(100% - 2rem); }
+  .orbit-progress { left: 1rem; right: 1rem; bottom: 2rem; width: auto; }
 }
 
 .timeline-container {
