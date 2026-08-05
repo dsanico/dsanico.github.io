@@ -10,7 +10,24 @@
   const eventDescription = panel.querySelector(".orbit-event-description");
   const eventIndex = panel.querySelector(".orbit-event-index");
   const eventPhase = panel.querySelector(".orbit-event-phase");
-  const rocket = document.querySelector(".orbit-spacecraft-marker");
+  const world = document.querySelector(".orbit-world");
+  const trajectory = document.querySelector(".orbit-trajectory-main");
+
+  function buildTrajectory() {
+    const pointCount = 360;
+    const startAngle = Math.PI / 2;
+    const points = Array.from({ length: pointCount + 1 }, (_, index) => {
+      const angle = startAngle + (index / pointCount) * Math.PI * 2;
+      const sine = Math.sin(angle);
+      const x = 275 + 300 * sine + 140 * sine * sine;
+      const y = 300 + 55 * (1 - sine)
+        + 155 * Math.sin(2 * angle) * (1 + 0.42 * sine);
+      return `${index ? "L" : "M"} ${x.toFixed(2)} ${y.toFixed(2)}`;
+    });
+    trajectory.setAttribute("d", `${points.join(" ")} Z`);
+  }
+
+  buildTrajectory();
 
   const events = legacyItems.reverse().map((item, index, list) => {
     const middleCount = Math.max(list.length - 2, 0);
@@ -33,7 +50,9 @@
   let locked = false;
   let targetProgress = 0;
   let touchY = 0;
+  const motion = { progress: 0 };
   const finalIndex = Math.max(events.length - 1, 1);
+  const stageCount = events.length;
 
   function updateEvent(index, animate = true) {
     if (activeIndex === index || !events[index]) return;
@@ -43,38 +62,54 @@
     eventDate.textContent = event.date;
     eventDescription.textContent = event.description;
     eventIndex.textContent = String(index + 1).padStart(2, "0");
-    eventPhase.textContent = `EVENT NODE / ${String(index + 1).padStart(2, "0")} · ${Math.round((index / finalIndex) * 36000)} KM`;
+    eventPhase.textContent = `EVENT NODE / ${String(index + 1).padStart(2, "0")} / ${Math.round((index / finalIndex) * 36000)} KM`;
     window.dispatchEvent(new CustomEvent("orbitstagechange", { detail: { icon: event.icon } }));
 
     if (animate) {
-      gsap.fromTo(panel, { autoAlpha: 0.35, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.42, ease: "power2.out" });
+      gsap.fromTo(panel, { autoAlpha: 0.72, x: 10 }, { autoAlpha: 1, x: 0, duration: 0.18, ease: "power1.out" });
     }
   }
 
-  function plotRocket(progress, animate = true) {
-    const angle = gsap.utils.interpolate(-145, 205, progress) * Math.PI / 180;
-    const radiusX = Math.min(diagram.clientWidth * 0.34, window.innerWidth * 0.18);
-    const radiusY = Math.min(diagram.clientHeight * 0.3, window.innerHeight * 0.29);
-    gsap.to(rocket, {
-      x: Math.cos(angle) * radiusX,
-      y: Math.sin(angle) * radiusY,
-      scale: progress > 0.94 ? 0.8 : 1,
-      duration: animate ? 0.38 : 0,
-      ease: "power2.out",
-      overwrite: true
+  function plotRocket(progress) {
+    const pathPoint = trajectory.getPointAtLength(trajectory.getTotalLength() * progress);
+    const viewBox = trajectory.ownerSVGElement.viewBox.baseVal;
+    const pathX = (pathPoint.x - viewBox.x) / viewBox.width * world.clientWidth;
+    const pathY = (pathPoint.y - viewBox.y) / viewBox.height * world.clientHeight;
+    const markerX = diagram.clientWidth * 0.3;
+    const markerY = diagram.clientHeight * 0.54;
+    gsap.set(world, {
+      x: markerX - pathX,
+      y: markerY - pathY
     });
+  }
+
+  function displayProgress(progress) {
+    const index = Math.min(events.length - 1, Math.floor(progress * stageCount));
+    updateEvent(index, true);
+    plotRocket(progress);
+    gsap.set(".orbit-progress-track i", { scaleX: progress });
   }
 
   function renderProgress(progress, animate = true) {
     targetProgress = gsap.utils.clamp(0, 1, progress);
-    const index = Math.min(events.length - 1, Math.round(targetProgress * finalIndex));
-    updateEvent(index, animate);
-    plotRocket(targetProgress, animate);
-    gsap.to(".orbit-progress-track i", { scaleX: targetProgress, duration: animate ? 0.25 : 0, overwrite: true });
+    gsap.killTweensOf(motion);
+    if (!animate) {
+      motion.progress = targetProgress;
+      displayProgress(motion.progress);
+      return;
+    }
+    gsap.to(motion, {
+      progress: targetProgress,
+      duration: 0.38,
+      ease: "power1.out",
+      overwrite: true,
+      onUpdate: () => displayProgress(motion.progress)
+    });
   }
 
   function goToStage(index) {
-    renderProgress(gsap.utils.clamp(0, events.length - 1, index) / finalIndex);
+    const stageIndex = gsap.utils.clamp(0, events.length - 1, index);
+    renderProgress(stageIndex / stageCount);
   }
 
   function lock() {
@@ -99,7 +134,7 @@
     event.preventDefault();
     event.stopPropagation();
     const pixels = event.deltaMode === 1 ? event.deltaY * 18 : event.deltaY;
-    renderProgress(targetProgress + pixels / (window.innerHeight * 3.5));
+    renderProgress(targetProgress + pixels / (window.innerHeight * 7.5));
   }
 
   function onTouchStart(event) {
@@ -112,7 +147,7 @@
     const delta = touchY - nextY;
     touchY = nextY;
     event.preventDefault();
-    renderProgress(targetProgress + delta / (window.innerHeight * 1.8));
+    renderProgress(targetProgress + delta / (window.innerHeight * 3.8));
   }
 
   function onKeyDown(event) {
@@ -142,7 +177,7 @@
   window.addEventListener("touchstart", onTouchStart, { passive: true, capture: true });
   window.addEventListener("touchmove", onTouchMove, { passive: false, capture: true });
   window.addEventListener("keydown", onKeyDown, { capture: true });
-  window.addEventListener("resize", () => plotRocket(targetProgress, false), { passive: true });
+  window.addEventListener("resize", () => plotRocket(motion.progress), { passive: true });
   window.orbitTimelineClamp = { lock, release, setProgress: renderProgress, goToStage };
   renderProgress(0, false);
 

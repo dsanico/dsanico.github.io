@@ -11,8 +11,16 @@ const mountElement = document.getElementById("liquid-metal-event-icon-canvas");
 if (mountElement) {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let shader;
-  let activeBlobUrl;
   let requestId = 0;
+  let iconVisible = false;
+  const processedIcons = new Map();
+  const iconUrls = [
+    "images/tl_animation/tower.svg",
+    "images/tl_animation/earth.svg",
+    "images/tl_animation/satellite.svg",
+    "images/tl_animation/star_03.svg",
+    ...Array.from({ length: 5 }, (_, index) => `images/tl_animation/cloud_0${index + 1}.svg`)
+  ];
 
   const loadImage = (url) => new Promise((resolve, reject) => {
     const image = new Image();
@@ -44,14 +52,23 @@ if (mountElement) {
     u_worldHeight: 0
   };
 
+  function prepareIcon(maskUrl) {
+    if (!processedIcons.has(maskUrl)) {
+      processedIcons.set(maskUrl, (async () => {
+      const { pngBlob } = await toProcessedLiquidMetal(maskUrl);
+        const blobUrl = URL.createObjectURL(pngBlob);
+        const image = await loadImage(blobUrl);
+        return { image, blobUrl };
+      })());
+    }
+    return processedIcons.get(maskUrl);
+  }
+
   async function setIcon(maskUrl) {
     const currentRequest = ++requestId;
     try {
-      const { pngBlob } = await toProcessedLiquidMetal(maskUrl);
-      const nextBlobUrl = URL.createObjectURL(pngBlob);
-      const processedImage = await loadImage(nextBlobUrl);
+      const { image: processedImage } = await prepareIcon(maskUrl);
       if (currentRequest !== requestId) {
-        URL.revokeObjectURL(nextBlobUrl);
         return;
       }
 
@@ -64,15 +81,13 @@ if (mountElement) {
           reducedMotion.matches ? 0 : 1,
           0,
           1,
-          480 * 240,
+          256 * 144,
           ["u_image"]
         );
       } else {
         shader.setUniforms({ u_image: processedImage });
       }
-
-      if (activeBlobUrl) URL.revokeObjectURL(activeBlobUrl);
-      activeBlobUrl = nextBlobUrl;
+      shader.setSpeed(reducedMotion.matches || !iconVisible ? 0 : 1);
     } catch (error) {
       console.error("Paper Liquid Metal event icon could not be initialized.", error);
     }
@@ -81,11 +96,37 @@ if (mountElement) {
   window.addEventListener("orbitstagechange", ({ detail }) => {
     if (detail?.icon) setIcon(detail.icon);
   });
-  reducedMotion.addEventListener("change", ({ matches }) => shader?.setSpeed(matches ? 0 : 1));
+  reducedMotion.addEventListener("change", ({ matches }) => shader?.setSpeed(matches || !iconVisible ? 0 : 1));
+
+  const visibilityObserver = new IntersectionObserver(([entry]) => {
+    iconVisible = entry.isIntersecting;
+    shader?.setSpeed(reducedMotion.matches || !iconVisible ? 0 : 1);
+  }, { rootMargin: "120px" });
+  visibilityObserver.observe(mountElement);
+
   setIcon("images/tl_animation/tower.svg");
 
+  const warmIconCache = async () => {
+    const pendingIcons = iconUrls.filter((iconUrl) => !processedIcons.has(iconUrl));
+    const workers = Array.from({ length: 2 }, async () => {
+      while (pendingIcons.length) {
+        const iconUrl = pendingIcons.shift();
+        try {
+          await prepareIcon(iconUrl);
+        } catch {}
+      }
+    });
+    await Promise.all(workers);
+  };
+  window.setTimeout(warmIconCache, 150);
+
   window.addEventListener("pagehide", () => {
+    visibilityObserver.disconnect();
     shader?.dispose();
-    if (activeBlobUrl) URL.revokeObjectURL(activeBlobUrl);
+    processedIcons.forEach(async (preparedIcon) => {
+      try {
+        URL.revokeObjectURL((await preparedIcon).blobUrl);
+      } catch {}
+    });
   }, { once: true });
 }
