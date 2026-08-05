@@ -6,13 +6,13 @@ import {
   toProcessedLiquidMetal
 } from "./vendor/paper-shaders/shaders/liquid-metal.js";
 
-const mountElement = document.getElementById("liquid-metal-rocket-canvas");
+const mountElement = document.getElementById("liquid-metal-event-icon-canvas");
 
 if (mountElement) {
-  const maskUrl = "images/tl_animation/rocket.svg";
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let shader;
-  let processedMaskUrl;
+  let activeBlobUrl;
+  let requestId = 0;
 
   const loadImage = (url) => new Promise((resolve, reject) => {
     const image = new Image();
@@ -21,61 +21,71 @@ if (mountElement) {
     image.src = url;
   });
 
-  try {
-    // Paper preprocesses the SVG mask to calculate the edge field used by its
-    // contour distortion. The resulting image is then supplied to WebGL.
-    const { pngBlob } = await toProcessedLiquidMetal(maskUrl);
-    processedMaskUrl = URL.createObjectURL(pngBlob);
-    const processedMask = await loadImage(processedMaskUrl);
+  const baseUniforms = {
+    u_colorBack: [0, 0, 0, 0],
+    u_colorTint: [1, 1, 1, 1],
+    u_contour: 0.42,
+    u_distortion: 0.08,
+    u_softness: 0.12,
+    u_repetition: 2,
+    u_shiftRed: 0.22,
+    u_shiftBlue: 0.22,
+    u_angle: 72,
+    u_isImage: true,
+    u_shape: LiquidMetalShapes.none,
+    u_fit: ShaderFitOptions.contain,
+    u_scale: 0.72,
+    u_rotation: 0,
+    u_offsetX: 0,
+    u_offsetY: 0,
+    u_originX: 0.5,
+    u_originY: 0.5,
+    u_worldWidth: 0,
+    u_worldHeight: 0
+  };
 
-    const uniforms = {
-      // Paper composites this color behind the mask. Alpha 0 keeps the
-      // WebGL canvas transparent outside the rocket silhouette.
-      u_colorBack: [0.67, 0.67, 0.68, 0],
-      u_colorTint: [1, 1, 1, 1],
-      u_image: processedMask,
-      u_contour: 0.4,
-      u_distortion: 0.07,
-      u_softness: 0.1,
-      u_repetition: 2,
-      u_shiftRed: 0.3,
-      u_shiftBlue: 0.3,
-      u_angle: 70,
-      u_isImage: true,
-      u_shape: LiquidMetalShapes.none,
-      u_fit: ShaderFitOptions.contain,
-      u_scale: 0.82,
-      u_rotation: 0,
-      u_offsetX: 0,
-      u_offsetY: 0,
-      u_originX: 0.5,
-      u_originY: 0.5,
-      u_worldWidth: 0,
-      u_worldHeight: 0
-    };
+  async function setIcon(maskUrl) {
+    const currentRequest = ++requestId;
+    try {
+      const { pngBlob } = await toProcessedLiquidMetal(maskUrl);
+      const nextBlobUrl = URL.createObjectURL(pngBlob);
+      const processedImage = await loadImage(nextBlobUrl);
+      if (currentRequest !== requestId) {
+        URL.revokeObjectURL(nextBlobUrl);
+        return;
+      }
 
-    shader = new ShaderMount(
-      mountElement,
-      liquidMetalFragmentShader,
-      uniforms,
-      { alpha: true, antialias: true, premultipliedAlpha: true },
-      prefersReducedMotion.matches ? 0 : 1,
-      0,
-      1,
-      512 * 512,
-      ["u_image"]
-    );
+      if (!shader) {
+        shader = new ShaderMount(
+          mountElement,
+          liquidMetalFragmentShader,
+          { ...baseUniforms, u_image: processedImage },
+          { alpha: true, antialias: true, premultipliedAlpha: true },
+          reducedMotion.matches ? 0 : 1,
+          0,
+          1,
+          480 * 240,
+          ["u_image"]
+        );
+      } else {
+        shader.setUniforms({ u_image: processedImage });
+      }
 
-    prefersReducedMotion.addEventListener("change", ({ matches }) => {
-      shader?.setSpeed(matches ? 0 : 1);
-    });
-  } catch (error) {
-    console.error("Paper Liquid Metal rocket could not be initialized.", error);
-    mountElement.classList.add("liquid-metal-fallback");
+      if (activeBlobUrl) URL.revokeObjectURL(activeBlobUrl);
+      activeBlobUrl = nextBlobUrl;
+    } catch (error) {
+      console.error("Paper Liquid Metal event icon could not be initialized.", error);
+    }
   }
+
+  window.addEventListener("orbitstagechange", ({ detail }) => {
+    if (detail?.icon) setIcon(detail.icon);
+  });
+  reducedMotion.addEventListener("change", ({ matches }) => shader?.setSpeed(matches ? 0 : 1));
+  setIcon("images/tl_animation/tower.svg");
 
   window.addEventListener("pagehide", () => {
     shader?.dispose();
-    if (processedMaskUrl) URL.revokeObjectURL(processedMaskUrl);
+    if (activeBlobUrl) URL.revokeObjectURL(activeBlobUrl);
   }, { once: true });
 }

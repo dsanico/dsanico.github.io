@@ -696,47 +696,38 @@
 <section id="timeline">
   <div class="orbital-timeline" aria-label="Career timeline">
     <div class="orbital-stage">
-      <div class="orbit-atmosphere" aria-hidden="true"></div>
-
-      <div class="orbit-stars" aria-hidden="true">
-        <img class="orbit-star orbit-star--1" src="images/tl_animation/star_01.svg" alt="">
-        <img class="orbit-star orbit-star--2" src="images/tl_animation/star_02.svg" alt="">
-        <img class="orbit-star orbit-star--3" src="images/tl_animation/star_03.svg" alt="">
-        <img class="orbit-star orbit-star--4" src="images/tl_animation/star_fall.svg" alt="">
-      </div>
-
-      <img class="orbit-earth" src="images/tl_animation/earth.svg" alt="" aria-hidden="true">
-      <img class="orbit-tower" src="images/tl_animation/tower.svg" alt="" aria-hidden="true">
-      <div class="orbit-ground" aria-hidden="true"></div>
-
-      <div class="orbit-clouds" aria-hidden="true">
-        <img class="orbit-cloud orbit-cloud--1" src="images/tl_animation/cloud_01.svg" alt="">
-        <img class="orbit-cloud orbit-cloud--2" src="images/tl_animation/cloud_02.svg" alt="">
-        <img class="orbit-cloud orbit-cloud--3" src="images/tl_animation/cloud_03.svg" alt="">
-        <img class="orbit-cloud orbit-cloud--4" src="images/tl_animation/cloud_04.svg" alt="">
-        <img class="orbit-cloud orbit-cloud--5" src="images/tl_animation/cloud_05.svg" alt="">
-      </div>
-
-      <img class="orbit-satellite orbit-satellite--1" src="images/tl_animation/satellite.svg" alt="" aria-hidden="true">
-      <img class="orbit-satellite orbit-satellite--2" src="images/tl_animation/satellite.svg" alt="" aria-hidden="true">
-
-      <div class="liquid-metal-rocket" aria-hidden="true">
-        <div id="liquid-metal-rocket-canvas"></div>
+      <div class="orbit-diagram" aria-hidden="true">
+        <div class="orbit-axis orbit-axis--x"></div>
+        <div class="orbit-axis orbit-axis--y"></div>
+        <div class="orbit-ring orbit-ring--outer"></div>
+        <div class="orbit-ring orbit-ring--middle"></div>
+        <div class="orbit-ring orbit-ring--inner"></div>
+        <div class="orbit-center-body">
+          <img src="images/tl_animation/earth.svg" alt="">
+        </div>
+        <i class="orbit-node orbit-node--apoapsis"></i>
+        <i class="orbit-node orbit-node--periapsis"></i>
+        <span class="orbit-plot-label orbit-plot-label--apoapsis">APOAPSIS</span>
+        <span class="orbit-plot-label orbit-plot-label--periapsis">PERIAPSIS</span>
+        <span class="orbit-plot-label orbit-plot-label--plane">REFERENCE PLANE / ECI</span>
+        <div class="orbit-spacecraft-marker"><i></i></div>
       </div>
 
       <header class="orbit-heading">
-        <span class="orbit-eyebrow">FLIGHT LOG / CAREER TRAJECTORY</span>
-        <h1>TIMELINE</h1>
+        <span class="orbit-eyebrow">MISSION ARCHIVE / ORBITAL HISTORY</span>
+        <h1>TRAJECTORY</h1>
       </header>
 
       <article class="orbit-event-panel" aria-live="polite">
         <div class="orbit-event-index">01</div>
-        <span class="orbit-event-phase">GROUND / 00 KM</span>
-        <img class="orbit-event-image" src="" alt="">
+        <span class="orbit-event-phase">EVENT NODE / 01</span>
         <div class="orbit-event-copy">
-          <span class="orbit-event-date"></span>
           <h2 class="orbit-event-title"></h2>
+          <span class="orbit-event-date"></span>
           <p class="orbit-event-description"></p>
+        </div>
+        <div class="orbit-event-icon" aria-hidden="true">
+          <div id="liquid-metal-event-icon-canvas"></div>
         </div>
         <div class="orbit-event-controls">
           <button type="button" class="orbit-step orbit-step--previous" aria-label="Previous timeline event">PREV</button>
@@ -747,9 +738,9 @@
       <button type="button" class="orbit-back-projects">← BACK TO PROJECTS</button>
 
       <div class="orbit-progress" aria-hidden="true">
-        <span class="orbit-progress-label">LAUNCH</span>
+        <span class="orbit-progress-label">ORIGIN</span>
         <div class="orbit-progress-track"><i></i></div>
-        <span class="orbit-progress-label">ORBIT</span>
+        <span class="orbit-progress-label">CURRENT</span>
       </div>
     </div>
   </div>

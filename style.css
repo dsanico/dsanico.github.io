@@ -2008,6 +2008,247 @@ color: #ffffff;
   .orbit-progress { left: 1rem; right: 1rem; bottom: 2rem; width: auto; }
 }
 
+/* Orbital trajectory timeline — technical plotting theme */
+.orbital-stage {
+  background-color: #000 !important;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+    radial-gradient(circle at 27% 52%, rgba(48, 67, 82, 0.16), transparent 38%);
+  background-size: 42px 42px, 42px 42px, auto;
+}
+
+.orbit-heading {
+  top: clamp(5rem, 8vh, 7rem);
+  left: clamp(1.5rem, 4vw, 4rem);
+}
+
+.orbit-heading h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2rem, 4.4vw, 4.8rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-shadow: none;
+}
+
+.orbit-eyebrow {
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.22em;
+}
+
+.orbit-diagram {
+  position: absolute;
+  left: clamp(1rem, 4vw, 4rem);
+  top: 18%;
+  bottom: 10%;
+  width: 51%;
+  overflow: hidden;
+}
+
+.orbit-axis,
+.orbit-ring {
+  position: absolute;
+  pointer-events: none;
+}
+
+.orbit-axis { opacity: 0.22; }
+.orbit-axis--x { left: 4%; right: 3%; top: 50%; border-top: 1px dashed #fff; }
+.orbit-axis--y { top: 3%; bottom: 3%; left: 50%; border-left: 1px dashed #fff; }
+
+.orbit-ring {
+  left: 50%;
+  top: 50%;
+  border: 1px solid rgba(255,255,255,0.68);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  box-shadow: inset 0 0 30px rgba(255,255,255,0.015);
+}
+
+.orbit-ring--outer { width: 84%; height: 68%; transform: translate(-50%, -50%); }
+.orbit-ring--middle { width: 67%; height: 47%; opacity: 0.48; transform: translate(-50%, -50%) rotate(13deg); }
+.orbit-ring--inner { width: 44%; height: 29%; opacity: 0.28; transform: translate(-50%, -50%) rotate(-24deg); }
+
+.orbit-center-body {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(64px, 7vw, 108px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255,255,255,0.58);
+  border-radius: 50%;
+  overflow: hidden;
+  background: #07090c;
+  box-shadow: 0 0 32px rgba(255,255,255,0.07);
+}
+
+.orbit-center-body img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.42;
+  filter: invert(1);
+}
+
+.orbit-node {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background: #000;
+}
+
+.orbit-node--apoapsis { left: 8%; top: 42%; }
+.orbit-node--periapsis { right: 11%; top: 60%; }
+
+.orbit-plot-label {
+  position: absolute;
+  color: rgba(255,255,255,0.46);
+  font: 500 0.56rem/1 "Roboto Mono", monospace;
+  letter-spacing: 0.12em;
+}
+
+.orbit-plot-label--apoapsis { left: 8%; top: 38%; }
+.orbit-plot-label--periapsis { right: 10%; top: 64%; }
+.orbit-plot-label--plane { left: 52%; top: 51.5%; }
+
+.orbit-spacecraft-marker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 7;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border: 1px solid rgba(255,255,255,0.85);
+  border-radius: 50%;
+  background: #000;
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 0 18px rgba(255,255,255,0.16);
+}
+
+.orbit-spacecraft-marker::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: -9px;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 7px solid #fff;
+}
+
+.orbit-spacecraft-marker i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff;
+}
+
+.orbit-event-panel {
+  right: clamp(1.5rem, 5vw, 5rem);
+  top: 50%;
+  bottom: auto;
+  display: block;
+  width: min(520px, 38vw);
+  min-height: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  transform: translateY(-45%);
+}
+
+.orbit-event-phase {
+  position: static;
+  display: block;
+  margin-bottom: 1rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.orbit-event-index {
+  top: -1.1rem;
+  right: 0;
+  color: rgba(255,255,255,0.08);
+  font-size: clamp(4rem, 8vw, 8rem);
+}
+
+.orbit-event-copy { padding: 0; }
+
+.orbit-event-title {
+  max-width: 90%;
+  margin: 0 0 0.7rem;
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(1.35rem, 2.4vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: 0.025em;
+}
+
+.orbit-event-date {
+  display: block;
+  margin-bottom: 1.2rem;
+  color: rgba(255,255,255,0.52);
+  font-family: "Roboto Mono", monospace;
+  letter-spacing: 0.08em;
+}
+
+.orbit-event-description {
+  display: block;
+  min-height: 5.8em;
+  max-height: 8.7em;
+  margin: 0;
+  overflow: auto;
+  color: rgba(255,255,255,0.72);
+  font-family: "Libre Franklin", sans-serif;
+  font-size: clamp(0.8rem, 1vw, 0.98rem);
+  line-height: 1.55;
+  -webkit-line-clamp: unset;
+}
+
+.orbit-event-icon {
+  width: 100%;
+  height: clamp(105px, 16vh, 150px);
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.16);
+  border-bottom: 1px solid rgba(255,255,255,0.16);
+}
+
+.orbit-event-icon > div,
+.orbit-event-icon canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.orbit-event-controls { right: 0; bottom: -2.5rem; }
+.orbit-step, .orbit-back-projects { border-color: rgba(255,255,255,0.28); color: #fff; background: #000; }
+
+.orbit-progress {
+  left: auto;
+  right: clamp(1.5rem, 5vw, 5rem);
+  width: min(520px, 38vw);
+}
+
+.orbit-progress-track { background: rgba(255,255,255,0.14); }
+.orbit-progress-track i { background: #fff; }
+
+@media (max-width: 800px) {
+  .orbit-heading { top: 4.5rem; }
+  .orbit-heading h1 { font-size: 1.8rem; }
+  .orbit-diagram { left: 1rem; right: 1rem; top: 16%; bottom: auto; width: auto; height: 34%; }
+  .orbit-event-panel { left: 1rem; right: 1rem; top: 53%; bottom: auto; width: auto; transform: none; }
+  .orbit-event-title { font-size: 1.25rem; }
+  .orbit-event-description { min-height: 3em; max-height: 4.65em; }
+  .orbit-event-icon { height: 86px; }
+  .orbit-progress { left: 1rem; right: 1rem; width: auto; }
+}
+
 .timeline-container {
   position: relative;
   min-width: 100%;
