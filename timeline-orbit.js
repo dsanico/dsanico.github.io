@@ -7,6 +7,8 @@
   const panel = document.querySelector(".orbit-event-panel");
   const eventDate = panel.querySelector(".orbit-event-date");
   const eventTitle = panel.querySelector(".orbit-event-title");
+  const eventRole = panel.querySelector(".orbit-event-role");
+  const eventPhoto = panel.querySelector(".orbit-event-photo");
   const eventDescription = panel.querySelector(".orbit-event-description");
   const eventIndex = panel.querySelector(".orbit-event-index");
   const eventPhase = panel.querySelector(".orbit-event-phase");
@@ -23,10 +25,16 @@
     else if (index <= skyCount) icon = `images/tl_animation/cloud_0${(index % 5) + 1}.svg`;
     else if (index % 2) icon = "images/tl_animation/atom.svg";
 
+    const sourceTitle = item.querySelector(".item-tag-1")?.textContent.trim() || "Mission milestone";
+    const separatorIndex = sourceTitle.lastIndexOf(" @ ");
+    const sourceImage = item.querySelector(".timeline-image img");
     return {
-      title: item.querySelector(".item-tag-1")?.textContent.trim() || "Mission milestone",
+      organization: separatorIndex >= 0 ? sourceTitle.slice(separatorIndex + 3) : sourceTitle,
+      role: separatorIndex >= 0 ? sourceTitle.slice(0, separatorIndex) : "",
       date: item.querySelector(".timeline-date")?.textContent.replace(/^\|\s*/, "").trim() || "",
       description: item.querySelector(".timeline-content p")?.textContent.trim().replace(/\s+/g, " ") || "",
+      image: sourceImage?.getAttribute("src") || "",
+      imageAlt: sourceImage?.getAttribute("alt") || "",
       icon
     };
   });
@@ -36,13 +44,18 @@
   let targetProgress = 0;
   let touchY = 0;
   let iconUpdateTimer;
+  const motion = { progress: 0 };
   const finalIndex = Math.max(events.length - 1, 1);
 
   function updateEvent(index, animate = true) {
     if (activeIndex === index || !events[index]) return;
     activeIndex = index;
     const event = events[index];
-    eventTitle.textContent = event.title;
+    eventTitle.textContent = event.organization;
+    eventRole.textContent = event.role;
+    eventRole.hidden = !event.role;
+    eventPhoto.src = event.image;
+    eventPhoto.alt = event.imageAlt;
     eventDate.textContent = event.date;
     eventDescription.textContent = event.description;
     eventIndex.textContent = String(index + 1).padStart(2, "0");
@@ -74,12 +87,26 @@
 
   function renderProgress(progress) {
     targetProgress = gsap.utils.clamp(0, 1, progress);
+    gsap.killTweensOf(motion);
+    motion.progress = targetProgress;
     displayProgress(targetProgress);
   }
 
   function goToStage(index) {
     const stageIndex = gsap.utils.clamp(0, events.length - 1, index);
-    renderProgress(stageIndex / finalIndex);
+    targetProgress = stageIndex / finalIndex;
+    updateEvent(stageIndex, true);
+    gsap.killTweensOf(motion);
+    gsap.to(motion, {
+      progress: targetProgress,
+      duration: 0.72,
+      ease: "power2.inOut",
+      overwrite: true,
+      onUpdate: () => {
+        plotRocket(motion.progress);
+        gsap.set(".orbit-progress-track i", { scaleX: motion.progress });
+      }
+    });
   }
 
   function lock() {
@@ -147,7 +174,7 @@
   window.addEventListener("touchstart", onTouchStart, { passive: true, capture: true });
   window.addEventListener("touchmove", onTouchMove, { passive: false, capture: true });
   window.addEventListener("keydown", onKeyDown, { capture: true });
-  window.addEventListener("resize", () => plotRocket(targetProgress), { passive: true });
+  window.addEventListener("resize", () => plotRocket(motion.progress), { passive: true });
   window.orbitTimelineClamp = { lock, release, setProgress: renderProgress, goToStage };
   renderProgress(0);
 

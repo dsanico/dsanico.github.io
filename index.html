@@ -702,9 +702,10 @@
           <div class="orbit-axis orbit-axis--y"></div>
           <svg class="orbit-trajectory" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
             <ellipse class="orbit-trajectory-main" cx="500" cy="315" rx="360" ry="190"></ellipse>
-            <ellipse class="orbit-trajectory-decoration" cx="500" cy="315" rx="285" ry="125" transform="rotate(14 500 315)"></ellipse>
-            <ellipse class="orbit-trajectory-decoration orbit-trajectory-decoration--faint" cx="500" cy="315" rx="205" ry="235" transform="rotate(-58 500 315)"></ellipse>
-            <circle class="orbit-reference-ring" cx="500" cy="315" r="92"></circle>
+            <ellipse class="orbit-trajectory-decoration" cx="680" cy="315" rx="126" ry="72" transform="rotate(14 680 315)"></ellipse>
+            <ellipse class="orbit-trajectory-decoration orbit-trajectory-decoration--faint" cx="680" cy="315" rx="96" ry="142" transform="rotate(-58 680 315)"></ellipse>
+            <ellipse class="orbit-trajectory-decoration orbit-trajectory-decoration--polar" cx="680" cy="315" rx="230" ry="80" transform="rotate(67 680 315)"></ellipse>
+            <circle class="orbit-reference-ring" cx="680" cy="315" r="64"></circle>
           </svg>
           <div class="orbit-center-body">
             <div id="liquid-metal-earth-canvas"></div>
@@ -728,11 +729,17 @@
         <span class="orbit-event-phase">EVENT NODE / 01</span>
         <div class="orbit-event-copy">
           <h2 class="orbit-event-title"></h2>
+          <span class="orbit-event-role"></span>
           <span class="orbit-event-date"></span>
           <p class="orbit-event-description"></p>
         </div>
-        <div class="orbit-event-icon" aria-hidden="true">
-          <div id="liquid-metal-event-icon-canvas"></div>
+        <div class="orbit-event-media">
+          <div class="orbit-event-icon" aria-hidden="true">
+            <div id="liquid-metal-event-icon-canvas"></div>
+          </div>
+          <div class="orbit-event-photo-wrap">
+            <img class="orbit-event-photo" src="" alt="">
+          </div>
         </div>
         <div class="orbit-event-controls">
           <button type="button" class="orbit-step orbit-step--previous" aria-label="Previous timeline event">PREV</button>
