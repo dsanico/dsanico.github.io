@@ -66,6 +66,7 @@ if (mountElement) {
 
   async function setIcon(maskUrl) {
     const currentRequest = ++requestId;
+    const loadingTask = window.assetLoader?.begin();
     try {
       const { image: processedImage } = await prepareIcon(maskUrl);
       if (currentRequest !== requestId) {
@@ -90,6 +91,8 @@ if (mountElement) {
       shader.setSpeed(reducedMotion.matches || !iconVisible ? 0 : 1);
     } catch (error) {
       console.error("Paper Liquid Metal event icon could not be initialized.", error);
+    } finally {
+      window.assetLoader?.end(loadingTask);
     }
   }
 
@@ -147,6 +150,7 @@ if (earthMountElement) {
   });
 
   (async () => {
+    const loadingTask = window.assetLoader?.begin();
     try {
       const { pngBlob } = await toProcessedLiquidMetal("images/tl_animation/earth.svg");
       earthBlobUrl = URL.createObjectURL(pngBlob);
@@ -187,6 +191,8 @@ if (earthMountElement) {
       earthShader.setSpeed(reducedMotion.matches || !earthVisible ? 0 : 0.72);
     } catch (error) {
       console.error("Paper Liquid Metal Earth could not be initialized.", error);
+    } finally {
+      window.assetLoader?.end(loadingTask);
     }
   })();
 

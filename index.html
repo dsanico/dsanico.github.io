@@ -37,6 +37,9 @@
     <div class="navbar-brand-container">
       <img src="images/computer.gif" alt="Computer icon" class="navbar-icon">
       <a class="navbar-brand" href="#">DAVID</a>
+      <div class="asset-loading-indicator" role="status" aria-live="polite" aria-hidden="true">
+        <span>LOADING</span><i aria-hidden="true"></i>
+      </div>
     </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +71,7 @@
   <div class="hero-about-sticky">
     <section class="bgimage-video" id="home">
       <div class="video-background">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline preload="auto">
           <source src="images/hero_black.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -1069,6 +1072,7 @@
 <script src="flickity.pkgd.min.js"></script>
 <script src="projects-catalog.js"></script>
 <script src="timeline-orbit.js"></script>
+<script src="asset-loader.js"></script>
 <script type="module" src="liquid-metal-rocket.js"></script>
 
 </body>
