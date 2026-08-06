@@ -61,8 +61,18 @@ function initBayboardSkills() {
   const description = panel.querySelector(".bayboard-panel-description");
   const skillsList = panel.querySelector(".bayboard-panel-skills");
   const panelNumber = panelContent.querySelector(".bayboard-panel-number");
+  const orderedCallouts = [...callouts].sort((a, b) => (
+    categories[a.dataset.skillCategory].number - categories[b.dataset.skillCategory].number
+  ));
 
   let activeCallout = null;
+  let activePanelIndex = 0;
+  let scrollLocked = false;
+  let wheelAccumulator = 0;
+  let wheelDirection = 0;
+  let lastWheelStep = 0;
+  let touchStartY = 0;
+  let touchStepped = false;
 
   function getPanelAnchorPercent(callout) {
     const value = getComputedStyle(callout).getPropertyValue("--panel-anchor-y");
@@ -106,6 +116,7 @@ function initBayboardSkills() {
     if (!category) return;
 
     activeCallout = callout;
+    activePanelIndex = category.number;
     callouts.forEach((item) => {
       const isActive = item === callout;
       item.classList.toggle("is-active", isActive);
@@ -131,6 +142,7 @@ function initBayboardSkills() {
 
   function showSummary() {
     activeCallout = null;
+    activePanelIndex = 0;
     callouts.forEach((callout) => {
       callout.classList.remove("is-active");
       callout.setAttribute("aria-pressed", "false");
@@ -150,8 +162,99 @@ function initBayboardSkills() {
 
   summaryReset.addEventListener("click", showSummary);
 
+  function showPanel(index) {
+    const nextIndex = ((index % 7) + 7) % 7;
+    if (nextIndex === activePanelIndex) return;
+    if (nextIndex === 0) showSummary();
+    else selectCategory(orderedCallouts[nextIndex - 1]);
+  }
+
+  function lockScroll() {
+    if (scrollLocked) return;
+    scrollLocked = true;
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+    window.siteLenis?.scrollTo(sectionTop, { immediate: true, force: true });
+    window.scrollTo(0, sectionTop);
+    window.siteLenis?.stop();
+    document.documentElement.classList.add("skills-scroll-clamped");
+  }
+
+  function releaseScroll() {
+    if (!scrollLocked) return;
+    scrollLocked = false;
+    wheelAccumulator = 0;
+    wheelDirection = 0;
+    lastWheelStep = 0;
+    document.documentElement.classList.remove("skills-scroll-clamped");
+    window.siteLenis?.start();
+  }
+
+  function stepForDirection(direction) {
+    showPanel(activePanelIndex + (direction > 0 ? 1 : -1));
+  }
+
+  function onWheel(event) {
+    if (!scrollLocked) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const delta = event.deltaMode === 1 ? event.deltaY * 18 : event.deltaY;
+    const nextDirection = Math.sign(delta);
+    if (nextDirection && nextDirection !== wheelDirection) wheelAccumulator = 0;
+    wheelDirection = nextDirection || wheelDirection;
+    wheelAccumulator += delta;
+    if (Math.abs(wheelAccumulator) < 70) return;
+    const now = performance.now();
+    if (now - lastWheelStep < 340) return;
+    stepForDirection(wheelAccumulator);
+    wheelAccumulator = 0;
+    lastWheelStep = now;
+  }
+
+  function onTouchStart(event) {
+    if (!scrollLocked) return;
+    touchStartY = event.touches[0]?.clientY ?? 0;
+    touchStepped = false;
+  }
+
+  function onTouchMove(event) {
+    if (!scrollLocked) return;
+    event.preventDefault();
+    if (touchStepped) return;
+    const currentY = event.touches[0]?.clientY ?? touchStartY;
+    const delta = touchStartY - currentY;
+    if (Math.abs(delta) < 55) return;
+    stepForDirection(delta);
+    touchStepped = true;
+  }
+
+  function onKeyDown(event) {
+    if (!scrollLocked || /INPUT|TEXTAREA|SELECT/.test(event.target.tagName)) return;
+    if (["ArrowUp", "PageUp", "Home"].includes(event.key)) {
+      event.preventDefault();
+      showPanel(event.key === "Home" ? 0 : activePanelIndex - 1);
+    } else if (["ArrowDown", "PageDown", "End", " "].includes(event.key)) {
+      event.preventDefault();
+      showPanel(event.key === "End" ? 6 : activePanelIndex + 1);
+    }
+  }
+
+  const clampTrigger = typeof ScrollTrigger !== "undefined" ? ScrollTrigger.create({
+    trigger: section,
+    start: "top 35%",
+    end: "bottom 65%",
+    onEnter: lockScroll,
+    onEnterBack: lockScroll,
+  }) : null;
+
+  window.addEventListener("wheel", onWheel, { passive: false, capture: true });
+  window.addEventListener("touchstart", onTouchStart, { passive: true, capture: true });
+  window.addEventListener("touchmove", onTouchMove, { passive: false, capture: true });
+  window.addEventListener("keydown", onKeyDown, { capture: true });
+  window.skillsScrollClamp = { lock: lockScroll, release: releaseScroll, showPanel };
+
   section.querySelectorAll("[data-skills-exit]").forEach((button) => {
     button.addEventListener("click", () => {
+      releaseScroll();
       const scene = document.getElementById("hero-about-scene");
       if (scene) {
         const aboutPosition = scene.offsetTop + window.innerHeight * 0.97;
@@ -160,12 +263,26 @@ function initBayboardSkills() {
     });
   });
 
+  section.querySelector("[data-skills-projects]")?.addEventListener("click", () => {
+    releaseScroll();
+    const projects = document.getElementById("projects");
+    if (projects) window.siteLenis?.scrollTo(projects, { duration: 1.1, force: true });
+  });
+
   const resizeObserver = new ResizeObserver(updateActiveLine);
   resizeObserver.observe(workspace);
   resizeObserver.observe(image);
   resizeObserver.observe(panel);
   window.addEventListener("load", updateActiveLine);
   window.addEventListener("resize", updateActiveLine);
+  window.addEventListener("pagehide", () => {
+    releaseScroll();
+    clampTrigger?.kill();
+    window.removeEventListener("wheel", onWheel, true);
+    window.removeEventListener("touchstart", onTouchStart, true);
+    window.removeEventListener("touchmove", onTouchMove, true);
+    window.removeEventListener("keydown", onKeyDown, true);
+  }, { once: true });
 }
 
 if (document.readyState === "loading") {

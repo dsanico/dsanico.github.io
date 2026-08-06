@@ -69,7 +69,7 @@ function initPortfolioTerminal() {
   const helpText = [
     "Available commands:",
     "  ls                    list available .txt files",
-    "  cat <file>            print a file",
+    "  cat <file>            print the context of a .txt file",
     "  help                  show this guide",
     "  clear                 clear the terminal",
     "Use ↑ and ↓ to browse command history.",
@@ -131,7 +131,7 @@ function initPortfolioTerminal() {
 
   async function beginSession() {
     mode = "commands";
-    await printLines(["", about, "", "Type help to see the available commands."]);
+    await printLines(["", about, "", "Enter 'help' to see the available commands."]);
   }
 
   async function runCommand(rawCommand) {
