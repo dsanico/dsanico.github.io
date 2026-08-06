@@ -701,25 +701,21 @@
           <div class="orbit-axis orbit-axis--x"></div>
           <div class="orbit-axis orbit-axis--y"></div>
           <svg class="orbit-trajectory" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
-            <path class="orbit-trajectory-main"></path>
-            <path class="orbit-trajectory-decoration" d="M 70 145 C 225 160 315 235 425 215"></path>
-            <path class="orbit-trajectory-decoration" d="M 130 455 C 230 560 520 568 735 475 C 910 400 975 310 940 155 C 910 25 675 18 470 70 C 260 122 120 220 128 390"></path>
-            <path class="orbit-trajectory-decoration" d="M 660 365 C 815 410 930 495 995 590"></path>
+            <ellipse class="orbit-trajectory-main" cx="500" cy="315" rx="360" ry="190"></ellipse>
+            <ellipse class="orbit-trajectory-decoration" cx="500" cy="315" rx="285" ry="125" transform="rotate(14 500 315)"></ellipse>
+            <ellipse class="orbit-trajectory-decoration orbit-trajectory-decoration--faint" cx="500" cy="315" rx="205" ry="235" transform="rotate(-58 500 315)"></ellipse>
+            <circle class="orbit-reference-ring" cx="500" cy="315" r="92"></circle>
           </svg>
           <div class="orbit-center-body">
-            <img src="images/tl_animation/earth.svg" alt="">
+            <div id="liquid-metal-earth-canvas"></div>
           </div>
           <i class="orbit-node orbit-node--apoapsis"></i>
           <i class="orbit-node orbit-node--periapsis"></i>
           <span class="orbit-plot-label orbit-plot-label--apoapsis">APOAPSIS</span>
           <span class="orbit-plot-label orbit-plot-label--periapsis">PERIAPSIS</span>
           <span class="orbit-plot-label orbit-plot-label--plane">REFERENCE PLANE / ECI</span>
-          <div class="orbit-moon-system">
-            <div class="orbit-moon-body"><img src="images/tl_animation/moon.svg" alt=""></div>
-            <span class="orbit-plot-label orbit-plot-label--moon">LUNAR CAPTURE ORBIT</span>
-          </div>
+          <div class="orbit-spacecraft-marker"><i></i></div>
         </div>
-        <div class="orbit-spacecraft-marker"><i></i></div>
       </div>
 
       <header class="orbit-heading">

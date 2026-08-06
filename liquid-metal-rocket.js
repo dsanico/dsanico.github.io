@@ -130,3 +130,78 @@ if (mountElement) {
     });
   }, { once: true });
 }
+
+const earthMountElement = document.getElementById("liquid-metal-earth-canvas");
+
+if (earthMountElement) {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let earthShader;
+  let earthBlobUrl;
+  let earthVisible = false;
+
+  const loadEarthImage = (url) => new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = reject;
+    image.src = url;
+  });
+
+  (async () => {
+    try {
+      const { pngBlob } = await toProcessedLiquidMetal("images/tl_animation/earth.svg");
+      earthBlobUrl = URL.createObjectURL(pngBlob);
+      const earthImage = await loadEarthImage(earthBlobUrl);
+      earthShader = new ShaderMount(
+        earthMountElement,
+        liquidMetalFragmentShader,
+        {
+          u_colorBack: [0, 0, 0, 0],
+          u_colorTint: [1, 1, 1, 1],
+          u_contour: 0.48,
+          u_distortion: 0.07,
+          u_softness: 0.1,
+          u_repetition: 2,
+          u_shiftRed: 0.18,
+          u_shiftBlue: 0.2,
+          u_angle: 65,
+          u_isImage: true,
+          u_shape: LiquidMetalShapes.none,
+          u_fit: ShaderFitOptions.contain,
+          u_scale: 0.88,
+          u_rotation: 0,
+          u_offsetX: 0,
+          u_offsetY: 0,
+          u_originX: 0.5,
+          u_originY: 0.5,
+          u_worldWidth: 0,
+          u_worldHeight: 0,
+          u_image: earthImage
+        },
+        { alpha: true, antialias: false, premultipliedAlpha: true },
+        0,
+        0,
+        1,
+        160 * 160,
+        ["u_image"]
+      );
+      earthShader.setSpeed(reducedMotion.matches || !earthVisible ? 0 : 0.72);
+    } catch (error) {
+      console.error("Paper Liquid Metal Earth could not be initialized.", error);
+    }
+  })();
+
+  const earthObserver = new IntersectionObserver(([entry]) => {
+    earthVisible = entry.isIntersecting;
+    earthShader?.setSpeed(reducedMotion.matches || !earthVisible ? 0 : 0.72);
+  }, { rootMargin: "80px" });
+  earthObserver.observe(earthMountElement);
+  reducedMotion.addEventListener("change", ({ matches }) => {
+    earthShader?.setSpeed(matches || !earthVisible ? 0 : 0.72);
+  });
+
+  window.addEventListener("pagehide", () => {
+    earthObserver.disconnect();
+    earthShader?.dispose();
+    if (earthBlobUrl) URL.revokeObjectURL(earthBlobUrl);
+  }, { once: true });
+}

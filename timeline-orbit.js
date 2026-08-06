@@ -12,22 +12,7 @@
   const eventPhase = panel.querySelector(".orbit-event-phase");
   const world = document.querySelector(".orbit-world");
   const trajectory = document.querySelector(".orbit-trajectory-main");
-
-  function buildTrajectory() {
-    const pointCount = 360;
-    const startAngle = Math.PI / 2;
-    const points = Array.from({ length: pointCount + 1 }, (_, index) => {
-      const angle = startAngle + (index / pointCount) * Math.PI * 2;
-      const sine = Math.sin(angle);
-      const x = 275 + 300 * sine + 140 * sine * sine;
-      const y = 300 + 55 * (1 - sine)
-        + 155 * Math.sin(2 * angle) * (1 + 0.42 * sine);
-      return `${index ? "L" : "M"} ${x.toFixed(2)} ${y.toFixed(2)}`;
-    });
-    trajectory.setAttribute("d", `${points.join(" ")} Z`);
-  }
-
-  buildTrajectory();
+  const rocket = document.querySelector(".orbit-spacecraft-marker");
 
   const events = legacyItems.reverse().map((item, index, list) => {
     const middleCount = Math.max(list.length - 2, 0);
@@ -36,7 +21,7 @@
     if (index === 0) icon = "images/tl_animation/tower.svg";
     else if (index === list.length - 1) icon = "images/tl_animation/earth.svg";
     else if (index <= skyCount) icon = `images/tl_animation/cloud_0${(index % 5) + 1}.svg`;
-    else if (index % 2) icon = "images/tl_animation/star_03.svg";
+    else if (index % 2) icon = "images/tl_animation/atom.svg";
 
     return {
       title: item.querySelector(".item-tag-1")?.textContent.trim() || "Mission milestone",
@@ -50,9 +35,8 @@
   let locked = false;
   let targetProgress = 0;
   let touchY = 0;
-  const motion = { progress: 0 };
+  let iconUpdateTimer;
   const finalIndex = Math.max(events.length - 1, 1);
-  const stageCount = events.length;
 
   function updateEvent(index, animate = true) {
     if (activeIndex === index || !events[index]) return;
@@ -63,7 +47,10 @@
     eventDescription.textContent = event.description;
     eventIndex.textContent = String(index + 1).padStart(2, "0");
     eventPhase.textContent = `EVENT NODE / ${String(index + 1).padStart(2, "0")} / ${Math.round((index / finalIndex) * 36000)} KM`;
-    window.dispatchEvent(new CustomEvent("orbitstagechange", { detail: { icon: event.icon } }));
+    window.clearTimeout(iconUpdateTimer);
+    iconUpdateTimer = window.setTimeout(() => {
+      window.dispatchEvent(new CustomEvent("orbitstagechange", { detail: { icon: event.icon } }));
+    }, 90);
 
     if (animate) {
       gsap.fromTo(panel, { autoAlpha: 0.72, x: 10 }, { autoAlpha: 1, x: 0, duration: 0.18, ease: "power1.out" });
@@ -75,41 +62,24 @@
     const viewBox = trajectory.ownerSVGElement.viewBox.baseVal;
     const pathX = (pathPoint.x - viewBox.x) / viewBox.width * world.clientWidth;
     const pathY = (pathPoint.y - viewBox.y) / viewBox.height * world.clientHeight;
-    const markerX = diagram.clientWidth * 0.3;
-    const markerY = diagram.clientHeight * 0.54;
-    gsap.set(world, {
-      x: markerX - pathX,
-      y: markerY - pathY
-    });
+    gsap.set(rocket, { x: pathX, y: pathY });
   }
 
   function displayProgress(progress) {
-    const index = Math.min(events.length - 1, Math.floor(progress * stageCount));
+    const index = Math.min(events.length - 1, Math.round(progress * finalIndex));
     updateEvent(index, true);
     plotRocket(progress);
     gsap.set(".orbit-progress-track i", { scaleX: progress });
   }
 
-  function renderProgress(progress, animate = true) {
+  function renderProgress(progress) {
     targetProgress = gsap.utils.clamp(0, 1, progress);
-    gsap.killTweensOf(motion);
-    if (!animate) {
-      motion.progress = targetProgress;
-      displayProgress(motion.progress);
-      return;
-    }
-    gsap.to(motion, {
-      progress: targetProgress,
-      duration: 0.38,
-      ease: "power1.out",
-      overwrite: true,
-      onUpdate: () => displayProgress(motion.progress)
-    });
+    displayProgress(targetProgress);
   }
 
   function goToStage(index) {
     const stageIndex = gsap.utils.clamp(0, events.length - 1, index);
-    renderProgress(stageIndex / stageCount);
+    renderProgress(stageIndex / finalIndex);
   }
 
   function lock() {
@@ -177,11 +147,12 @@
   window.addEventListener("touchstart", onTouchStart, { passive: true, capture: true });
   window.addEventListener("touchmove", onTouchMove, { passive: false, capture: true });
   window.addEventListener("keydown", onKeyDown, { capture: true });
-  window.addEventListener("resize", () => plotRocket(motion.progress), { passive: true });
+  window.addEventListener("resize", () => plotRocket(targetProgress), { passive: true });
   window.orbitTimelineClamp = { lock, release, setProgress: renderProgress, goToStage };
-  renderProgress(0, false);
+  renderProgress(0);
 
   window.addEventListener("pagehide", () => {
+    window.clearTimeout(iconUpdateTimer);
     release();
     clampTrigger.kill();
     window.removeEventListener("wheel", onWheel, true);
