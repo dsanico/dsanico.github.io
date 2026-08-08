@@ -41,6 +41,7 @@
 
   let activeIndex = -1;
   let locked = false;
+  let bypassingScroll = false;
   let targetProgress = 0;
   let touchY = 0;
   let iconUpdateTimer;
@@ -110,7 +111,7 @@
   }
 
   function lock() {
-    if (locked) return;
+    if (locked || bypassingScroll) return;
     locked = true;
     const sceneTop = scene.getBoundingClientRect().top + window.scrollY;
     window.siteLenis?.scrollTo(sceneTop, { immediate: true, force: true });
@@ -119,11 +120,16 @@
     document.documentElement.classList.add("orbit-scroll-clamped");
   }
 
-  function release() {
+  function release({ bypassSection = false } = {}) {
+    if (bypassSection) bypassingScroll = true;
     if (!locked) return;
     locked = false;
     document.documentElement.classList.remove("orbit-scroll-clamped");
     window.siteLenis?.start();
+  }
+
+  function rearm() {
+    bypassingScroll = false;
   }
 
   function onWheel(event) {
@@ -161,13 +167,26 @@
     }
   }
 
-  const clampTrigger = ScrollTrigger.create({ trigger: scene, start: "top top", end: "bottom top", onEnter: lock, onEnterBack: lock });
+  const clampTrigger = ScrollTrigger.create({
+    trigger: scene,
+    start: "top top",
+    end: "bottom top",
+    onEnter: lock,
+    onEnterBack: lock,
+    onLeave: rearm,
+    onLeaveBack: rearm
+  });
   document.querySelector(".orbit-step--previous")?.addEventListener("click", () => goToStage(activeIndex - 1));
   document.querySelector(".orbit-step--next")?.addEventListener("click", () => goToStage(activeIndex + 1));
   document.querySelector(".orbit-back-projects")?.addEventListener("click", () => {
-    release();
+    release({ bypassSection: true });
     const projects = document.getElementById("projects");
-    if (projects) window.siteLenis?.scrollTo(projects, { duration: 1.1, force: true });
+    if (projects) window.siteLenis?.scrollTo(projects, { duration: 1.1, force: true, onComplete: rearm });
+  });
+  document.querySelector(".orbit-go-contact")?.addEventListener("click", () => {
+    release({ bypassSection: true });
+    const contact = document.getElementById("contact");
+    if (contact) window.siteLenis?.scrollTo(contact, { duration: 1.1, force: true, onComplete: rearm });
   });
 
   window.addEventListener("wheel", onWheel, { passive: false, capture: true });
@@ -175,7 +194,7 @@
   window.addEventListener("touchmove", onTouchMove, { passive: false, capture: true });
   window.addEventListener("keydown", onKeyDown, { capture: true });
   window.addEventListener("resize", () => plotRocket(motion.progress), { passive: true });
-  window.orbitTimelineClamp = { lock, release, setProgress: renderProgress, goToStage };
+  window.orbitTimelineClamp = { lock, release, rearm, setProgress: renderProgress, goToStage };
   renderProgress(0);
 
   window.addEventListener("pagehide", () => {

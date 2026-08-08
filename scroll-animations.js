@@ -26,7 +26,7 @@ function initLenis() {
       if (!target) return;
 
       e.preventDefault();
-      window.orbitTimelineClamp?.release();
+      window.orbitTimelineClamp?.release({ bypassSection: target.id !== "timeline" });
       window.skillsScrollClamp?.release({ bypassSection: target.id !== "skills" });
       if (target.offsetTop > document.getElementById("hero-about-scene")?.offsetTop) {
         window.heroAboutScrollLock?.release({ bypassScene: true });
@@ -34,7 +34,10 @@ function initLenis() {
       lenis.scrollTo(target, {
         offset: 0,
         duration: 1.2,
-        onComplete: () => window.skillsScrollClamp?.rearm(),
+        onComplete: () => {
+          window.skillsScrollClamp?.rearm();
+          window.orbitTimelineClamp?.rearm();
+        },
       });
     });
   });
