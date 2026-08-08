@@ -11,6 +11,10 @@
   const headingState = document.querySelector(".quantum-heading span");
   if (!context || !previous || !next) return;
 
+  /* TEMPORARY DEV TOOL — COMMENTED OUT
+  const ENABLE_TEMP_ORBITAL_LAB = true;
+  */
+
   const renderSize = 320;
   const fitFill = 0.68;
   const buffer = document.createElement("canvas");
@@ -19,6 +23,49 @@
   const bufferContext = buffer.getContext("2d");
   const image = bufferContext.createImageData(renderSize, renderSize);
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* TEMPORARY DEV TOOL — HIGHER-STATE MATH SUPPORT — COMMENTED OUT
+  function generalizedLaguerre(order, alpha, value) {
+    if (order === 0) return 1;
+    if (order === 1) return 1 + alpha - value;
+    let previous = 1;
+    let current = 1 + alpha - value;
+    for (let index = 2; index <= order; index += 1) {
+      const next = ((2 * index - 1 + alpha - value) * current
+        - (index - 1 + alpha) * previous) / index;
+      previous = current;
+      current = next;
+    }
+    return current;
+  }
+
+  function legendre(degree, value) {
+    if (degree === 0) return 1;
+    if (degree === 1) return value;
+    let previous = 1;
+    let current = value;
+    for (let index = 2; index <= degree; index += 1) {
+      const next = ((2 * index - 1) * value * current - (index - 1) * previous) / index;
+      previous = current;
+      current = next;
+    }
+    return current;
+  }
+
+  function hydrogenWave(n, l) {
+    const wave = (x, z) => {
+      const r = Math.hypot(x, z);
+      if (r < 1e-6 && l > 0) return 0;
+      const rho = (2 * r) / n;
+      return Math.exp(-rho / 2)
+        * Math.pow(rho, l)
+        * generalizedLaguerre(n - l - 1, 2 * l + 1, rho)
+        * legendre(l, r ? z / r : 1);
+    };
+    wave.searchSpan = Math.max(72, n * n * 3);
+    return wave;
+  }
+  */
 
   // Dimensionless, normalization-free real cross-sections in the x-z plane.
   // Their relative shape, signs, radial nodes, and angular nodes are preserved.
@@ -40,7 +87,14 @@
       label: "3Dᴢ² ORBITAL",
       numbers: "n = 3 / l = 2 / m = 0",
       wave: (x, z) => (2 * z * z - x * x) * Math.exp(-Math.hypot(x, z) / 3) / 18
-    }
+    },
+    /* TEMPORARY DEV TOOL — HIGHER-N STATES — COMMENTED OUT
+    { label: "4P ORBITAL", numbers: "n = 4 / l = 1 / m = 0", wave: hydrogenWave(4, 1), dev: true },
+    { label: "5D ORBITAL", numbers: "n = 5 / l = 2 / m = 0", wave: hydrogenWave(5, 2), dev: true },
+    { label: "6F ORBITAL", numbers: "n = 6 / l = 3 / m = 0", wave: hydrogenWave(6, 3), dev: true },
+    { label: "7G ORBITAL", numbers: "n = 7 / l = 4 / m = 0", wave: hydrogenWave(7, 4), dev: true },
+    { label: "8H ORBITAL", numbers: "n = 8 / l = 5 / m = 0", wave: hydrogenWave(8, 5), dev: true }
+    */
   ];
 
   // Cache every state once. Transitions only blend these arrays, keeping the
@@ -48,6 +102,9 @@
   function findFittedSpan(wave) {
     const sampleSize = 160;
     const searchSpan = 72;
+    /* TEMPORARY DEV TOOL — DYNAMIC HIGHER-N SEARCH SPAN — COMMENTED OUT
+    const searchSpan = wave.searchSpan || 72;
+    */
     const samples = new Float32Array(sampleSize * sampleSize);
     let maximum = 0;
 
@@ -75,7 +132,7 @@
     return Math.min(searchSpan, Math.max(12, (visibleRadius * 2) / fitFill));
   }
 
-  const fields = states.map(({ wave }) => {
+  function createField(wave) {
     const plotSpan = findFittedSpan(wave);
     const field = new Float32Array(renderSize * renderSize);
     for (let py = 0; py < renderSize; py += 1) {
@@ -86,7 +143,17 @@
       }
     }
     return field;
-  });
+  }
+
+  const fields = states.map(({ wave }) => createField(wave));
+
+  /* TEMPORARY DEV TOOL — LAZY HIGHER-STATE CACHE — COMMENTED OUT
+  const fields = states.map(({ wave, dev }) => dev ? null : createField(wave));
+  const getField = (index) => {
+    if (!fields[index]) fields[index] = createField(states[index].wave);
+    return fields[index];
+  };
+  */
 
   let activeIndex = 0;
   let animationFrame = 0;
@@ -177,6 +244,58 @@
       }
     });
   });
+
+  /* TEMPORARY DEV TOOL — ORBITAL LAB CONTROLS — COMMENTED OUT
+  The transition presets obey electric-dipole rules:
+  delta-l = +/-1 and delta-m = 0 or +/-1.
+  if (ENABLE_TEMP_ORBITAL_LAB) {
+  const devPanel = document.createElement("aside");
+  devPanel.className = "quantum-dev-panel";
+  devPanel.innerHTML = `
+    <strong>TEMP / ORBITAL LAB</strong>
+    <span class="quantum-dev-readout">Select a state or allowed transition</span>
+    <div class="quantum-dev-states"></div>
+    <div class="quantum-dev-transitions"></div>
+  `;
+  document.querySelector(".quantum-visual")?.appendChild(devPanel);
+  const devReadout = devPanel.querySelector(".quantum-dev-readout");
+  const stateControls = devPanel.querySelector(".quantum-dev-states");
+
+  states.forEach((state, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = state.numbers.replaceAll(" = ", "").replaceAll(" / ", ",");
+    button.addEventListener("click", () => {
+      transitionTo(index);
+      devReadout.textContent = `${state.label} / ${state.numbers}`;
+    });
+    stateControls.appendChild(button);
+  });
+
+  // TEMPORARY DEV TRANSITIONS: indices refer to the state list above.
+  const allowedTransitions = [[3, 4], [4, 5], [5, 6], [6, 7]];
+  const orbitalLetters = "SPDFGH";
+  allowedTransitions.forEach(([from, to]) => {
+    const button = document.createElement("button");
+    const fromState = states[from];
+    const toState = states[to];
+    const fromN = Number(fromState.numbers.match(/n = (\d+)/)[1]);
+    const fromL = Number(fromState.numbers.match(/l = (\d+)/)[1]);
+    const toN = Number(toState.numbers.match(/n = (\d+)/)[1]);
+    const toL = Number(toState.numbers.match(/l = (\d+)/)[1]);
+    button.type = "button";
+    button.textContent = `${fromN}${orbitalLetters[fromL]} → ${toN}${orbitalLetters[toL]}`;
+    button.addEventListener("click", () => {
+      cancelAnimationFrame(animationFrame);
+      activeIndex = from;
+      render(from, from, 0);
+      window.setTimeout(() => transitionTo(to), 120);
+      devReadout.textContent = `ALLOWED E1 / ${fromState.numbers} → ${toState.numbers}`;
+    });
+    devPanel.querySelector(".quantum-dev-transitions").appendChild(button);
+  });
+  }
+  */
   updateInterface(0);
   render(0, 0, 0);
 })();
