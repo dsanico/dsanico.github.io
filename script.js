@@ -46,25 +46,8 @@ function initHeroTypewriter() {
   typeNextCharacter();
 }
 
-function initAdditionalBioCards() {
-  const triggers = document.querySelectorAll(".additional-bio-trigger[data-bio-card]");
-  const cards = document.querySelectorAll(".additional-bio-card");
-  if (!triggers.length || !cards.length) return;
-
-  const hideCards = () => cards.forEach((card) => card.classList.remove("active"));
-
-  triggers.forEach((trigger) => {
-    trigger.addEventListener("mouseenter", () => {
-      const targetId = trigger.dataset.bioCard;
-      cards.forEach((card) => card.classList.toggle("active", card.id === targetId));
-    });
-    trigger.addEventListener("mouseleave", hideCards);
-  });
-}
-
 function initPageInteractions() {
   initHeroTypewriter();
-  initAdditionalBioCards();
 }
 
 if (document.readyState === "loading") {

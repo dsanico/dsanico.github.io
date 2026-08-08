@@ -14,13 +14,11 @@ if (mountElement) {
   let requestId = 0;
   let iconVisible = false;
   const processedIcons = new Map();
-  const iconUrls = [
-    "images/tl_animation/tower.svg",
-    "images/tl_animation/earth.svg",
-    "images/tl_animation/satellite.svg",
-    "images/tl_animation/star_03.svg",
-    ...Array.from({ length: 5 }, (_, index) => `images/tl_animation/cloud_0${index + 1}.svg`)
-  ];
+  const iconUrls = [...new Set(
+    [...document.querySelectorAll(".timeline-item[data-liquid-metal-icon]")]
+      .map((item) => item.dataset.liquidMetalIcon)
+      .filter(Boolean)
+  )];
 
   const loadImage = (url) => new Promise((resolve, reject) => {
     const image = new Image();
@@ -107,7 +105,7 @@ if (mountElement) {
   }, { rootMargin: "120px" });
   visibilityObserver.observe(mountElement);
 
-  setIcon("images/tl_animation/tower.svg");
+  if (iconUrls[0]) setIcon(iconUrls[0]);
 
   const warmIconCache = async () => {
     const pendingIcons = iconUrls.filter((iconUrl) => !processedIcons.has(iconUrl));
