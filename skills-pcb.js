@@ -68,6 +68,7 @@ function initBayboardSkills() {
   let activeCallout = null;
   let activePanelIndex = 0;
   let scrollLocked = false;
+  let bypassingScroll = false;
   let wheelAccumulator = 0;
   let wheelDirection = 0;
   let lastWheelStep = 0;
@@ -170,7 +171,7 @@ function initBayboardSkills() {
   }
 
   function lockScroll() {
-    if (scrollLocked) return;
+    if (scrollLocked || bypassingScroll) return;
     scrollLocked = true;
     const sectionTop = section.getBoundingClientRect().top + window.scrollY;
     window.siteLenis?.scrollTo(sectionTop, { immediate: true, force: true });
@@ -179,7 +180,8 @@ function initBayboardSkills() {
     document.documentElement.classList.add("skills-scroll-clamped");
   }
 
-  function releaseScroll() {
+  function releaseScroll({ bypassSection = false } = {}) {
+    if (bypassSection) bypassingScroll = true;
     if (!scrollLocked) return;
     scrollLocked = false;
     wheelAccumulator = 0;
@@ -187,6 +189,10 @@ function initBayboardSkills() {
     lastWheelStep = 0;
     document.documentElement.classList.remove("skills-scroll-clamped");
     window.siteLenis?.start();
+  }
+
+  function rearmScroll() {
+    bypassingScroll = false;
   }
 
   function stepForDirection(direction) {
@@ -244,13 +250,15 @@ function initBayboardSkills() {
     end: "bottom 65%",
     onEnter: lockScroll,
     onEnterBack: lockScroll,
+    onLeave: rearmScroll,
+    onLeaveBack: rearmScroll,
   }) : null;
 
   window.addEventListener("wheel", onWheel, { passive: false, capture: true });
   window.addEventListener("touchstart", onTouchStart, { passive: true, capture: true });
   window.addEventListener("touchmove", onTouchMove, { passive: false, capture: true });
   window.addEventListener("keydown", onKeyDown, { capture: true });
-  window.skillsScrollClamp = { lock: lockScroll, release: releaseScroll, showPanel };
+  window.skillsScrollClamp = { lock: lockScroll, release: releaseScroll, rearm: rearmScroll, showPanel };
 
   section.querySelectorAll("[data-skills-exit]").forEach((button) => {
     button.addEventListener("click", () => {

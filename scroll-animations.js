@@ -27,11 +27,15 @@ function initLenis() {
 
       e.preventDefault();
       window.orbitTimelineClamp?.release();
-      window.skillsScrollClamp?.release();
+      window.skillsScrollClamp?.release({ bypassSection: target.id !== "skills" });
       if (target.offsetTop > document.getElementById("hero-about-scene")?.offsetTop) {
         window.heroAboutScrollLock?.release({ bypassScene: true });
       }
-      lenis.scrollTo(target, { offset: 0, duration: 1.2 });
+      lenis.scrollTo(target, {
+        offset: 0,
+        duration: 1.2,
+        onComplete: () => window.skillsScrollClamp?.rearm(),
+      });
     });
   });
 }

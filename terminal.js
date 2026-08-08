@@ -46,6 +46,19 @@ function initPortfolioTerminal() {
       "",
       "(view the skills section of this website for more details)"
     ],
+    "courses.txt": [
+      "Intro to Computer Organization",
+      "Digital Logic",
+      "Circuit Analysis",
+      "Signals and Systems",
+      "Electromagnetics",
+      "Principles of Optics",
+      "Electrical Engineering System Design",
+      "Intro to Data Structures and Algorithms",
+      "Intro to Quantum Information Technology",
+      "Intro to Quantum Nanotechnology (Fall 2027)",
+      "Intro to Microelectromechanical Systems (Fall 2027)"
+    ],
     "hobbies.txt": [
       "Travelling",
       "Weightlifting",
@@ -131,7 +144,7 @@ function initPortfolioTerminal() {
 
   async function beginSession() {
     mode = "commands";
-    await printLines(["", about, "", "Enter 'help' to see the available commands."]);
+    await printLines(["", about, "", "Enter 'help' to see the available commands, or enter 'cat all.txt' to view all information."]);
   }
 
   async function runCommand(rawCommand) {
