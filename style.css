@@ -66,7 +66,7 @@ h3, h4, h5, h6 {
 }
 
 #projects .highlight-5 {
-    color: #8be9fd;
+    color: #64ff9d;
     font-family: 'Roboto Mono', monospace;
 }
 
@@ -3124,7 +3124,7 @@ input[type="submit"]:hover {
 
 #projects {
   --accent-highlight: #64ff9d;
-  --accent-subtle: #743818;
+  --accent-subtle: #26613c;
 }
 
 #timeline {
@@ -3212,6 +3212,40 @@ input[type="submit"]:hover {
   color: #fff;
 }
 
+#skills .bayboard-panel-controls {
+  position: absolute;
+  right: clamp(1rem, 5vw, 5rem);
+  bottom: clamp(1.5rem, 4vh, 3rem);
+  z-index: 14;
+  display: flex;
+  gap: 0.45rem;
+}
+
+#skills .bayboard-step {
+  padding: 0.45rem 0.58rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: #000;
+  color: #fff;
+  font: 600 0.62rem/1 "Roboto Mono", monospace;
+  letter-spacing: 0.09em;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+#skills .bayboard-step:is(:hover, :focus-visible) {
+  border-color: var(--accent-highlight);
+  background: var(--accent-subtle);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 800px) {
+  #skills .bayboard-panel-controls {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
 /* Projects accent mapping. The card action remains intentionally neutral. */
 #projects.project-catalog {
   background: #090909;
@@ -3249,6 +3283,40 @@ input[type="submit"]:hover {
 #projects .project-detail-close:focus-visible {
   border-color: var(--accent-highlight);
   color: var(--accent-highlight);
+}
+
+#projects .project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0 0;
+}
+
+#projects .project-detail-dialog .catalog-card-tags {
+  margin-bottom: 1rem;
+}
+
+#projects .project-links .project-btn {
+  margin: 0;
+  padding: 0.55rem 0.72rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font: 600 0.62rem/1 "Roboto Mono", monospace;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+#projects .project-links .project-btn:is(:hover, :focus-visible) {
+  border-color: var(--accent-highlight);
+  background: var(--accent-subtle);
+  color: #fff;
+  outline: none;
+  transform: translateY(-1px);
 }
 
 /* Timeline: preserve the existing blue system; only the progress fill changes. */

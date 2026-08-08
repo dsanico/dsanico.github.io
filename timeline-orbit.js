@@ -16,15 +16,7 @@
   const trajectory = document.querySelector(".orbit-trajectory-main");
   const rocket = document.querySelector(".orbit-spacecraft-marker");
 
-  const events = legacyItems.reverse().map((item, index, list) => {
-    const middleCount = Math.max(list.length - 2, 0);
-    const skyCount = Math.ceil(middleCount / 2);
-    let icon = "images/tl_animation/satellite.svg";
-    if (index === 0) icon = "images/tl_animation/tower.svg";
-    else if (index === list.length - 1) icon = "images/tl_animation/earth.svg";
-    else if (index <= skyCount) icon = `images/tl_animation/cloud_0${(index % 5) + 1}.svg`;
-    else if (index % 2) icon = "images/tl_animation/atom.svg";
-
+  const events = legacyItems.reverse().map((item) => {
     const sourceTitle = item.querySelector(".item-tag-1")?.textContent.trim() || "Mission milestone";
     const separatorIndex = sourceTitle.lastIndexOf(" @ ");
     const sourceImage = item.querySelector(".timeline-image img");
@@ -35,7 +27,7 @@
       description: item.querySelector(".timeline-content p")?.textContent.trim().replace(/\s+/g, " ") || "",
       image: sourceImage?.getAttribute("src") || "",
       imageAlt: sourceImage?.getAttribute("alt") || "",
-      icon
+      icon: item.dataset.liquidMetalIcon || "images/tl_animation/satellite.svg"
     };
   });
 

@@ -146,6 +146,13 @@ function initBayboardSkills() {
     selectCategory(orderedCallouts[nextIndex - 1]);
   }
 
+  section.querySelector(".bayboard-step--previous")?.addEventListener("click", () => {
+    showPanel(activePanelIndex - 1);
+  });
+  section.querySelector(".bayboard-step--next")?.addEventListener("click", () => {
+    showPanel(activePanelIndex + 1);
+  });
+
   function lockScroll() {
     if (scrollLocked || bypassingScroll) return;
     scrollLocked = true;
