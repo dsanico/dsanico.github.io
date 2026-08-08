@@ -736,7 +736,8 @@ section {
     border-color: var(--terminal-green);
 }
 
-.skills-continue-button {
+.skills-continue-button,
+.hero-start-button {
     position: absolute;
     left: 50%;
     bottom: clamp(1.25rem, 4vh, 2.5rem);
@@ -766,13 +767,22 @@ section {
     transform: translate(-50%, 0);
 }
 
+.hero-start-button.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+
 .skills-continue-button:hover,
-.skills-continue-button:focus-visible {
+.skills-continue-button:focus-visible,
+.hero-start-button:hover,
+.hero-start-button:focus-visible {
     background: #ffffff;
     color: #000000;
 }
 
-.skills-continue-button:focus-visible {
+.skills-continue-button:focus-visible,
+.hero-start-button:focus-visible {
     outline: 2px solid #ffffff;
     outline-offset: 3px;
 }
@@ -788,6 +798,7 @@ section {
 
 @media (prefers-reduced-motion: reduce) {
     .skills-continue-button,
+    .hero-start-button,
     .skills-continue-button i {
         transition: none;
         animation: none;

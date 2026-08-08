@@ -71,6 +71,7 @@ function initPortfolioTerminal() {
 
   const contentFileNames = Object.keys(virtualFiles);
   const fileNames = [...contentFileNames, "all.txt"];
+  const jumpDestinations = ["skills", "projects", "timeline", "contact"];
 
   const getAllFileContent = () =>
     contentFileNames.flatMap((fileName, index) => [
@@ -83,6 +84,7 @@ function initPortfolioTerminal() {
     "Available commands:",
     "  ls                    list available .txt files",
     "  cat <file>            print the context of a .txt file",
+    "  jump <section>        go to skills, projects, timeline, or contact",
     "  help                  show this guide",
     "  clear                 clear the terminal",
     "Use ↑ and ↓ to browse command history.",
@@ -167,6 +169,37 @@ function initPortfolioTerminal() {
 
     if (command === "ls") {
       await printLines(fileNames);
+      return;
+    }
+
+    const jumpMatch = command.match(/^jump(?:\s+(.+))?$/);
+    if (jumpMatch) {
+      const destination = jumpMatch[1];
+
+      if (!destination || destination.includes(" ")) {
+        await printLines([
+          "Usage: jump <section>",
+          `Available sections: ${jumpDestinations.join(", ")}`
+        ], "muted");
+        return;
+      }
+
+      if (!jumpDestinations.includes(destination)) {
+        await printLines([
+          `jump: ${destination}: No such section`,
+          `Available sections: ${jumpDestinations.join(", ")}`
+        ], "error");
+        return;
+      }
+
+      const navigationLink = document.querySelector(`.navbar-nav a[href="#${destination}"]`);
+      if (!navigationLink) {
+        await printLines([`jump: ${destination}: Navigation unavailable`], "error");
+        return;
+      }
+
+      await printLines([`Jumping to ${destination}...`]);
+      navigationLink.click();
       return;
     }
 

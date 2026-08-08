@@ -82,12 +82,13 @@ function initNavHighlight() {
 function initHeroAboutTransition() {
   const scene = document.getElementById("hero-about-scene");
   const heroText = document.querySelector(".hero-text-animate");
+  const startButton = document.querySelector(".hero-start-button");
   const terminalCard = document.querySelector(".terminal-card--transition");
   const sticky = document.querySelector(".hero-about-sticky");
   const continueButton = document.querySelector(".skills-continue-button");
   const skills = document.getElementById("skills");
 
-  if (!scene || !heroText || !terminalCard || !sticky || !continueButton || !skills) return;
+  if (!scene || !heroText || !startButton || !terminalCard || !sticky || !continueButton || !skills) return;
 
   let terminalComplete = false;
   let released = false;
@@ -96,11 +97,20 @@ function initHeroAboutTransition() {
   let settlingToTerminal = false;
   let correctingTerminalOvershoot = false;
   let bypassingScene = false;
+  let startButtonReady = false;
+  let startTransitionActive = false;
 
   const cancelSettleTimer = () => {
     window.clearTimeout(settleTimer);
     settleTimer = 0;
   };
+
+  const startButtonTimer = window.setTimeout(() => {
+    startButtonReady = true;
+    if (tl.scrollTrigger.progress <= 0.001 && !startTransitionActive) {
+      startButton.classList.add("is-visible");
+    }
+  }, 5000);
 
   const release = ({ bypassScene = false } = {}) => {
     cancelSettleTimer();
@@ -204,6 +214,12 @@ function initHeroAboutTransition() {
       onUpdate: (self) => {
         terminalComplete = self.progress >= 0.995;
         const movingDown = self.direction >= 0;
+        if (self.progress > 0.001) startTransitionActive = false;
+
+        startButton.classList.toggle(
+          "is-visible",
+          startButtonReady && !startTransitionActive && self.progress <= 0.001
+        );
 
         if (terminalComplete) window.portfolioTerminal?.start();
 
@@ -252,6 +268,22 @@ function initHeroAboutTransition() {
     },
   });
 
+  startButton.addEventListener("click", () => {
+    startTransitionActive = true;
+    startButton.classList.remove("is-visible");
+    settlingToTerminal = true;
+    lenis.start();
+    const trigger = tl.scrollTrigger;
+    lenis.scrollTo(trigger.end - 1, {
+      duration: 0.8,
+      force: true,
+      onComplete: () => {
+        settlingToTerminal = false;
+        lockAtTerminal(trigger);
+      },
+    });
+  });
+
   tl.to(
     heroText,
     {
@@ -271,6 +303,8 @@ function initHeroAboutTransition() {
     },
     0.5
   );
+
+  window.addEventListener("pagehide", () => window.clearTimeout(startButtonTimer), { once: true });
 }
 
 function initScrollAnimations() {
