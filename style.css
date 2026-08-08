@@ -224,14 +224,6 @@ section {
   isolation: isolate;
 }
 
-.quantum-contact::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(circle at 58% 48%, rgba(91, 35, 185, 0.16), transparent 42%);
-}
-
 .quantum-heading {
   position: absolute;
   top: clamp(4.5rem, 8vh, 7rem);
@@ -386,7 +378,6 @@ section {
   width: 100%;
   aspect-ratio: 1;
   background: #000;
-  box-shadow: 0 0 80px rgba(113, 45, 190, 0.08);
 }
 #hydrogen-wavefunction { display: block; width: 100%; height: 100%; }
 .quantum-controls { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; margin-top: 0.6rem; }
@@ -400,7 +391,7 @@ section {
   letter-spacing: 0.1em;
   transition: color 180ms ease, border-color 180ms ease, opacity 180ms ease;
 }
-.quantum-step:hover:not(:disabled) { color: #ffad3f; border-color: #ffad3f; }
+.quantum-step:hover:not(:disabled) { color: #e4aae4; border-color: #e4aae4; }
 .quantum-step:disabled { cursor: default; opacity: 0.22; }
 .quantum-controls > span { position: relative; display: flex; align-items: center; justify-content: flex-end; height: 1px; background: rgba(255,255,255,.15); }
 .quantum-controls i { position: absolute; left: 0; height: 1px; width: 33%; background: linear-gradient(90deg, #7a35db, #ffad3f); transition: width 500ms ease; }
@@ -423,6 +414,97 @@ section {
 
 @media (prefers-reduced-motion: reduce) {
   .quantum-stage-card, .quantum-stage-card::before, .quantum-controls i { transition: none; }
+}
+
+/* ========================================= POST-HERO VISUAL SYSTEM =========================================
+   Timeline-derived geometry. Typography remains section-specific. */
+
+:is(#skills, #projects, #timeline, #contact) button,
+:is(#skills, #projects, #timeline, #contact) dialog,
+:is(#skills, #projects, #timeline, #contact) [class*="card"],
+:is(#skills, #projects, #timeline, #contact) [class*="panel"] {
+  border-radius: 5px !important;
+}
+
+/* Skills: timeline-style dark technical presentation. */
+#skills {
+  background: #000 !important;
+}
+
+#skills .bayboard-skills,
+#skills .bayboard-skills-header h1,
+#skills .bayboard-panel-title {
+  color: #fff;
+}
+
+#skills .bayboard-image-frame {
+  filter: drop-shadow(0 1.5rem 2.2rem rgba(0, 0, 0, 0.78));
+}
+
+#skills .bayboard-skill-panel {
+  border-color: rgba(255, 255, 255, 0.22);
+  border-left-color: #c88d00;
+  background: rgba(6, 8, 8, 0.9);
+  color: #fff;
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.5);
+}
+
+#skills .bayboard-panel-description { color: #b9c2bf; }
+#skills .bayboard-panel-total { color: #8c9692; }
+#skills .bayboard-panel-skills li {
+  border-left-color: #c88d00;
+  background: rgba(200, 141, 0, 0.1);
+  color: #e6ebe9;
+}
+
+#skills .bayboard-section-nav {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: #000;
+  color: #fff;
+}
+
+#skills .bayboard-section-nav:is(:hover, :focus-visible) {
+  border-color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Skills and Timeline section-to-section navigation share one top-right row. */
+#skills .bayboard-section-controls,
+#timeline .orbit-section-nav {
+  position: absolute;
+  top: clamp(5rem, 9vh, 8rem);
+  right: clamp(1rem, 5vw, 5rem);
+  z-index: 14;
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
+#skills .bayboard-section-controls > p { display: none; }
+#skills .bayboard-section-nav:last-child { justify-self: auto; }
+
+#timeline :is(.orbit-back-projects, .orbit-go-contact) {
+  position: static;
+  inset: auto;
+  padding: 0.62rem 0.78rem;
+  border-radius: 5px !important;
+}
+
+@media (max-width: 800px) {
+  #skills .bayboard-section-controls,
+  #timeline .orbit-section-nav {
+    top: 4.8rem;
+    right: 1rem;
+    gap: 0.35rem;
+  }
+
+  #skills .bayboard-section-nav,
+  #timeline :is(.orbit-back-projects, .orbit-go-contact) {
+    padding: 0.5rem 0.6rem;
+  }
 }
 
 #project-page-skills {
@@ -486,7 +568,7 @@ section {
     --terminal-background: #000000;
     --terminal-text: #ffffff;
     --terminal-muted: #a7a7a7;
-    --terminal-green: #8fffa9;
+    --terminal-green: var(--terminal-accent, #8fffa9);
     --terminal-red: #f72626;
     --terminal-scrollbar-track: #161616;
 
@@ -862,7 +944,7 @@ color: #ffffff;
   position: relative;
   padding: clamp(4.5rem, 8vh, 6rem) clamp(1rem, 3vw, 3rem) clamp(1rem, 2vh, 1.5rem);
   overflow: hidden;
-  background: radial-gradient(circle at 45% 42%, #f5f7f6 0%, #dce5e0 55%, #b8c9c0 140%);
+  background: #000;
 }
 
 .bayboard-skills {
@@ -1085,39 +1167,12 @@ color: #ffffff;
   width: 100%;
 }
 
-.bayboard-summary-reset {
-  padding: 0.32rem 0.58rem;
-  border: 1px solid rgba(93, 69, 13, 0.55);
-  border-radius: 999px;
-  background: rgba(250, 252, 251, 0.72);
-  color: #5d450d;
-  font-family: 'Roboto Mono', monospace;
-  font-size: clamp(0.52rem, 0.72vw, 0.64rem);
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.bayboard-summary-reset:hover,
-.bayboard-summary-reset:focus-visible {
-  background: #6e510d;
-  color: #fff;
-  outline: none;
-}
-
 .bayboard-skill-panel.is-open {
   transform: translateX(0);
 }
 
-.bayboard-panel-empty,
 .bayboard-panel-content {
   min-height: 100%;
-}
-
-.bayboard-panel-empty {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .bayboard-panel-number,
@@ -1145,7 +1200,6 @@ color: #ffffff;
   letter-spacing: 0.14em;
 }
 
-.bayboard-panel-empty h2,
 .bayboard-panel-title {
   margin: 0.35rem 0 0.8rem;
   color: #101614;
@@ -1155,7 +1209,6 @@ color: #ffffff;
   letter-spacing: -0.03em;
 }
 
-.bayboard-panel-empty p,
 .bayboard-panel-description {
   color: #44534d;
   font-size: clamp(0.75rem, 1.15vw, 0.98rem);
@@ -1230,7 +1283,7 @@ color: #ffffff;
   .bayboard-callout-label { padding: 0.28rem 0.38rem; font-size: clamp(0.4rem, 1.65vw, 0.58rem); }
   .bayboard-skill-panel { min-height: 0; max-height: none; height: 100%; padding: 0.85rem 1rem; transform: translateY(0.4rem); }
   .bayboard-skill-panel.is-open { transform: translateY(0); }
-  .bayboard-panel-empty h2, .bayboard-panel-title { font-size: clamp(1rem, 4.5vw, 1.4rem); margin: 0.1rem 0 0.35rem; }
+  .bayboard-panel-title { font-size: clamp(1rem, 4.5vw, 1.4rem); margin: 0.1rem 0 0.35rem; }
   .bayboard-panel-number { font-size: 1.35rem; }
   .bayboard-panel-kicker { margin-top: 0.25rem; }
   .bayboard-panel-skills { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 0.5rem; gap: 0.3rem; }
@@ -1483,31 +1536,6 @@ color: #ffffff;
   align-items: center;
 }
 
-.item-tag-1 {
-  display: inline-block;
-  font-family: 'Roboto Mono', monospace;
-  font-size: clamp(0.6em, min(1.6vw, 2vh), 0.75em);
-  color: #50fa7b;
-  background: rgba(80, 250, 123, 0.1);
-  padding: clamp(2px, 0.3vh, 4px) clamp(5px, 0.7vw, 8px);
-  border-radius: 4px;
-  width: fit-content;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.item-tag-2 {
-  display: inline-block;
-  font-family: 'Roboto Mono', monospace;
-  font-size: clamp(0.6em, min(1.6vw, 2vh), 0.75em);
-  color: #82dcff;
-  background: rgba(80, 134, 250, 0.1);
-  padding: clamp(2px, 0.3vh, 4px) clamp(5px, 0.7vw, 8px);
-  border-radius: 4px;
-  width: fit-content;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
 
 .project-card-item-text {
   font-family: 'Inter', Arial, sans-serif;
@@ -1587,9 +1615,7 @@ color: #ffffff;
 #projects.project-catalog {
   padding: clamp(4.75rem, 8vh, 6rem) clamp(1rem, 3vw, 3rem) clamp(1.2rem, 3vh, 2.2rem);
   overflow: hidden;
-  background:
-    radial-gradient(circle at 12% 8%, rgba(54, 91, 78, 0.24), transparent 28%),
-    linear-gradient(145deg, #101513, #070a09 72%);
+  background: #090909;
 }
 
 #projects.project-catalog > .container-fluid {
@@ -3079,4 +3105,153 @@ input[type="submit"]:hover {
     display: block; 
     width: 100%; 
     margin-top: 15px; 
+}
+
+/* ==================================================================================
+   MANUAL ACCENT COLOR CONFIGURATION
+   Change only these two values per section. Components below reference the variables.
+   --accent-highlight: bright borders, text, active markers, and hover outlines.
+   --accent-subtle:   quiet fills, glows, gradients, and secondary accent details.
+   ================================================================================== */
+:root {
+  --terminal-accent: #8fffa9;
+}
+
+#skills {
+  --accent-highlight: #ffa23e;
+  --accent-subtle: #915c23;
+}
+
+#projects {
+  --accent-highlight: #64ff9d;
+  --accent-subtle: #743818;
+}
+
+#timeline {
+  --accent-highlight: #b8e8ff;
+  --accent-subtle: #245b85;
+}
+
+#contact {
+  --accent-highlight: #e4aae4;
+  --accent-subtle: #58257a;
+}
+
+/* Shared non-home eyebrow typography, based on the Contact section. */
+:is(#skills, #projects, #timeline, #contact) .section-eyebrow {
+  display: block;
+  margin: 0 0 0.2rem;
+  color: var(--accent-highlight) !important;
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 0.68rem !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.11em !important;
+}
+
+/* Loading indicator: shares the terminal's green accent. */
+.asset-loading-indicator {
+  border-color: var(--terminal-accent);
+  color: var(--terminal-accent);
+}
+
+.asset-loading-indicator i {
+  border-color: color-mix(in srgb, var(--terminal-accent) 32%, transparent);
+  border-top-color: var(--terminal-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asset-loading-indicator i { border-color: var(--terminal-accent); }
+}
+
+/* Skills accent mapping. */
+#skills .bayboard-callout-dot {
+  background: var(--accent-highlight);
+  box-shadow:
+    0 0 0 0.18rem rgba(16, 22, 20, 0.8),
+    0 0 0.8rem var(--accent-subtle);
+}
+#skills .bayboard-callout-dot::after { border-color: var(--accent-highlight); }
+#skills .bayboard-callout:hover .bayboard-callout-dot,
+#skills .bayboard-callout:focus-visible .bayboard-callout-dot,
+#skills .bayboard-callout.is-active .bayboard-callout-dot {
+  background: #fffbe0;
+  box-shadow:
+    0 0 0 0.2rem var(--accent-highlight),
+    0 0 1.1rem var(--accent-highlight);
+}
+
+#skills .bayboard-callout:hover .bayboard-callout-label,
+#skills .bayboard-callout:focus-visible .bayboard-callout-label,
+#skills .bayboard-callout.is-active .bayboard-callout-label {
+  background: var(--accent-highlight);
+  color: #111;
+}
+
+#skills .bayboard-active-line::before,
+#skills .bayboard-active-line::after {
+  background: var(--accent-highlight);
+  box-shadow: 0 0 0.5rem var(--accent-subtle);
+}
+
+#skills .bayboard-skill-panel {
+  border-left-color: var(--accent-highlight);
+  scrollbar-color: var(--accent-highlight) transparent;
+}
+
+#skills :is(.bayboard-panel-number, .bayboard-panel-kicker) { color: var(--accent-highlight); }
+#skills .bayboard-panel-skills li {
+  border-left-color: var(--accent-highlight);
+  background: color-mix(in srgb, var(--accent-subtle) 24%, transparent);
+}
+
+#skills .bayboard-section-nav:is(:hover, :focus-visible) {
+  border-color: var(--accent-highlight);
+  background: var(--accent-subtle);
+  color: #fff;
+}
+
+/* Projects accent mapping. The card action remains intentionally neutral. */
+#projects.project-catalog {
+  background: #090909;
+}
+
+#projects .project-catalog-header > div > p,
+#projects .catalog-card-number { color: var(--accent-highlight); }
+#projects .catalog-card-fallback-number { color: var(--accent-subtle); }
+
+#projects .project-carousel .flickity-slider > .catalog-card:hover,
+#projects .project-carousel .flickity-slider > .catalog-card:focus-visible {
+  border-color: var(--accent-highlight);
+  box-shadow:
+    0 1.5rem 3rem rgba(0, 0, 0, 0.42),
+    0 0 0 0.15rem color-mix(in srgb, var(--accent-subtle) 48%, transparent);
+}
+
+#projects .catalog-card-preview {
+  background: linear-gradient(155deg, color-mix(in srgb, var(--accent-subtle) 18%, #171717), #101010);
+}
+
+#projects .catalog-view-button {
+  border-bottom-color: #8d9290;
+  color: #8d9290;
+}
+
+#projects .flickity-button {
+  border-color: var(--accent-subtle);
+  background: color-mix(in srgb, var(--accent-subtle) 24%, #101010);
+  color: var(--accent-highlight);
+}
+
+#projects .project-detail-dialog { border-color: var(--accent-subtle); }
+#projects .project-detail-close:hover,
+#projects .project-detail-close:focus-visible {
+  border-color: var(--accent-highlight);
+  color: var(--accent-highlight);
+}
+
+/* Timeline: preserve the existing blue system; only the progress fill changes. */
+#timeline .orbit-progress-track i {
+  background: linear-gradient(90deg, var(--accent-highlight), var(--accent-subtle));
 }

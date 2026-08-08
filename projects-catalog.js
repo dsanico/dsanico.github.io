@@ -7,6 +7,17 @@ function initProjectCatalog() {
 
   if (!section || !carousel || !cards.length) return;
 
+  // Standardize every detailed project subsection on the same tag structure
+  // used by the catalog preview. Timeline item tags intentionally stay intact.
+  cards.forEach((card) => {
+    card.querySelectorAll(".project-card-item-tags").forEach((tagRow) => {
+      tagRow.classList.replace("project-card-item-tags", "catalog-card-tags");
+      tagRow.querySelectorAll(".item-tag-1, .item-tag-2").forEach((tag) => {
+        tag.classList.remove("item-tag-1", "item-tag-2");
+      });
+    });
+  });
+
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let activeCard = null;
   let overlay = null;
