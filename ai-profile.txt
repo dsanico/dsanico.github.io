@@ -1,0 +1,434 @@
+DAVID SANICO — AI-READABLE PORTFOLIO TEXT
+
+This static plain-text file contains text copied from the portfolio's index.html and content-bearing JavaScript files. It is provided as an alternate machine-readable representation of the public portfolio.
+
+INDEX.HTML TEXT
+
+David Sanico's Portfolio
+DAVID
+LOADING
+HOME
+SKILLS
+PROJECTS
+TIMELINE
+CONTACT
+Your browser does not support the video tag.
+Hi, my name is David.
+Launch!
+terminal
+Terminal command
+>
+Press Enter to begin, then type help to list available commands.
+View skills
+FOCUSED ON EMBEDDED SYSTEMS
+EXPLORE SKILLS
+Programming
+Digital Design
+Analog Design
+PCB Design
+Hardware Test
+Other
+/ 06
+←
+Back to About
+SCROLL OR SELECT A CALLOUT TO EXPLORE
+Go To Projects →
+PREV
+NEXT
+PROJECT TEAMS, INTERNSHIPS, & HOBBY PROJECTS
+PROJECT CATALOG
+Python
+Pytest
+C++
+RF Pulses
+Quantum Firmware Internship @ IBM
+Mixed-System Qubit Control Emulation
+Python
+Developing a YAML-configurable multi-emulator harness to validate mixed-gen / mixed-ISA qubit control electronics ahead of hardware rollout.
+Waveform Memory Optimization Automated Testing
+Python
+Multi-Threading
+Used python multi-threading to automatically emulate, compare, and report qubit control execution binaries
+with various memory optimization strategies to accelerate next-gen quantum firmware development.
+Cryogenic-CMOS ASIC ADC Characterization
+Pytest
+Python
+Characterizing cryo-CMOS ASICs' ability to measure payload resistance across varying temperatures and payloads,
+enabling development of intrusion-free connectivity testing of dense qubit control research systems.
+Room-Temp Electronics Manager Dashboard
+AI
+Used IBM internal AI tooling to develop a GUI displaying critical information on qubit control electronics'
+health, connectivity, and booted images across the entire hardware stack. Included features for GUI-based booting
+and synchronous use.
+AI/Qiskit/QEC Integration
+Qiskit
+AI
+Integrated Qiskit and QEC analysis to an IBM internal AI tool, enabling the capability to analyze Qiskit quantum circuits
+and provide a matrix of recommendations covering QEC strategies and IBM hardware backends based on the quantum circuit analysis.
+Project Lead @ MASA
+Altium Designer
+Bay Board PCBs
+Project Lead @ MASA
+Altium Designer
+08/24 to 05/25
+Developed a network of 3 control and data acquisition PCBs as a critical component of the flight avionics architecture on MASA's rocket.
+Each board interfaces with external pressure transducers and thermocouples, as well as onboard IMUs and barometers, to acquire data and send
+telemetry to the flight computer. Each board also controls valves to enable precise pressure control and sequencing.
+I designed over 85% of the schematics and layout.
+Alias:
+Trident
+Number Components:
+501
+Layers:
+6
+Comm. Protocols:
+Ethernet, I2C, SPI, UART
+Digital Subsystems:
+STM32, IMUs, Barometers
+Analog Subsystems:
+Power Regulation, Valve Control, Motor Control, Thermocouple & Pressure Transducer Interfaces
+Team Members:
+4
+Visit MASA
+LTspice
+Altium Designer
+Benchtop Equipment
+Electrical Engineering Internship @ Rocket Lab
+GPS PCB Design Verification
+LTspice
+Led design verification for a satellite GPS PCB, shaving 4 weeks off testing by soldering a PCB, analyzing power regulation and
+latch behavior via LTspice, and verifying physical assembly using DMMs, oscilloscope, power supplies, and electronic loads.
+Test Rig Interface PCB
+Altium Designer
+Designed, ordered, assembled, and validated an interface board bridging a flight PCB to an automated test rig, enabling integrated and automated testing.
+Underwent full product lifecycle including design reviews to meet customer needs, parts sourcing with efficient costs, and in-house assembly and validation.
+Discrete LDO Test PCB
+Altium Designer
+LTspice
+Developed and utilized a test PCB to analyze a discrete LDO designed for long-term radiation and thermal cycling, uncovering stability issues and
+preventing costly redesign through Bode instrument analysis, thermal analysis, and LTspice simulations.
+Pulse-Driver PCB
+Altium Designer
+Designed a low-side NMOS pulse driver PCB that streamlined board power supply testing and step response analysis.
+ADC Firmware
+Arduino IDE
+Wrote firmware in Arduino to validate an onboard ADC, implementing SPI communication and data readout from flight channels to
+aid in board-level bring-up and testing.
+Project Lead @ MASA
+Altium Designer
+Flight Recorder PCB
+Project Lead @ MASA
+Altium Designer
+03/24 to 01/25
+Designed and fabricated my first PCB from start to finish.
+Includes onboard sensors, onboard memory, Ethernet, SPI, I2C, EEPROM, and an STM32 to record and protect
+flight data sent from onboard sensors and a flight computer. Also includes a failure mode to preserve data
+during power loss. Banana-shaped to wrap around the engine.
+Alias:
+Keylime
+Number Components:
+181
+Layers:
+6
+Comm. Protocols:
+Ethernet, I2C, SPI, UART
+Digital Subsystems:
+STM32, IMUs, Barometers
+Team Members:
+1
+Visit MASA
+C
+C++
+Assembly
+Intro to Computer Organization & Intro to Data Structures and Algorithms
+Assembler, Linker, and Machine Code Execution Simulator
+C
+RISC-Based Assembly
+Completed a series of projects that assembles individual assembly-language files (RISC-based architecture)
+into object files, links the object files to produce a single executable, and simulates the execution of the
+machine code.
+Pipelined Datapath Simulator
+C
+RISC-Based Assembly
+Produced a program that simulates every cycle of a 5-stage pipelined processor with detect-and-stall, data forwarding, and predict
+branch-not-taken strategies. Simulator written in C, test cases written in RISC-based assembly language.
+Cache Simulator
+C
+RISC-Based Assembly
+Added cache-access functionality to machine code execution simulator, acting as a write-back, allocate-on-write
+cache of tunable associativity. Simulator functions written in C, test cases written in RISC-based assembly language.
+Euchre Cardgame Simulator
+C++
+Built a C++ simulation of the card game Euchre featuring human and bot players, using object-oriented programming with
+inheritance and polymorphism to model cards, players, and gameplay logic.
+Machine Learning Post Classifier
+C++
+Implemented a C++ machine learning classifier that automatically labels Piazza posts by topic using a bag-of-words model
+and probabilistic learning techniques, gaining experience with containers like sets and maps for natural language processing.
+Content-Aware Image Resizer
+C++
+Created a content-aware image resizing tool using seam-carving to remove low-energy pixel seams, with extensive
+testing and debugging of pointers, streams, and abstract data types.
+EE System Design I
+C
+Python
+Search-and-Rescue Robot
+Electrical Engineering System Design I
+C
+Python
+08/25 to 12/25
+Created a self-navigating robot with steering, odometry, battery monitoring, sonar sensors, a thermopile, and a camera.
+Produced software to support PID-controlled path following, obstacle avoidance, heat detection, and computer vision with
+color-based object detection to simulate search-and-rescue of humans. Hardware includes BeagleBone Blue and an Arduino.
+Team Member @ MDST
+Python
+Machine Learning Based Stock Analysis
+Team Member @ MDST
+Python
+01/24 to 05/24
+Created an LSTM model designed to predict NVIDIA's stock price trend
+for the next day, with performance in RMSE and MAPE precision benchmarks over 10x greater than the MDST team's base model.
+Libraries:
+Numpy
+Pandas
+TensorFlow
+Keras
+Visit MDST
+View Streamlit
+Personal Project (High School)
+Electric Nerf Blaster Modification
+Personal Project (High School)
+11/19 to 01/22
+Converted a semi-automatic pistol into a fully-automatic rifle with increased power,
+dual-ammo compatibility, tracer-ammo UV charging, and an integrated voltmeter. This was a fun high school project
+that introduced me to the world of electrical engineering.
+Python
+Arduino
+Miscellaneous Projects
+Automated Plant Keeper with Computer Vision A.I.
+Personal Project
+Python
+Arduino
+07/24 to 08/24
+Created a system to automatically provide water and light to a plant with machine-learning image recognition to adjust moisture
+and light-hour thresholds. Used an ESP32 with firmware in Arduino to measure soil moisture and light, control a water pump, and
+take pictures with a camera and send to a Flask server hosted by my laptop. Created a Flask server to send the image to a Colab script
+that uses a YOLO model to detect leaves, then a convolutional neural network for each leaf to determine if the plant required more
+frequent watering and light.
+Optics Research for Quantum Key Distribution
+Principles of Optics
+03/25 to 04/25
+Explored the principles of Quantum Key Distribution and the physics of light and photonic
+qubits traversing the atmosphere from satellites to ground stations. Researched various approaches for encoding quantum information into photons, multiplexing
+for optical communication, and adaptive optics for satellite-to-ground transmission. Proposed combined time- and polarization-division
+multiplexing with time-bin quantum encoding to minimize atmospheric effects.
+Quantum Circuit Simulator (QuaCS)
+Personal Project
+Typescript
+03/25 to current
+Creating a simulator for basic 6-qubit quantum circuits with an interactive circuit-building tool, results for probability and randomized measurements,
+and support for entangled quantum states. Using Typescript for the back-end and React.js for the front-end. I'm working on this with a friend,
+and support for front-end features and entanglement is in progress!
+APOAPSIS
+PERIAPSIS
+REFERENCE PLANE / ECI
+FROM LOW EARTH ORBIT TO SUPERCONDUCTING QUBITS
+TRAJECTORY
+01
+EVENT NODE / 01
+← BACK TO PROJECTS
+GO TO CONTACT →
+PREV
+NEXT
+ORIGIN
+CURRENT
+TIMELINE
+Quantum Firmware Intern @ IBM
+| Jun. 2026 - Aug. 2026
+Developing firmware for the Quantum Instrument Control systems at IBM in Rochester, MN.
+Study Abroad @ UC3M
+| Jan. 2026 - May 2026
+Studied abroad at Universidad Carlos III de Madrid and explored life and culture in Europe!
+Avionics Hardware Lead @ MASA
+| Apr. 2025 - Dec. 2025
+I helped manage the development of all hardware projects in MASA. I oversaw timelines and goals of multiple projects simultaneously,
+wrote and maintained new documentation to improve team-wide standards, conducted technical design reviews, and provided guidance to
+new team members.
+I also contributed to a novel Hardware-in-the-Loop system that emulates analog sensors, digital sensors, and loads by helping to
+architect the system-wide design and drafting initial board-level designs for multiple PCBs.
+Electrical Engineering Intern @ Rocket Lab
+| May 2025 - Aug. 2025
+As a member of the Space Systems Avionics Team, I carried out the design verification process of a satellite PCB including
+assembly, physical testing, and SPICE analysis. I also designed three new PCBs for testing integration, which included
+leading a professional PCB lifecycle from requirements capture to validation as well as assembling the PCBs. Additionally, I wrote
+firmware to assist in the bring-up of a flight PCB by validating an ADC.
+Bay Board PCBs Project Lead @ MASA
+| Aug. 2024 - May 2025
+I led a team of 4 to develop a 501-component PCB to control valves and receive sensor data in our rocket.
+I designed over 85% of schematics and layout, managed task distribution and deadlines, optimized multi-vendor BOMs,
+and coordinated with structures and plumbing subteams for cross-team collaboration.
+Hackathon @ Tau Epsilon Kappa
+| Apr. 2025
+I created the beginnings of a Quantum Circuit Simulator (QuaCS) project (still in the works) at a hackathon
+as a member of Tau Epsilon Kappa.
+Flight Recorder PCB Project Lead @ MASA
+| Mar. 2024 - Jan. 2025
+I was the designated Responsible Engineer for the flight recorder PCB for MASA.
+It was my first time designing and assembling a PCB!
+Data Science Intern @ Pair Tech
+| May 2024 - Aug. 2024
+I developed and tested three multi-stage Azure pipelines and five Python scripts to automate the
+scraping and ingestion of license data. I containerized scripts using Docker and Kubernetes for
+efficient deployment, and processed over 100 million datapoints from multiple state databases into Cosmos DB.
+CONTACT / QUANTUM STATE 01
+REACH OUT
+CONTACT 01
+EMAIL
+dsanico@umich.edu
+CONTACT 02
+LINKEDIN
+CONTACT 03
+GITHUB
+PREV
+01 / 03
+NEXT
+
+HERO TYPEWRITER TEXT (FROM script.js)
+
+I am a U-M engineer.
+I am a designer and creator.
+I am always eager to learn.
+I am a breakfast lover.
+
+INTERACTIVE TERMINAL CONTENT (FROM terminal.js)
+
+I'm a rising senior at the University of Michigan majoring in Electrical Engineering. My focus is embedded systems, with hands-on experience in PCB design, hardware verification, and firmware development. I'm especially drawn to the intersection of embedded systems and quantum technology, and I have specialized experience in qubit control electronics and space-grade hardware.
+
+bio.txt
+
+I'm a rising senior at the University of Michigan majoring in Electrical Engineering. My focus is embedded systems, with hands-on experience in PCB design, hardware verification, and firmware development. I'm especially drawn to the intersection of embedded systems and quantum technology, and I have specialized experience in qubit control electronics and space-grade hardware.
+
+education.txt
+
+University of Michigan
+graduation date: May 2027
+major: Electrical Engineering
+GPA: 3.67/4 (Magna Cum Laude)
+honors and awards: Dean's List, James B. Angell Scholar, Ernest W. Reynolds Endowment
+Universidad Carlos III de Madrid (study abroad)
+term: Spring 2026
+churros eaten: 112
+
+experience.txt
+
+IBM        | Quantum Firmware Intern       | Jun. 2026 - Aug. 2026
+MASA       | Avionics Hardware Lead        | Apr. 2025 - Dec. 2025
+Rocket Lab | Electrical Engineering Intern | May 2025 - Aug. 2025
+Pair Tech  | Data Science Intern           | May 2024 - Aug. 2024
+
+(view the projects and timeline section of this website for more details)
+
+skills.txt
+
+Hardware            | Firmware/Software
+---------------------------------------
+Altium              | Python
+LTspice             | C++
+VHDL                | C
+Oscilloscope        | Assembly
+VNA                 | Qiskit
+DMM                 | Linux
+Power Supplies      | Arduino
+Low-Voltage Design  | MATLAB
+Mixed-System Design | Git
+Hardware Assembly   | Pytest
+Systems Integration | Docker
+
+(view the skills section of this website for more details)
+
+courses.txt
+
+Intro to Computer Organization
+Digital Logic
+Circuit Analysis
+Signals and Systems
+Electromagnetics
+Principles of Optics
+Electrical Engineering System Design
+Intro to Data Structures and Algorithms
+Intro to Quantum Information Technology
+Intro to Quantum Nanotechnology (Fall 2027)
+Intro to Microelectromechanical Systems (Fall 2027)
+
+hobbies.txt
+
+Travelling
+Weightlifting
+Running and hiking
+Reading
+Coding for fun
+Breakfast
+
+SKILLS PANEL CONTENT (FROM skills-pcb.js)
+
+BOARD DEVELOPMENT
+Hardware Design
+I've taken hardware from requirements and architecture through schematic capture, layout, and assembly.
+Altium
+PCB schematics
+PCB layout
+Component selection
+
+VERIFICATION / VALIDATION
+Hardware Test
+I've used instrumentation and repeatable test methods to prove that hardware meets its requirements.
+Oscilloscope
+DMM
+VNA
+Bode plot analyzer
+MATLAB
+Pytest
+
+DIGITAL SYSTEMS
+Digital Design
+I've designed logic and interfaces that move data between devices and board-level subsystems.
+MCUs
+SPI
+I2C
+Ethernet
+Shift registers
+Digital Sensors
+VHDL
+Digital logic
+
+ANALOG SYSTEMS
+Analog Design
+I've analyzed, simulated, and conditioned real-world signals in mixed-signal systems.
+Circuit analysis
+LTspice
+Signal conditioning
+Filtering
+Analog sensors
+Mixed-signal design
+
+SOFTWARE / FIRMWARE
+Programming
+I've developed software and low-level firmware that controls, validates, and supports embedded hardware.
+C
+C++
+Python
+Assembly
+Embedded firmware
+Pytest
+Qiskit
+
+TOOLS / INTEGRATION
+Other Skills
+I've supported engineering work with practical development, collaboration, and system-integration tools.
+Linux
+Git
+Docker
+Azure
+Systems integration
+Hardware assembly
+
