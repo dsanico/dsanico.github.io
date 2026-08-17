@@ -56,8 +56,8 @@ function initPortfolioTerminal() {
       "Electrical Engineering System Design",
       "Intro to Data Structures and Algorithms",
       "Intro to Quantum Information Technology",
-      "Intro to Quantum Nanotechnology (Fall 2027)",
-      "Intro to Microelectromechanical Systems (Fall 2027)"
+      "Intro to Quantum Nanotechnology (Fall 2026)",
+      "Intro to Microelectromechanical Systems (Fall 2026)"
     ],
     "hobbies.txt": [
       "Travelling",
