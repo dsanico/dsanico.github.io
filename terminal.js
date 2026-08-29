@@ -57,7 +57,7 @@ function initPortfolioTerminal() {
       "Intro to Data Structures and Algorithms",
       "Intro to Quantum Information Technology",
       "Intro to Quantum Nanotechnology (Fall 2026)",
-      "Intro to Microelectromechanical Systems (Fall 2026)"
+      "Microwave Circuits I (Capstone) (Fall 2026)"
     ],
     "hobbies.txt": [
       "Travelling",
