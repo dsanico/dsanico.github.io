@@ -7,7 +7,7 @@ function initPortfolioTerminal() {
 
   if (!terminal || !output || !form || !input || !announcer) return;
 
-  const about = "I'm a rising senior at the University of Michigan majoring in Electrical Engineering. My focus is embedded systems, with hands-on experience in PCB design, hardware verification, and firmware development. I'm especially drawn to the intersection of embedded systems and quantum technology, and I have specialized experience in qubit control electronics and space-grade hardware.";
+  const about = "I'm a senior at the University of Michigan majoring in Electrical Engineering. My focus is embedded systems and microwave engineering, with hands-on experience in PCB design, hardware verification, and firmware development. I'm especially drawn to the intersection of embedded systems and quantum technology, and I have specialized experience in qubit control electronics and space-grade hardware.";
 
   const virtualFiles = {
     "bio.txt": [about],
@@ -15,7 +15,7 @@ function initPortfolioTerminal() {
       "University of Michigan",
       "     graduation date: May 2027",
       "     major: Electrical Engineering",
-      "     GPA: 3.67/4 (Magna Cum Laude)",
+      "     GPA: 3.67/4",
       "     honors and awards: Dean's List, James B. Angell Scholar, Ernest W. Reynolds Endowment",
       "Universidad Carlos III de Madrid (study abroad)",
       "     term: Spring 2026",
