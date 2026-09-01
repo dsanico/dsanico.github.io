@@ -20,7 +20,7 @@ Terminal command
 >
 Press Enter to begin, then type help to list available commands.
 View skills
-FOCUSED ON EMBEDDED SYSTEMS
+DEVELOPED THROUGH HANDS-ON WORK
 EXPLORE SKILLS
 Programming
 Digital Design
@@ -306,14 +306,14 @@ I'm a rising senior at the University of Michigan majoring in Electrical Enginee
 
 bio.txt
 
-I'm a rising senior at the University of Michigan majoring in Electrical Engineering. My focus is embedded systems, with hands-on experience in PCB design, hardware verification, and firmware development. I'm especially drawn to the intersection of embedded systems and quantum technology, and I have specialized experience in qubit control electronics and space-grade hardware.
+I'm a senior at the University of Michigan majoring in Electrical Engineering. My focus is embedded systems and microwave engineering, with hands-on experience in PCB design, hardware verification, and firmware development. I'm especially drawn to the intersection of embedded systems and quantum technology, and I have specialized experience in qubit control electronics and space-grade hardware.
 
 education.txt
 
 University of Michigan
 graduation date: May 2027
 major: Electrical Engineering
-GPA: 3.67/4 (Magna Cum Laude)
+GPA: 3.67/4
 honors and awards: Dean's List, James B. Angell Scholar, Ernest W. Reynolds Endowment
 Universidad Carlos III de Madrid (study abroad)
 term: Spring 2026
@@ -358,7 +358,7 @@ Electrical Engineering System Design
 Intro to Data Structures and Algorithms
 Intro to Quantum Information Technology
 Intro to Quantum Nanotechnology (Fall 2026)
-Microwave Circuits I (capstone) (Fall 2026)
+Microwave Circuits I (Capstone) (Fall 2026)
 
 hobbies.txt
 
